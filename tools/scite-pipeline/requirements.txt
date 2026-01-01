@@ -1,0 +1,11 @@
+# Scite.ai Processing Pipeline Dependencies
+
+# Core
+anthropic>=0.40.0
+pyyaml>=6.0
+
+# Optional: for development
+# pytest>=8.0
+# black>=24.0
+# mypy>=1.0
+

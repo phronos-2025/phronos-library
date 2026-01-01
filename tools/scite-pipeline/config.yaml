@@ -1,0 +1,40 @@
+# Scite.ai Processing Pipeline Configuration
+# This config is topic-agnostic. Topic-specific cluster definitions live in
+# library/topics/{topic}/sources/scite/OUTLINE.md frontmatter.
+
+# API Configuration
+api:
+  provider: anthropic  # Options: anthropic, openai, local
+  model: claude-sonnet-4-20250514
+  max_tokens: 1500
+  temperature: 0.2  # Low temperature for consistent structured output
+
+# Processing Options
+processing:
+  # Coverage thresholds (based on reference count)
+  coverage_thresholds:
+    rich: 8        # 8+ references = Rich coverage
+    moderate: 4    # 4-7 references = Moderate coverage
+    sparse: 1      # 1-3 references = Sparse coverage
+    # 0 references = None
+  
+  # Maximum citations to include in structured output
+  max_citations: 5
+  
+  # Flag for deep research if coverage is below this level
+  deep_research_threshold: sparse  # Options: sparse, moderate
+
+# Output Options
+output:
+  # Generate individual processed files per question
+  individual_files: true
+  
+  # Generate consolidated report organized by cluster
+  consolidated_report: true
+  
+  # Include source file path in output
+  include_source_reference: true
+  
+  # Output format for consolidated report
+  report_format: markdown  # Options: markdown, json
+

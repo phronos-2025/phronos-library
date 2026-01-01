@@ -1,0 +1,15 @@
+# Global Library ID Registry
+# 
+# This file tracks LIB-### IDs across all topics to ensure uniqueness.
+# When creating a new Library entry, allocate the next available ID.
+
+# Next available ID
+next_id: 1
+
+# Allocations (optional tracking)
+# allocations:
+#   LIB-001:
+#     topic: digital-identity-formation
+#     title: "Digital Identity Formation and Expression"
+#     created: 2025-01-02
+
