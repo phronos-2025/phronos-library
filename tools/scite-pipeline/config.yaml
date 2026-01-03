@@ -6,8 +6,21 @@
 api:
   provider: anthropic  # Options: anthropic, openai, local
   model: claude-sonnet-4-20250514
-  max_tokens: 1500
-  temperature: 0.2  # Low temperature for consistent structured output
+  max_tokens: 2000  # Increased for longer structured output with conclusion quotes
+  temperature: 0.0  # Zero temperature for extraction tasks - prevents "improving" source material
+  
+  # Pricing per 1M tokens (as of 2025-01-02)
+  # Update these if Anthropic changes pricing
+  pricing:
+    claude-sonnet-4-20250514:
+      input: 3.00   # $3.00 per 1M input tokens
+      output: 15.00  # $15.00 per 1M output tokens
+    claude-opus-3-20240229:
+      input: 15.00
+      output: 75.00
+    claude-haiku-3-20240307:
+      input: 0.25
+      output: 1.25
 
 # Processing Options
 processing:

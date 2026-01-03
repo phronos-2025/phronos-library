@@ -56,6 +56,38 @@ python process_scite.py --topic digital-identity-formation --cluster 2
 python process_scite.py --topic digital-identity-formation --dry-run --verbose
 ```
 
+#### Batch Processing
+
+For large topic sets (e.g., 72 questions), use batch processing:
+
+```bash
+# Process 10 questions at a time with 2s delay between batches
+python process_scite.py --topic digital-identity-formation --batch-size 10
+
+# Process first 5 questions only (for testing)
+python process_scite.py --topic digital-identity-formation --limit 5
+
+# Skip already processed files (resume interrupted run)
+python process_scite.py --topic digital-identity-formation --skip-processed
+
+# Require confirmation before starting (shows cost estimate first)
+python process_scite.py --topic digital-identity-formation --confirm
+
+# Combine options for controlled processing
+python process_scite.py --topic digital-identity-formation \
+    --batch-size 10 \
+    --skip-processed \
+    --confirm \
+    --verbose
+```
+
+**Batch processing options:**
+- `--batch-size N` — Process N questions per batch (0 = all at once)
+- `--batch-delay N` — Delay in seconds between batches (default: 2)
+- `--limit N` — Only process first N questions (0 = no limit)
+- `--skip-processed` — Skip files that already have processed JSON
+- `--confirm` — Show cost estimate and require confirmation before starting
+
 ### Step 3: Review Output
 
 After processing:
@@ -126,7 +158,10 @@ This reads from `processed/*.json` and rebuilds `LITERATURE_REVIEW_SUMMARY.md`.
 python process_scite.py --topic {topic} --question Q{num} --verbose
 ```
 
-**API rate limits**: Add delays between questions or process in batches by cluster.
+**API rate limits**: Use batch processing with delays:
+```bash
+python process_scite.py --topic {topic} --batch-size 10 --batch-delay 5
+```
 
 **Topic not found**: Ensure the topic directory exists at `library/topics/{topic}/sources/scite/`
 

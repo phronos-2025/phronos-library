@@ -1,0 +1,102 @@
+[
+  {
+    "question_id": "Q01",
+    "question_title": "IT Identity Empirical Evidence",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 7242,
+    "output_tokens": 433,
+    "total_tokens": 7675,
+    "cost_usd": 0.028221000000000003,
+    "timestamp": "2026-01-02T16:12:31.764035"
+  },
+  {
+    "question_id": "Q02",
+    "question_title": "IT Identity Operationalization",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 11766,
+    "output_tokens": 475,
+    "total_tokens": 12241,
+    "cost_usd": 0.042423,
+    "timestamp": "2026-01-02T16:12:40.658428"
+  },
+  {
+    "question_id": "Q03",
+    "question_title": "IT Identity Development",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 11735,
+    "output_tokens": 480,
+    "total_tokens": 12215,
+    "cost_usd": 0.042405,
+    "timestamp": "2026-01-02T16:12:51.028263"
+  },
+  {
+    "question_id": "Q04",
+    "question_title": "Alternative Frameworks",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 8998,
+    "output_tokens": 478,
+    "total_tokens": 9476,
+    "cost_usd": 0.03416400000000001,
+    "timestamp": "2026-01-02T16:13:00.705744"
+  },
+  {
+    "question_id": "Q05",
+    "question_title": "Pronouns and Self-Relevance",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 7901,
+    "output_tokens": 458,
+    "total_tokens": 8359,
+    "cost_usd": 0.030573000000000003,
+    "timestamp": "2026-01-02T16:13:11.053273"
+  },
+  {
+    "question_id": "Q01",
+    "question_title": "IT Identity Empirical Evidence",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 11321,
+    "output_tokens": 758,
+    "total_tokens": 12079,
+    "cost_usd": 0.045333,
+    "timestamp": "2026-01-02T16:33:45.799794"
+  },
+  {
+    "question_id": "Q02",
+    "question_title": "IT Identity Operationalization",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 12177,
+    "output_tokens": 658,
+    "total_tokens": 12835,
+    "cost_usd": 0.046401,
+    "timestamp": "2026-01-02T16:33:58.175164"
+  },
+  {
+    "question_id": "Q03",
+    "question_title": "IT Identity Development",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 12146,
+    "output_tokens": 758,
+    "total_tokens": 12904,
+    "cost_usd": 0.047807999999999996,
+    "timestamp": "2026-01-02T16:34:12.835629"
+  },
+  {
+    "question_id": "Q04",
+    "question_title": "Alternative Frameworks",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 9409,
+    "output_tokens": 594,
+    "total_tokens": 10003,
+    "cost_usd": 0.037137,
+    "timestamp": "2026-01-02T16:34:23.434112"
+  },
+  {
+    "question_id": "Q05",
+    "question_title": "Pronouns and Self-Relevance",
+    "model": "claude-sonnet-4-20250514",
+    "input_tokens": 8312,
+    "output_tokens": 695,
+    "total_tokens": 9007,
+    "cost_usd": 0.035361000000000004,
+    "timestamp": "2026-01-02T16:34:36.349122"
+  }
+]

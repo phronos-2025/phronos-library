@@ -3,6 +3,7 @@
 # Core
 anthropic>=0.40.0
 pyyaml>=6.0
+beautifulsoup4>=4.12  # For HTML parsing in format_for_rag.py
 
 # Optional: for development
 # pytest>=8.0
