@@ -1,0 +1,1030 @@
+[
+  {
+    "key": "AbramskiEtAl2025",
+    "title": "A word association network methodology for evaluating implicit biases in LLMs compared to humans",
+    "authors": "Abramski, Rossetti & Stella",
+    "year": "2025",
+    "publication": "",
+    "doi": "10.48550/arXiv.2510.24488",
+    "url": "http://arxiv.org/abs/2510.24488",
+    "abstract": "As Large language models (LLMs) become increasingly integrated into our lives, their inherent social biases remain a pressing concern. Detecting and evaluating these biases can be challenging because they are often implicit rather than explicit in nature, so developing evaluation methods that assess the implicit knowledge representations of LLMs is essential. We present a novel word association network methodology for evaluating implicit biases in LLMs based on simulating semantic priming within LLM-generated word association networks. Our prompt-based approach taps into the implicit relational structures encoded in LLMs, providing both quantitative and qualitative assessments of bias. Unlike most prompt-based evaluation methods, our method enables direct comparisons between various LLMs and humans, providing a valuable point of reference and offering new insights into the alignment of LLMs with human cognition. To demonstrate the utility of our methodology, we apply it to both humans and several widely used LLMs to investigate social biases related to gender, religion, ethnicity, sexual orientation, and political party. Our results reveal both convergences and divergences between LLM and human biases, providing new perspectives on the potential risks of using LLMs. Our methodology contributes to a systematic, scalable, and generalizable framework for evaluating and comparing biases across multiple LLMs and humans, advancing the goal of transparent and socially responsible language technologies.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“Another troubling and somewhat ironic consequence of LLM social biases has to do with the long-lasting impact they can have on our own biases. Recent studies have shown that as humans interact with biased LLMs, we subconsciously absorb the biases in their outputs, even long after we stop interacting with the models22. These findings suggest the emergence of a feedback loop, in which LLMs acquire biases from humans, and through repeated exposure, we absorb new biases from LLMs.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“Methods for evaluating bias in LLMs can also differ by whether they operate at the model level, directly probing internal representations, or at the output level, treating the model as a black box and using outputs from prompting for investigating bias. Model-level methods are typically intrinsic since they directly access a model’s representational structures, while output-level approaches are typically extrinsic, focusing on specific downstream tasks or specific types of bias in certain domains (e.g. gender bias in recruiting)39. Model-level methods usually fall into one of two categories: embedding-based or probability-based25. Embedding-based metrics such as the well-known Word Embedding Association Test (WEAT)27 and similar variations28,40 apply the logic of the Implicit Association Test (IAT)41, a well-known metric for assessing implicit bias in humans. They measure vector similarities between social categories (e.g. gender) and attributes (e.g. careers) in different types of word embeddings. In contrast, probability-based metrics30 use model-assigned probabilities to estimate biases. For example, masked token metrics ask a masked language model to complete fill-in-the-blank sentences30,42, and pseudo-log-likelihood metrics score the probability of generating a token given other words in the sentence29,43. Model-level approaches are advantageous because they offer fine-grained insights into how associations are structurally encoded in a model’s representations. However, they are increasingly difficult to apply to larger models where internal embeddings and probability distributions are not accessible, limiting their effectiveness at evaluating modern LLMs. Output-level methods, on the other hand, are not constrained by this lack of architectural transparency because they rely on LLM outputs generated through prompting rather than internal representations, making them more scalable and broadly applicable. This approach typically involves probing models with prompts that are designed to elicit biased or stereotypical outputs, and then analyzing the generated text44,45. Common strategies include counterfactual testing, where demographic features in prompts are swapped to reveal unequal treatment46,47 and stereotype detection, which probes whether models reproduce or amplify social stereotypes48,49. Other approaches focus on sentiment and toxicity analysis50,51 and acceptance/rejection rates, which measure disparities in decision-like tasks such as hiring or moral dilemmas39,52. Since output-level methods are usually tailored for certain types of biases in specific contexts, they may be better at predicting real-world harm. However, this also makes them inflexible because they do not provide an overall measure of bias, and they cannot be easily extended to other less common forms of bias.”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“Methods of bias evaluation that use word associations are based on the Implicit Association Test (IAT), a behavioral methodology for evaluating implicit biases in humans41. Built on the principle that shorter human reaction times correspond to semantic proximity between words, the test quantifies the strength of our unconscious associations between pairs of concepts, for example black and bad vs. white and bad. This methodology makes it possible to uncover implicit biases that lie below our level of consciousness, in contrast to explicit biases which are assessed by asking participants direct questions about their opinions and beliefs14.”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“In this work, we introduce a novel word association network methodology for evaluating implicit biases in LLMs compared to humans. We demonstrate the utility of our methodology by applying it to studying social biases in humans and three LLMs. We apply three different versions of our methodology to investigate different types of biases: a stereotypes approach to investigate stereotypical gender biases, a valence approach to investigate positive and negative perceptions of religion, ethnicity, and sexual orientation, and finally, an emotions approach to investigate the relative feelings towards Democrats and Republicans for eight core emotions.”",
+        "page": 17,
+        "note": ""
+      },
+      {
+        "text": "“A central methodological innovation of the present work is the use of word association networks59 to directly compare implicit biases in humans and LLMs. Unlike model-level embedding-based metrics, which often operate as opaque vector-space measures27, our network-based methodology does not require access to internal representations, rather, it offers interpretable structures in which nodes represent concepts and edges capture associative strength80–82. Moreover, unlike most output-level metrics that use prompts to evaluate bias in specific contexts, our methodology captures implicit relational knowledge rather than surface-level outputs. One of the main advantages of our methodology is that it is grounded in cognitive psychology and network science. Semantic networks of memory recall patterns have been widely applied to model conceptual memory71, spreading activation72, and semantic priming69 in humans. By operationalizing implicit bias as asymmetries in activation flow across these networks, our approach mirrors established theories of semantic priming65,69 while remaining transparent and human-readable. The networks constructed in this study capture large-scale associative structures. For example, the human network consists of 24,308 nodes and 317,344 edges, while the Llama3 network is even larger with 38,987 nodes and 546,866 edges, reflecting differences in representational richness across agents.”",
+        "page": 18,
+        "note": ""
+      },
+      {
+        "text": "“The societal implications of adopting a word association network approach to LLM bias evaluation are many. Because word association networks provide interpretable pathways of associations81, they allow stakeholders—including policymakers, educators, and developers—to identify not only the presence of bias but also the mechanisms through which it propagates6.”",
+        "page": 19,
+        "note": ""
+      },
+      {
+        "text": "“cultural and linguistic contexts strongly shape the structure of cognitive memory networks, meaning that implicit associations in multilingual or non-Western settings may diverge significantly from those represented here. Future work should aim to use multilingual or cross-cultural human-generated data to provide a more globally representative human benchmark, though such datasets are limited.”",
+        "page": 20,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "BeatyKenett2023",
+    "title": "Associative thinking at the core of creativity",
+    "authors": "Beaty & Kenett",
+    "year": "2023",
+    "publication": "Trends in Cognitive Sciences",
+    "doi": "10.1016/j.tics.2023.04.004",
+    "url": "https://linkinghub.elsevier.com/retrieve/pii/S1364661323000943",
+    "abstract": "Creativity has long been thought to involve associative processes in memory: connecting concepts to form ideas, inventions, and artworks. Yet associative thinking has been difficult to study due to limitations in modeling memory structure and retrieval processes. Recent advances in computational models of semantic memory allow researchers to examine how people navigate a semantic space of concepts when forming associations, revealing key search strategies associated with creativity. Here, we synthesize cognitive, computational, and neuroscience research on creativity and associative thinking. The review highlights distinctions between free- and goal-directed association, illustrates the role of associative thinking in the arts, and links associative thinking to brain systems supporting both semantic and episodic memory—offering a new perspective on a longstanding creativity theory.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“The review provides empirical support for a longstanding theory on creativity—the associative theory [5]—in light of major advances in computational modeling and cognitive neuroscience. We highlight key memory search characteristics of highly creative individuals based on computational models of memory that can track a person’s navigation through semantic space. We approach the contentious question of domain-specificity in the creativity literature by examining how associative thinking—a domain-general cognitive ability—relates to domain-specific creative expertise. We also examine how the brain forms different types of associations (e.g., free- vs. goal-directed association), and whether association processes work differently in the highly creative brain.”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“According to the associative theory of creativity, what distinguishes more creative people is their capacity for association, i.e., making new connections between seemingly unrelated concepts stored in memory. This theory postulates that creative people can make such novel associations due to their structure of memory: whereas a less creative person has strong connections between common concepts (e.g., table-chair) and weak connections between uncommon concepts (e.g., table-lamp), a higher creative person has connections of similar strength between both common and uncommon concepts, facilitating the bypass of conventional associations to make novel/remote associations [11]. Over the years, the associative theory has received mixed empirical support, largely due to challenges in representing semantic memory structure and the search processes operating over it”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“Researchers have developed various tasks requiring free- and goal-directed association. Free association tasks prompt people to generate the first, or few words that comes to mind in response to a cue word [19,20]. Free association has been studied for nearly 150 years, largely viewed as a window into the unconscious mind—an idea later expanded upon by psychoanalysts, and followed by cognitive psychologists who developed formal tests of free association [for review see 21]. More recent work [e.g., 1,22] led to the development of free association norms [23,24], allowing researchers to study memory structure and retrieval processes operating on it.”",
+        "page": 5,
+        "note": ""
+      },
+      {
+        "text": "“Goal-directed association tasks involve generating associations that fit a specific task constraint or requirement. Unlike unconstrained free association, goal-directed association tasks require extracting specific information from memory, such as retrieving synonyms, listing animals, or producing a sequence of unrelated words [25-27]. Factor analytic studies of human cognitive abilities have operationalized goaldirected retrieval as a facet of intelligence, termed “broad retrieval ability” [28,29]. Broad-retrieval ability (i.e., verbal fluency) robustly predicts performance on creative thinking tasks, according to two recent meta-analyses [30,31], and requires executive control to extract information from long-term memory, avoiding repetitions and inappropriate responses along the way.”",
+        "page": 5,
+        "note": ""
+      },
+      {
+        "text": "“In general, higher creative people are more associative in their thinking: they generate a broader, more idiosyncratic set of associative responses compared to less creative people [12,25,38,42,45]. They also tend to perceive semantically distant associations as “closer” together [11].”",
+        "page": 8,
+        "note": ""
+      },
+      {
+        "text": "“other associative metrics were recently applied [64] to capture retrieval dynamics predictive of creative thinking: clustering (the number of categories visited), switching (alternating between semantic categories), complexity (the range of combinations of different semantic categories), global semantic distance (i.e., FF), and local semantic distance (distance from previous responses).”",
+        "page": 9,
+        "note": ""
+      },
+      {
+        "text": "“switching correlated with convergent thinking (e.g., generating a word that conceptually relates to three cue words), whereas clustering correlated with divergent thinking (e.g., generating original uses for objects). Moreover, switching related to both executive functions and semantic memory network structure, whereas clustering related to the ability to retrieve many items from a semantic category (i.e., fluency). These findings indicate that switching during free association reflects an interplay between controlled processes and semantic memory network structure (i.e., “exploration” of semantic space), and clustering reflects controlled processes relevant for exhaustive memory search (i.e., “exploitation” of a semantic category).”",
+        "page": 11,
+        "note": ""
+      },
+      {
+        "text": "“This relation between switching and semantic memory network structure provides additional evidence that associative thinking reflects a search process operating on a semantic memory network structure. A recent study [18] triangulated the relations between associative thinking, semantic memory structure, and creative thinking, finding that associative thinking mediated the relationship between semantic memory network efficiency and creativity. In other words, higher creative people could search through semantic space more fluently, and make more distant semantic associations, because they possessed a more richly connected semantic memory network.”",
+        "page": 11,
+        "note": ""
+      },
+      {
+        "text": "“A common finding in the neuroscience literature is that associative thinking engages the default mode network [DMN; 76]. The DMN consists of medial prefrontal cortex, posterior cingulate cortex, and lateral temporal and parietal regions; these regions collectively activate during tasks involving memory, imagination, and self-referential thinking [77,78]. DMN also robustly activates during ‘passive’ resting states, when people are not engaged in a task (i.e., mind wandering), as well as during tasks involving both episodic and semantic memory retrieval [77].”",
+        "page": 14,
+        "note": ""
+      },
+      {
+        "text": "“Associative thinking may constitute one mechanism of DMN, ECN, and SN interaction. Two recent studies provide some evidence along these lines [44,64], reporting correlations between associative thinking, creativity, and functional connectivity among DMN, ECN, and SN. One study [44] found that switching categories during free association was predicted by functional connectivity among the three networks. Similarly, other work [64] found that clustering and switching during free association was related to a functional connectivity “state” (i.e., a recurring correlational pattern among the networks at rest) comprised of DMN, ECN, and SN, and that free association ability mediated the relationship between this brain state and verbal creative thinking.”",
+        "page": 17,
+        "note": ""
+      },
+      {
+        "text": "“Looking ahead, research on associative thinking should examine how free- and goal-directed association contribute to real-world creative behavior [e.g., 46,92,93], and how associative thinking interacts with other cognitive systems that support creativity [e.g., attention and cognitive control; 9].”",
+        "page": 18,
+        "note": ""
+      },
+      {
+        "text": "“Future work should move beyond individual differences to study how associative thinking can be enhanced through learning [98]: targeting the structure of semantic memory (e.g., via concept learning”",
+        "page": 18,
+        "note": ""
+      },
+      {
+        "text": "“techniques that promote connectivity between concepts during learning) or the associative processes operating on it (e.g., via memory retrieval strategies that encourage semantically distant connections). Furthermore, advances in the investigation of associative processes in creativity can be achieved through the application of computational models that converge different types of memory systems (e.g., semantic and episodic memory) as “layers” in a multidimensional cognitive network [99,100].”",
+        "page": 19,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "ThompsonEtAl2020",
+    "title": "Cultural influences on word meanings revealed through large-scale semantic alignment",
+    "authors": "Thompson, Roberts & Lupyan",
+    "year": "2020",
+    "publication": "Nature Human Behaviour",
+    "doi": "10.1038/s41562-020-0924-8",
+    "url": "https://sci-hub.se/https://www.nature.com/articles/s41562-020-0924-8",
+    "abstract": "",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“In a strong version of this universalist view, word meanings are “more-or-less straightforward mappings from a pre-existing conceptual space, programmed into our biological nature: humans invent words that label their concepts.”5.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“relative, perspective, language vocabularies are culturally evolved sets of categories that we learn during the course of learning a language10.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“The universalist and relative perspectives make some of the same predictions: they both predict that languages may have many ‘culture-bound’12 words that have no translation equivalents in another language. It is unsurprising that regional animals and natural features (such as ‘kangaroo’ and ‘fjord’), specialized artefacts (‘carburetor’), technical terms (‘methylation’) and complex social constructs (‘sabbath’) may be absent from certain languages.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“the relative view (in agreement with the intuitions of many lexicographers12,20) predicts that words that denote even highly concrete and seemingly self-evident meanings may fail to align across languages. Importantly, the degree of alignment should be predictable from cultural, historical and geographical factors.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“Semantic equivalence can be defined in functional terms: the meaning of a word w1 in one language (L1) is aligned with a word w2 in another language (L2) if the two words are used in the same contexts by L1 and L2 speakers. One reason why describing the semantic structure of natural languages is difficult is that word meanings, similar to other psychological constructs, are not directly observable21. The most direct way to assess semantic equivalence would be to query L1–L2 speakers of multiple languages about the meanings of different words22–26.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“Here we present a large-scale analysis of vocabularies spanning 1,010 distinct ‘concepts’ in 41 languages (a list of the concepts is provided in Supplementary Table 1.4.2.3). Our analysis specifically focuses on words that are, in principle, highly translatable, and takes advantage of recent advances in distributional semantics. Distributional semantics is based on the idea that it is possible to understand the meaning of words by observing the contexts in which they are used—“you shall know a word by the company it keeps”37. The meanings of w1 and w2 are similar to the extent that the contexts in which they are used are similar.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“We obtained word forms for 1,010 concepts in 41 languages using the NorthEuraLex (NEL) dataset53. NEL is compiled from dictionaries and other linguistic resources that are available for individual languages in Northern Eurasia.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Our finding that semantic alignment is predictable to a certain extent from culture, language history and geography (R2 = 0.363) contrasts with previous research based on patterns of polysemy, which failed to find these relationships and has been interpreted as support for the universalist perspective34. We calculated a polysemy-based alignment measure (Supplementary Information, section 5.2) using a recent, large-scale database62 of common colexifications (an approach that has been successfully used to quantify semantic alignment in the specific semantic domain of emotion vocabulary36). First, we established that the relationship between semantic alignment and cultural similarity is robust to controls for polysemy (Supplementary Information, section 5.3.3). Second, we examined whether colexification is related to cultural similarity (and geographical proximity) in the same manner that our distributional measure of alignment is. This polysemy-based measure of semantic alignment was not statistically significantly related to cultural similarity, and was a much weaker predictor of geographical distance compared with the distributional measure of semantic alignment”",
+        "page": 6,
+        "note": ""
+      },
+      {
+        "text": "“Words for common artefacts, actions and natural kinds—meanings that should be highly aligned on a strong universalist account—were found to have only intermediate alignments. Contributing to this lower alignment were cross-linguistic differences in word frequency, differences in semantic neighbourhood densities and differences in patterns of polysemy1”",
+        "page": 7,
+        "note": ""
+      },
+      {
+        "text": "“We observed the highest semantic alignment in domains characterized by high internal structure: numbers, temporal terms and kinship terms. This result suggests that the structure of, for example, a base-ten number system and a twelve-month calendar—products of cultural evolution the acquisition of which may require experience with language82,83—constrains semantic relationships among words such as ‘five’ and ‘ten’, and ‘month’ and ‘year’ in a very similar manner in different languages. These high alignments may reflect a universal basis for representing these concepts84, but the fact that alignment for kinship and temporal terms was further predicted by non-linguistic measures of cultural similarity speaks to the influence of culture on linguistic structure in these highly aligned domains.”",
+        "page": 7,
+        "note": ""
+      },
+      {
+        "text": "“Our reliance on corpus-derived semantic representations has limitations. Human semantic representations encode many relationships that are not present in semantics learned from word use alone85,86. Semantic knowledge automatically derived from corpora reflects only information contained in language and therefore under-represents what people learn about the meaning of words from direct interactions with the world. For example, the meaning of ‘dog’ in distributional semantic terms is derived from the contexts in which the word occurs, and includes people’s direct experiences with dogs only to the extent that they are reflected in language. Although this means that distributional semantics provides an incomplete account of word meanings, distributional semantic analyses such as ours can be viewed as a conservative estimate of cross-linguistic differences in word meaning—differences that are not reflected in language use are likely to only lower estimates of semantic alignment.”",
+        "page": 7,
+        "note": ""
+      },
+      {
+        "text": "“We were able to reproduce the absence of a relationship between polysemy-based alignment and geographical and cultural factors”",
+        "page": 7,
+        "note": ""
+      },
+      {
+        "text": "“Our results do not fully fit into either the universalist or relative perspectives. The ranking of semantic domains by their alignment (Fig. 3) has unexpected elements when viewed through either the relative or the universalist lens. The finding that numerals, time, kinship and sense words have relatively high alignment may be viewed as supporting the idea that these word meanings derive from universal cognitive and perceptual biases. However, the finding that alignment is uncorrelated with concreteness and that some of the most concrete domains have relatively low alignment is unexpected on the universalist view, as are our findings that alignment of even relatively aligned domains, such as kinship and temporal terms, is strongly influenced by cultural similarity.”",
+        "page": 8,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "SaidMetwalyEtAl2024",
+    "title": "Divergent thinking and creative achievement—How strong is the link? An updated meta-analysis.",
+    "authors": "Said-Metwaly, Taylor, Camarda & Barbot",
+    "year": "2024",
+    "publication": "Psychology of Aesthetics, Creativity, and the Arts",
+    "doi": "10.1037/aca0000507",
+    "url": "https://doi.apa.org/doi/10.1037/aca0000507",
+    "abstract": "Achieving creativity in the real world depends on multiple individual and environmental factors. Among them, divergent thinking (DT) has long been considered a key ingredient of creativity and an essential standard assessment criterion for predicting real-life creative outcomes. However, the link between DT and creative achievement (CA) has yielded heterogeneous results, as outlined by a prior meta-analysis on the DT-CA link published in 2008. Given several limitations of this meta-analysis and the large body of relevant studies that have been published since then, the present paper aimed to offer an updated and methodologically rigorous metaanalytical examination of the DT-CA link. A total of 766 effect sizes from 70 studies encompassing 14,901 subjects were analyzed using a meta-analytic three-level model. The results showed that DT was positively, albeit weakly, linked to CA, with only 3% of shared variance. Moderator analyses indicated that this link was robust to variations in DT and CA measures used, gender, educational level, measurement interval, and country of study, but differed by DT task modality, CA domain, and intellectual giftedness. Specifically, the strength of the DT-CA link was significantly larger for (1) verbal DT tasks, (2) the performance domain of CA, and (4) gifted subjects. A significant interaction effect was also found between CA domain and intellectual giftedness, with the DT-CA link being strongest among gifted subjects in the performance domain. Implications of these results for the study and measurement of creativity are discussed.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“Classic DT measures, such as the Wallach-Kogan Creativity Tests (Wallach & Kogan, 1965) or the Torrance Tests of Creative Thinking (Torrance, 1966), prompt individuals to produce numerous alternative responses to illstructured problems—e.g., listing questions about a drawing, deducing consequences of hypothetical events, suggesting unconventional ways to use common objects, or creating pictures from abstract shapes. Evaluations of divergent production often include fluency (quantity of given responses), flexibility (shifting between various response categories), originality (uncommonness of responses), and elaboration (expansion of responses; e.g., Reiter-Palmon et al., 2019; Said-Metwaly et al., 2018).”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“CA measures usually consist of self-report checklists of creative attainments, frequency scales of recognized accomplishments or honors, and expert ratings of real-life creative productions (Carson et al., 2005; Hocevar, 1979).”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“Discrepancies in results on the DT-CA link might also stem from the different CA measures used across studies. CA measures capture distinct aspects of achievements (quantitative vs. qualitative; Pretz & McCollum, 2014; Runco, 1986) and might thus differentially correlate with DT. Indeed, available empirical evidence is mixed, with some studies suggesting that the DT-CA link varies as a function of the CA measure used (e.g., Paek & Runco, 2018; Runco, 1986), whereas others do not (e.g., Cramond et al., 2005; Jauk et al., 2014; Torrance, 1969, 1972a).”",
+        "page": 8,
+        "note": ""
+      },
+      {
+        "text": "“CA domain is also likely to play a moderating role in the DT-CA link. CA is assumed to be domain-specific involving distinct optimal profiles of cognitive and personality resources according to the domain considered (e.g., Carson et al., 2005; Feist, 1998; Hong et al., 2014; Kaufman et al., 2015; Silvia et al., 2009). Consistently, CA in different domains was differentially predicted by DT (e.g., Hocevar, 1980; Howieson, 1981; Runco, 1986).”",
+        "page": 8,
+        "note": ""
+      },
+      {
+        "text": "“A flow chart describing the search process is shown in Figure 1. The search process yielded an initial pool of 2,973 papers, narrowed down to 102 papers after screening titles and abstracts. Of these, a final pool of 70 papers involving a total of 14,901 subjects was eligible for this meta-analysis2.”",
+        "page": 15,
+        "note": ""
+      },
+      {
+        "text": "“For the DT test moderator variable, the studies were classified into five categories: Abbreviated Torrance Test for Adults, Structure of Intellect Tests, Torrance Tests of Creative Thinking, Wallach-Kogan Creativity Tests, and others (due to limited data available for specific other tests). Four categories for DT indicator were created: fluency, flexibility, originality, and elaboration. Also, four categories for CA measure were created: Creative Achievement Questionnaire, Creative Behavior Inventory, Inventory of Creative Activities and Achievements, and others.”",
+        "page": 17,
+        "note": ""
+      },
+      {
+        "text": "“The updated meta-analysis revealed that DT in general was positively and significantly linked to CA, yet the size of the link is small (r = .18). This finding indicates that, on average, only 3% of variance is shared between DT and CA. The updated effect size estimate is lower than the .22 reported by Kim (2008), yet both remain in the small effect size range.”",
+        "page": 18,
+        "note": ""
+      },
+      {
+        "text": "“CA domain emerged as a significant moderator variable in both meta-analyses. In the current meta-analysis, the performance domain demonstrated the largest DT-CA link, which was significantly different from this in the everyday domain. This may reflect the varying demands of CA domains for DT abilities (Barron & Harrington, 1981). It seems that performance CA is more reliant on DT, while other CA domains are more reliant on other factors involving openness to experience, creative self-beliefs, and intelligence (McKay et al., 2017).”",
+        "page": 19,
+        "note": ""
+      },
+      {
+        "text": "“The prior meta-analysis used a different classification for CA domains, and the order of these domains by the resulting estimate of the DT-CA link was leadership > art > writing > social skills > science > music, among which the link in leadership was significantly larger from those in writing, science, and music, and also the link in art was larger than that in science. Despite differences in the classification of CA domains used, both meta-analyses showed evidence that various CA domains exhibited dissimilar demands for DT abilities, supporting the assertion that CA is domain specific (Baer, 1993; Silvia et al., 2009; Sternberg, 2009).”",
+        "page": 19,
+        "note": ""
+      },
+      {
+        "text": "“The current meta-analysis also tested four moderator variables not tested in the prior meta-analysis, namely DT task modality, intellectual giftedness, educational level, and country of study. Among these, DT task modality and intellectual giftedness were identified as statistically significant. For DT task modality, verbal tasks yielded a larger link with CA than figural tasks. It may be that creative achievements typically demand more linguistic than spatial talent (Plucker, 1999). This result accords with research showing inconsistencies in performance across DT tasks of different modalities (Baer, 1993; Barbot, 2020; Torrance, 2000). This result also indicates that DT tasks of different modalities might be capturing distinct DT aspects, each of which have differential relationships with other constructs (Guilford, 1966).”",
+        "page": 19,
+        "note": ""
+      },
+      {
+        "text": "“the DT-CA link was larger for gifted compared to non-gifted subjects, which might be related to superior cognitive and conative resources of gifted individuals (Lubart & Zenasni, 2010; Mumford & Gustafson, 1988) as well as greater educational opportunities offered to them (Besançon et al., 2013) that probably enhance their creative abilities and their enactment into creative achievements. Furthermore, CA domain and intellectual giftedness showed a significant interaction. A larger DT-CA link was obtained for samples of gifted subjects in the performance domain, compared to the link obtained for gifted subjects among other domains or for nongifted subjects among any domain. These results indicate that between-domain differences in the DTCA link are less pronounced among samples of nongifted individuals and come to exist when intellectual giftedness increases, with the greatest difference occurring in the performance domain where the link increased most.”",
+        "page": 20,
+        "note": ""
+      },
+      {
+        "text": "“The current meta-analysis has several notable strengths. Instead of strictly replicating the prior meta-analysis, the current meta-analysis extends the evaluation of the DT-CA link by including a larger number of studies, employing a more modern and robust meta-analytic technique, and exploring additional sources of heterogeneity among studies. The results of the current study have implications not only for our understanding of the DT-CA link but also potentially for broader debates regarding creativity conceptualization and measurement. The results suggest that DT accounts for only a small amount of the variation in CA, leaving a large amount of unexplained variation.”",
+        "page": 20,
+        "note": ""
+      },
+      {
+        "text": "“The observed moderating role for some variables, related to measurement methodology (i.e., DT task and CA domain) or sample characteristics (i.e., intellectual giftedness), emphasizes the need for researchers to carefully consider these variables when studying the DT-CA link. Additionally, the interaction observed between CA domain and intellectual giftedness indicates that it would be difficult to purely isolate the effects of these two variables when addressing the DT-CA link. This may contribute to explaining the heterogeneity across studies that considered a single moderator variable, for example, CA domain (e.g., Kogan & Pankove, 1974; Torrance, 1972a). Finally, variation in results by CA domain and DT task highlights the domain specificity of creativity where particular resources of creativity are specific to the corresponding domain or even task.”",
+        "page": 21,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "KenettEtAl2018",
+    "title": "Flexibility of thought in high creative individuals represented by percolation analysis",
+    "authors": "Kenett et al.",
+    "year": "2018",
+    "publication": "Proceedings of the National Academy of Sciences",
+    "doi": "10.1073/pnas.1717362115",
+    "url": "https://www.pnas.org/doi/full/10.1073/pnas.1717362115",
+    "abstract": "Flexibility of thought is theorized to play a critical role in the ability of high creative individuals to generate novel and innovative ideas. However, this has been examined only through indirect behavioral measures. Here we use network percolation analysis (removal of links in a network whose strength is below an increasing threshold) to computationally examine the robustness of the semantic memory networks of low and high creative individuals. Robustness of a network indicates its flexibility and thus can be used to quantify flexibility of thought as related to creativity. This is based on the assumption that the higher the robustness of the semantic network, the higher its flexibility. Our analysis reveals that the semantic network of high creative individuals is more robust to network percolation compared with the network of low creative individuals and that this higher robustness is related to differences in the structure of the networks. Specifically, we find that this higher robustness is related to stronger links connecting between different components of similar semantic words in the network, which may also help to facilitate spread of activation over their network. Thus, we directly and quantitatively examine the relation between flexibility of thought and creative ability. Our findings support the associative theory of creativity, which posits that high creative ability is related to a flexible structure of semantic memory. Finally, this approach may have further implications, by enabling a quantitative examination of flexibility of thought, in both healthy and clinical populations.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“we find that this higher robustness is related to stronger links connecting between different components of similar semantic words in the network, which may also help to facilitate spread of activation over their network.”",
+        "page": 867,
+        "note": ""
+      },
+      {
+        "text": "“Percolation theory examines the robustness of complex networks under targeted attacks or random failures (6, 7). This is achieved by examining the effect of removing nodes or links from a network and how that removal affects the giant component (the largest connected group of nodes) in the network”",
+        "page": 867,
+        "note": ""
+      },
+      {
+        "text": "“The groups that separate from the network are the network percolation components, and the remaining group of nodes is the giant component in the network. The robustness of a network is its ability to withstand such failures and targeted attacks, evident in relative little effect on the giant component of the network. Here we examine and compare the robustness of the semantic networks of low and high creative individuals, as a quantitative measure of their flexibility of thought.”",
+        "page": 867,
+        "note": ""
+      },
+      {
+        "text": "“The LSC and HSC semantic networks are composed of 96 cue words, divided into groups of four concrete words from 24 categories (fruits, musical instruments, vehicles, etc.; Table S1), which represent a priori components of these networks.”",
+        "page": 868,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "MersealEtAl2025",
+    "title": "Free association ability distinguishes highly creative artists from scientists: Findings from the Big-C Project.",
+    "authors": "Merseal et al.",
+    "year": "2025",
+    "publication": "Psychology of Aesthetics, Creativity, and the Arts",
+    "doi": "10.1037/aca0000545",
+    "url": "https://doi.apa.org/doi/10.1037/aca0000545",
+    "abstract": "The associative theory posits that creativity relates to people’s ability to connect remote associations to form new ideas, based on the structure of their semantic memory. This theory has spurred several recent studies connecting semantic memory structure and associative thinking to creativity, capitalizing on advances in computational methods. To date, however, this research has almost exclusively focused on assessing creativity in the general population (e.g., assessed via divergent thinking tests), with far less work examining the role of associative thinking in eminently-creative individuals across the arts and sciences. Leveraging data collected as part of the Big-C Project—a sample of world-renowned visual artists and scientists, and an intelligencematched comparison group—we tested whether the ability to generate remote word associations differs as a function of creative expertise. Specifically, we used distributional semantic models to calculate the semantic distance of word associations across three conditions: a free association condition and two goal-directed conditions (common association and uncommon association). We found an interaction between domain expertise and association condition: while artists generated more distant associations overall, this effect was driven by substantially more distant responses in the free association condition. Our findings indicate that visual artists spontaneously produce more remote associations—potentially due to a more interconnected semantic memory network structure—but that creative expertise is less relevant for producing associations that require goal-directed cognitive search. The findings are interpreted in the context of the ongoing debate on the domain-generality and domain-specificity of creativity.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“The associative theory of creativity, proposed by Mednick (1962), postulates that creativity relies on the structural characteristics of semantic memory—mental storage for knowledge and concepts—which constrains the processes governing mental navigation (i.e., search) when connecting remote concepts to generate ideas (Beaty & Kenett, 2020; He et al., 2020; Kenett & Faust, 2019; Ovando-Tellez, Benedek et al., 2022; Volle, 2018). The associative theory of creativity has since been expanded upon, now being understood to inform a larger dual-process framework of creative cognition, one which acknowledges the roles of both bottom-up/structural and topdown/executive processes (Sowden, Pringle & Gabora, 2015; Zhang, Sjoerds & Hommel, 2020).”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“Word association tasks have long been employed to study the mechanisms of creative thought, particularly when evaluating an individual’s ability to formulate remote associations between existing knowledge (Mednick, 1962). For example, Mednick and colleagues found that highly creative individuals—having scored highly on the Remote Associates Task (RAT)generated more (and faster) word associations than low-creative individuals (Mednick, Mednick, & Jung, 1964). These findings were corroborated in later works demonstrating the critical role of associative abilities in divergent thinking ability, with one study finding that associative abilities explained roughly half of the variance in divergent thinking performance (Benedek, Könen & Neubauer, 2012).”",
+        "page": 6,
+        "note": ""
+      },
+      {
+        "text": "“To quantify performance on word association tasks, researchers are increasingly employing computational tools based on distributional models of semantic distance. Distributional semantic models calculate word-pair similarity via the distributional probabilities in large text corpora of natural language (e.g., textbooks) based on co-occurrences”",
+        "page": 6,
+        "note": ""
+      },
+      {
+        "text": "“Semantic distance has also yielded important insights into the cognitive processes involved in creative thinking. For example, cuing participants to ―think creatively‖ on a verb generation task—thinking of verbs that can be creatively associated with nouns—resulted in higher semantic distance values, compared to when participants were not cued to think creatively (Prabhakaran, Green & Gray, 2014). Cueing participants to think creatively has been shown to drive the engagement of top-down search processes associated with executive control, with one study showing that ―be creative‖ instructions led to higher creativity scores in individuals with higher fluid intelligence on both verbal (Nusbaum, Silvia & Beaty, 2014) and figural (Wilken et al., 2020) divergent thinking tasks.”",
+        "page": 7,
+        "note": ""
+      },
+      {
+        "text": "“Cognitive research on creativity has focused extensively on studying cognitive processes relevant for creative thinking in the general population (i.e., domain-general or ―little-c‖ creativity). In contrast, less work has examined cognitive processes as they relate to specific creative domains, such as the arts and sciences (i.e., domain-specific creativity), and even less work has directly studied creative cognition at the highest level of creative achievement (i.e., ―Big-C‖ creativity)—likely due to the challenge of recruiting renowned artists and scientists to complete psychological tests.”",
+        "page": 8,
+        "note": ""
+      },
+      {
+        "text": "“Another enduring question in the literature concerns the extent to which domain-general cognitive systems (e.g., semantic memory) contribute to domain-specific creative performance (e.g., literary, or visual arts). Although some studies have reported differences between artists, scientists, and less-creative individuals on measures of creativity and general cognitive abilities (e.g., intelligence; Kaufman et al., 2016; Kaufman et al., 2009; see also Dumas, Dong, & Doherty, 2021; Meyer et al., 2019), other studies have either found no differences between these groups (Kaufman & Baer, 2004; van Broekhoven et al., 2020) or differences that are common to exceptionally creative artists and scientists compared to less creative people (Feist, 1998; Gable, Hopper, & Schooler, 2019).”",
+        "page": 9,
+        "note": ""
+      },
+      {
+        "text": "“Here, we leverage data collected as part of the Big-C Project—a sample of eminent, world-renowned artists and scientists, and an intelligence- matched comparison group—who completed a range of personality and cognitive assessments, including a word association task (WAT; Knudsen, Bookheimer & Bilder, 2019). The WAT required participants to produce a single word association in response to a series of cue words. Importantly, the WAT included three instructional conditions—one free association condition (say the first word that comes to mind) and two goal-directed search conditions (think of a common or uncommon word)allowing us to test whether different instructions (and corresponding cognitive strategies) yield different responses in artists, scientists, and the comparison group, based on computational models of semantic distance.”",
+        "page": 10,
+        "note": ""
+      },
+      {
+        "text": "“We hypothesized that, consistent with past work (Heinen & Johnson, 2018; Rastelli et al., 2022), the three instructional conditions would result in increasingly distant responses, from common to free to uncommon, respectively, as measured with distributional semantic models. More importantly, we hypothesized that the three groups would not differ on semantic distance for the goal-directed conditions (common and uncommon) because the groups were matched on intelligence. That is, the common and uncommon conditions should more strongly rely on controlled memory retrieval, and thus intelligence (Gerwig et al., 2020), consistent with past work on instructions and intelligence on verbal creativity (Nusbaum et al., 2014).”",
+        "page": 10,
+        "note": ""
+      },
+      {
+        "text": "“After identifying a list of candidates from lists of prestigious award recipients (e.g., Guggenheim Fellowships, Macarthur Awards), recommendations by an advisory panel of internationally acclaimed visual artists and scientists, and bibliometric statistics (for scientists), 398 Big-C participants were invited, and 227 comparison group participants. The comparison group participants were, in part, invited based on educational achievement and/or performance on IQ subtests in prior research. Doctoral-level comparison group candidates were also recruited through electronic flyers posted on local university listservs. Following informed consent (N = 107), participants completed a large test battery of creativity, cognitive ability, personality, and psychopathology measures.”",
+        "page": 11,
+        "note": ""
+      },
+      {
+        "text": "“A total of 24 noun words (see Appendix 1) were extracted from an inventory published in Palermo and Jenkins (1964). Participants were asked to verbalize single word responses that they thought would be associated with each item, across three consecutive task phases. Task phases were defined by the specific instructions that were given to participants (see Appendix 2 for specific instruction wording) and the same items were presented in each phase. Phase 1 (free) required participants to respond with the first solution that came to mind (i.e., free association). Participants were specifically instructed to respond as quickly as possible. In contrast to Phase 1, Phases 2 and 3 assessed goal-directed word association. Phase 2 (common) required participants to provide a word that most people would think of. Phase 3 (uncommon) required participants to provide idiosyncratic responses, namely words that were uncommon and relevant to the presented item.”",
+        "page": 13,
+        "note": ""
+      },
+      {
+        "text": "“SemDis generates a composite semantic distance score from the average scores calculated from five different semantic spaces, reducing the idiosyncratic effects of a single model/text corpus (e.g., textbooks vs. movie subtitles; Beaty & Johnson, 2021; Kenett, 2019). Three of these spaces are built upon continuous bag of words (CBOW) prediction models (cbowukwacsubtitle, cbowsubtitle, and cbowBNCwikiukwac) and two are built upon count models (GloVe and TASA). The CBOW models use a neural network architecture (Mandera, Keuleers, & Brysbaert, 2017) that predicts a given word from surrounding context words within a given text corpus.”",
+        "page": 14,
+        "note": ""
+      },
+      {
+        "text": "“In the present research, we analyzed word association data collected as part of the BigC Project (Knudsen, Bookheimer & Bilder, 2019) of eminently creative artists and prolific scientists. This allowed us to examine whether these creative experts (and an intelligencematched comparison group) show differences in their ability to generate semantically distant associations across three conditions: a free association condition and two goal-directed conditions (common and uncommon association).”",
+        "page": 21,
+        "note": ""
+      },
+      {
+        "text": "“As expected due to instructional differences, when collapsing across groups, uncommon associations were more semantically distant than free and common associations, and when collapsing across conditions, artists produced more distant associations overall. Critically, artists produced substantially more distant responses in the free association condition, compared to both scientists and comparison group participants, and compared to the goal-directed conditions.”",
+        "page": 21,
+        "note": ""
+      },
+      {
+        "text": "“creative ability is characterized by a more ―flexible‖ semantic memory structure, i.e., high connectivity and short distances between concepts (Kenett, Anaki & Faust, 2014; Li et al., 2021).”",
+        "page": 22,
+        "note": ""
+      },
+      {
+        "text": "“This more flexible semantic memory structure is thought to be conducive to connecting remotely associated concepts to form new ideas (Kenett, 2018).”",
+        "page": 22,
+        "note": ""
+      },
+      {
+        "text": "“Although we did not explicitly model participants’ semantic memory structure in this sample, one possibility is that artists exhibit a more flexible semantic memory structure that allows them to efficiently connect concepts. Notably, the sample was comprised of visual artists, who do not typically have special linguistic training (e.g., like writers). It is thus remarkable that visual artists would exhibit such pronounced word association ability, especially when compared to intelligence- matched scientists and comparison group participants (who possess comparable verbal abilities).”",
+        "page": 22,
+        "note": ""
+      },
+      {
+        "text": "“Another finding from this study is that the groups performed comparably on the ―goaldirected‖ conditions (i.e., common and uncommon), with the exception of modestly higher distances for artists in the uncommon condition. We interpret this observation in the context of cognitive control and goal-directed memory search processes. That is, the common and uncommon tasks gave participants an explicit goal, i.e., find an association that is typical or unusual, respectively, which required generating retrieval cues that needed to be maintained in mind (e.g., ―find a common associate‖) to strategically search memory.”",
+        "page": 22,
+        "note": ""
+      },
+      {
+        "text": "“this likely indicates that artists, scientists, and comparison group participants were equally able to follow task instructions, strategically searching memory for appropriate responses. This finding is consistent with research on the contribution of cognitive control to creative thought (Benedek & Fink, 2019). For example, instructing participants to ―be creative‖ during a divergent thinking task improves the creative quality of their responses (Acar, Runco & Park, 2020; Harrington, 1975; Said-Metwaly et al., 2020). Notably, the same instructions have also been shown to engage cognitive control processes, as evidenced by a strengthening of the correlation between idea quality and fluid intelligence under such ―be creative‖ instructions (Nusbaum, Silvia, & Beaty, 2014).”",
+        "page": 23,
+        "note": ""
+      },
+      {
+        "text": "“On the other hand, it is possible that artists exhibited a less cognitively controlled approach (Chrysikou, Weber, & Thompson-Schill, 2014; Maysless & Shamay-Tsoory, 2015) to the free association task than scientists and comparison group participants. In other words, the control-related processes that supported the goal-directed conditions (common and uncommon) could have been suppressed in artists during the free association condition, allowing more distant associations to come to mind.”",
+        "page": 23,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "VicenteMatute2023",
+    "title": "Humans inherit artificial intelligence biases",
+    "authors": "Vicente & Matute",
+    "year": "2023",
+    "publication": "Scientific Reports",
+    "doi": "10.1038/s41598-023-42384-8",
+    "url": "https://www.nature.com/articles/s41598-023-42384-8",
+    "abstract": "Abstract\n            Artificial intelligence recommendations are sometimes erroneous and biased. In our research, we hypothesized that people who perform a (simulated) medical diagnostic task assisted by a biased AI system will reproduce the model's bias in their own decisions, even when they move to a context without AI support. In three experiments, participants completed a medical-themed classification task with or without the help of a biased AI system. The biased recommendations by the AI influenced participants' decisions. Moreover, when those participants, assisted by the AI, moved on to perform the task without assistance, they made the same errors as the AI had made during the previous phase. Thus, participants' responses mimicked AI bias even when the AI was no longer making suggestions. These results provide evidence of human inheritance of AI bias.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“In the three experiments we used the same experimental task: a classification task framed in a fictitious health context. With this procedure we tried to simulate a clinical decision-making process that was assisted by a biased AI system for some participants, while others performed the task without assistance. The experimental task was constructed though Qualtrics, a platform that also facilitated the data collection. We wanted to simulate a clinical decision-making process with a medical diagnosis task that was simple to learn, but also challenging enough to require sustained attention. With this aim, we used the stimuli created by Blanco et al.72 in their study related to causal illusion. Each stimulus consisted of a matrix of 50 × 50 pixels which represented a human tissue sample obtained from a given patient. Each tissue sample contained 2500 cells of two colours (dark pink and light yellow) randomly distributed in the matrix space so that there were no two identical samples.”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“In the classification task, participants were instructed to observe a series of tissue samples, to decide, for each sample, whether it was affected or not by a fictitious disease called Lindsay Syndrome. Each tissue sample had cells of two colours, but one of them was presented in a greater proportion and volunteers were instructed to follow this criterion to identify the presence of the syndrome. A greater proportion of dark than light cells was described in the instructions as “Positive”, that is, affected by the Lindsay Syndrome. If the tissue sample had a greater proportion of light than dark cells, then it should be classified as a “Negative” because it was not affected by the syndrome. It is important to note that the assignment of dark and light colours to the positive/ negative categories was randomly decided for each participant.”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“The order of the stimuli was randomly assigned through the sequence of 60 trials, with one exception: the 40/60 stimuli, where the AI recommendation was always erroneous, did not appear during the first 10 trials of the sequence of 60 trials. This manipulation tried to keep certain level of trust in the AI model before the problematic stimuli showed up. We wanted the AI bias not to be so evident from the beginning of the task. The ten 40/60 stimuli did appear in the sequence of the next 50 trials, randomly intermixed with the stimulus of other proportions.”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“As expected, the AI-assisted group made more errors in the classification of the 40/60 stimuli in both phases of the classification task, than the unassisted group. Importantly, even in Phase 2, that both groups performed without the support of AI recommendations, the AI-assisted group committed significantly more misclassifications than the unassisted group (see Fig. 3). These impressions were confirmed by a mixed ANOVA 3 (Block) × 2 (Group) that showed a main effect of Group, F (1,197) = 41.3, p < 0.001, η2p = 0.173, a main effect of Block, F (2,394) = 25.3, p < 0.001, η2p = 0.114, and a Group x Block, interaction F (2,394) = 17.4, p < 0.001, η2p = 0.081.”",
+        "page": 6,
+        "note": ""
+      },
+      {
+        "text": "“The group that completed the first phase (i.e., Blocks 1 and 2) assisted by the biased AI made more errors in the 40/60 trials than the unassisted group. In Experiment 3, as well as in Experiment 1 and Experiment 2, the participants assisted by the AI made errors specifically on 40/60 trials, while participants’ misclassification rates for other stimulus classes were close to zero, as can be seen in Table 3. This confirms that the classification task was easy and that the biased AI recommendations were the factor that misled participants.”",
+        "page": 8,
+        "note": ""
+      },
+      {
+        "text": "“Interestingly, when there was a change in task conditions between Blocks 2 and 3, we observed an increase in 40/60 misclassifications for the unassisted → AI-assisted group, but did not observe an opposite trajectory for the AI-assisted → unassisted group. When this group transited from the AI-assisted to the unassisted phase, its mean number of errors in 40/60 trials was not reduced. During the second phase (i.e., Blocks 3 and 4) both groups committed a similar number of errors, although in this second phase the unassisted → AI-assisted group received biased recommendations from the AI and the AI-assisted → unassisted group did not. Thus, the group of participants who completed Blocks 1 and 2, assisted by the AI recommendations exhibited the same errors as the AI system when, during the second phase, in Blocks 3 and 4, they had to perform the task without guidance”",
+        "page": 8,
+        "note": ""
+      },
+      {
+        "text": "“Our results show that biased recommendations made by AI systems can adversely impact human decisions in professional fields such as healthcare. Moreover, they also show that such biased recommendations can influence human behaviour in the long term. Humans reproduce the same biases displayed by the AI, even time after the end of their collaboration with the biased system, and in response to novel stimuli. Although this inheritance bias effect could have serious implications, to the best of our knowledge it had not yet been explored in any empirical research. Intending to empirically test the potential effect of the human inheritance of the AI bias, we conducted three experiments. As we had hypothesized, the AI-assisted participants made more errors than the unassisted participants in the classification task, both during the AI-aided and non-aided phases, a result consistently observed over the three experiments. These results are robust: we obtained the same effect in a laboratory experiment conducted under controlled conditions with a sample of university students (Experiment 1) and in two online experiments with an international sample recruited via Prolific Academic (Experiments 2 and 3). Importantly, Experiments 2 and 3 evidence that participants from the AI-assisted group still misclassified, specifically, the 40/60 stimulus in the non-aided phase of the experiment, meaning that their mistakes when performing the classification task by themselves mimicked the bias previously shown by the AI during the first phase. Moreover, we also observed a tendency in the AI-assisted group to categorize the new 50/50 stimuli during the unassisted phase in the same direction as the AI misclassified the 40/60 stimuli during the previous phase. We interpret that participants used the AI biased recommendations as a cue to categorise ambiguous stimuli, which could not be classified according to the classification criteria specified in the instructions. This suggests that participants did not only inherit the AI bias, but also generalized it to novel ambiguous stimuli. In sum, we observed an inheritance effect of the AI biased recommendations from the first phase of the experiment on the participants’ responses during the second phase, where they were no longer supported by the AI. We believe that this is the most interesting and novel result of our present work because it shows an influence of AI bias on human decisions”",
+        "page": 9,
+        "note": ""
+      },
+      {
+        "text": "“Regarding our first interpretation, if participants trusted AI recommendations to the detriment of analytic or effortful processing34,74 during Phase 1, then when they moved to Phase 2, and they needed to take complete control of the task, they would have needed some time to adjust to the new task demands and redirect attentional resources. It seems that, the transition from automated to controlled performance was slow, and participants were still heavily influenced by AI bias. The errors derived from this slow transition had no serious consequences in our experiments, but there are professional areas, such as healthcare, where the consequences of decisions taken under the influence of an inherited bias could be fatal.”",
+        "page": 10,
+        "note": ""
+      },
+      {
+        "text": "“The results of our three experiments support a human over-reliance on the recommendations of AI systems70,71, and add the new finding of the inherited bias effect. Human trust in automation influences the tendency to over-accept algorithmic outcomes58,59 even when they are noticeably wrong. This means that humans are not only willing to rely on AI because they are “cognitive misers”, that take mental shortcuts when making decisions, but also because they perceive artificial intelligence to be trustworthy65,78. It has been suggested that trust could induce compliance with AI advice due to an authority effect79. In Experiments 1 and 2, we detected that participants who perceived the AI of the experiment as more helpful and accurate, and trusted more in the usefulness of artificial intelligence in healthcare in general, were those who followed the AI recommendations more often, and committed more errors in the classifications task as revealed by the positive and significative correlations observed between the mean number of 40/60 misclassifications in the task and the participants’ answers to the post-experimental questions.”",
+        "page": 10,
+        "note": ""
+      },
+      {
+        "text": "“As a limitation to our present work, it could be argued that our experimental task was a simulation of clinical decision-making with a fictitious diagnostic process and a fictitious artificial intelligence system. Although our experiments simplify a potential real-world setting, we believe that our controlled experimental task can help to analyse which basic psychological processes mediate on human-AI collaboration. We created a classification task with a low level of uncertainty, in which participants were provided with a clear classification criterion to perform the task, in which the error in the recommendations was systematic, controlled, and noticeable by the control participants, and in which prior expertise had no influence. These characteristics make our experimental task a fruitful method to study human reliance on AI algorithms and the potential inheritance of their biases.”",
+        "page": 10,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "KenettEtAl2014",
+    "title": "Investigating the structure of semantic networks in low and high creative persons",
+    "authors": "Kenett, Anaki & Faust",
+    "year": "2014",
+    "publication": "Frontiers in Human Neuroscience",
+    "doi": "10.3389/fnhum.2014.00407",
+    "url": "http://journal.frontiersin.org/article/10.3389/fnhum.2014.00407/abstract",
+    "abstract": "According to Mednick’s (1962) theory of individual differences in creativity, creative individuals appear to have a richer and more ﬂexible associative network than less creative individuals. Thus, creative individuals are characterized by “ﬂat” (broader associations) instead of “steep” (few, common associations) associational hierarchies. To study these differences, we implement a novel computational approach to the study of semantic networks, through the analysis of free associations. The core notion of our method is that concepts in the network are related to each other by their association correlations—overlap of similar associative responses (“association clouds”). We began by collecting a large sample of participants who underwent several creativity measurements and used a decision tree approach to divide the sample into low and high creative groups. Next, each group underwent a free association generation paradigm which allowed us to construct and analyze the semantic networks of both groups. Comparison of the semantic memory networks of persons with low creative ability and persons with high creative ability revealed differences between the two networks. The semantic memory network of persons with low creative ability seems to be more rigid, compared to the network of persons with high creative ability, in the sense that it is more spread out and breaks apart into more sub-parts. We discuss how our ﬁndings are in accord and extend Mednick’s (1962) theory and the feasibility of using network science paradigms to investigate high level cognition.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“One of the hallmarks of creativity is that memory is searched more widely and in a less-defined manner than during everyday thinking (Bink and Marsh, 2000; Lindell, 2010). Thus, when describing creativity, Amabile et al. (2005) and Simonton (1999) note that the larger the number of potentially relevant elements that are retrieved during processing, the higher the likelihood that unusual associations or solutions will be generated, and the larger is the pool of novel ideas from which to choose.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“Mednick (1962), focusing on individual differences in semantic creativity, envisioned the creative process as the combination of remote associations into new and useful combinations. To examine his theory, Mednick developed the RAT. In this test, subjects are presented with a triplet of seemingly unrelated words (e.g., Cottage, Swiss, Cake) and are required to find a single fourth word that is related to each of these words (e.g., Cheese; Bowden and Jung-Beeman, 2003). This task is accepted as examining semantic creativity and has been empirically widely used for its investigation (Gold et al., 2011; Storm et al., 2011; Mirous and Beeman, 2012). Investigating the significance of combination of remote associations, Benedek et al., recently demonstrated the importance of the RAT in predicting divergent thinking (the hallmark factor of creative ability) and intelligence (Benedek et al., 2012b).”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Divergent thinking refers to an ideational process which involves generating a broad range of solutions or ideas to a given stimuli and is considered the hallmark of creative ability (Runco and Acar, 2012; Lee and Therriault, 2013).”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Convergent thinking, on the other hand, is considered a deductive process that involves systematically applying rules to arrive at a single, correct solution (Brophy, 2001; Lee and Therriault, 2013).”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“As the RAT measures the success of a participant to find the single correct solution, it is considered a convergent test of creativity.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Recent studies examine performance in the RAT from a cognitive search perspective (Gupta et al., 2012; Smith et al., 2013). Smith et al. (2013) view the RAT as a multiple constraint problem, in which each cue word indicates a different attribute of the target word. Solving such a multiple constrained problem requires a two stage process: first, a search for a possible solution is conducted and then this candidate solution is tested against all of the constrains of the problem to rate the acceptability of the solution (Smith et al., 2013). Smith et al. (2013) found that participants solve RAT problems first by selecting a set of possible answers constrained by a single cue word at a time. Furthermore, the authors show how prior candidate answers directly affect the following guesses, suggesting an associatively connected directed search, which is in agreements with the spreading activation model”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“As Smith et al. (2013) show, the RAT first requires a divergent thinking process to generate candidate solutions and then executive functions are required to examine the acceptability of the solution (see also Klein and Badia, 2014). Thus, the differences between low and high creative persons can be related to the structure of their semantic memory, executive functions, or both.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“high creative participants may be characterized by having a more complex lexicon network structure and how high creative participants may activate a wider range of associations across their lexicon network (Gruszka and Necka, 2002). Rossman and Fink (2010) found that creative subjects give lower estimates of the semantic distance between unrelated word pairs as compared to less creative subjects, implying that the former group may have a wider, interconnected semantic network which could lead to more efficient search process compared to less creative persons.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Semantic memory is the system of human memory that is responsible for the storage of semantic categories and of natural and artificial concepts (Budson and Price, 2005; Patterson et al., 2007).”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“a final sample of 139 subjects (47 men, 92 women), with mean age of 23 years (SD = 2.4). All subjects were Hebrew native speakers, had normal or corrected to normal eyesight and were right handed, as measured by the Edinburgh Handedness Inventory (EHI; Oldfield, 1971; mean score = 92, SD = 9).”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“The RAT (Mednick, 1962) was developed to investigate individual differences in creative ability (as described above). In our research we used the Hebrew version of the RAT (Nevo and Levin, 1978) which contains 25 triplets with varying degree of difficulty and lasts 15 min. The RAT score is the sum of correct answers given by the participant.”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“The test is comprised of four sub-tests—two verbal (alternative uses and pattern matching) and two visual (similarities and line meanings). Each sub-test lasts 6 min and includes four open questions. The results of both verbal and visual subtests of the TACT were combined into TACT verbal and TACT visual scores. Fluency score was calculated by counting the number of different answers, and quality score was determined by three independent judges judging the originality and applicability of responses to stimuli for unique answers only, namely, answers which appeared in only 5% or less of the sample (Milgram and Milgram, 1976).”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“Comprehension of Metaphors (CoM; Faust, 2012). In this task, subjects are presented with word-pairs in Hebrew, which can either have a literal, conventional metaphoric, novel metaphoric meaning or are meaningless, and are asked to decide whether the two words comprise a semantically meaningful expression or not (Faust, 2012).”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“The TACT battery of creativity measures was used to classify the participants into LSC and HSC groups.”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“The free association task is based on the method used in Rubinstein et al. (2005), where subjects are presented with a target word and have one minute to generate as many associative responses they could for that target word. This method differs from classical association tasks, where subjects are only required to generate either one or three associative response to a target word (Nelson et al., 2004; De-Deyne and Storms, 2008a). This method is superior to previous methods in collecting association”",
+        "page": 5,
+        "note": ""
+      },
+      {
+        "text": "“The association correlation matrix is computed from the association data. The correlations between the target word associations profiles (the associative responses given to the target words by all subjects), are calculated by Pearson’s correlation. This correlation is based on the contribution of two parameters—the extent of similar associative responses given to a pair of target words and the amount of participants generating these similar associative responses to these target words. Thus, the more similar associations generated and the larger amount of participants generating these association responses to a pair of target words, the higher the association correlation between this pair of words is.”",
+        "page": 5,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "ReimersGurevych2019",
+    "title": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
+    "authors": "Reimers & Gurevych",
+    "year": "2019",
+    "publication": "",
+    "doi": "10.48550/arXiv.1908.10084",
+    "url": "http://arxiv.org/abs/1908.10084",
+    "abstract": "BERT (Devlin et al., 2018) and RoBERTa (Liu et al., 2019) has set a new state-of-the-art performance on sentence-pair regression tasks like semantic textual similarity (STS). However, it requires that both sentences are fed into the network, which causes a massive computational overhead: Finding the most similar pair in a collection of 10,000 sentences requires about 50 million inference computations (~65 hours) with BERT. The construction of BERT makes it unsuitable for semantic similarity search as well as for unsupervised tasks like clustering. In this publication, we present Sentence-BERT (SBERT), a modification of the pretrained BERT network that use siamese and triplet network structures to derive semantically meaningful sentence embeddings that can be compared using cosine-similarity. This reduces the effort for finding the most similar pair from 65 hours with BERT / RoBERTa to about 5 seconds with SBERT, while maintaining the accuracy from BERT. We evaluate SBERT and SRoBERTa on common STS tasks and transfer learning tasks, where it outperforms other state-of-the-art sentence embeddings methods.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "AbramskiEtAl2025",
+    "title": "The “LLM World of Words” English free association norms generated by large language models",
+    "authors": "Abramski, Improta, Rossetti & Stella",
+    "year": "2025",
+    "publication": "Scientific Data",
+    "doi": "10.1038/s41597-025-05156-9",
+    "url": "https://www.nature.com/articles/s41597-025-05156-9",
+    "abstract": "Free associations have been extensively used in psychology and linguistics for studying how conceptual knowledge is organized. Recently, the potential of applying a similar approach for investigating the knowledge encoded in LLMs has emerged, specifically as a method for investigating LLM biases. However, the absence of large-scale LLM-generated free association norms that are comparable with human-generated norms is an obstacle to this research direction. To address this, we create a new dataset of LLM-generated free association norms modeled after the “Small World of Words”(SWOW) human-generated norms with nearly 12,000 cue words. We prompt three LLMs (Mistral, Llama3, and Haiku) with the same cues as those in SWOW to generate three novel comparable datasets, the “LLM World of Words” (LWOW). From the datasets, we construct network models of semantic memory that represent the conceptual knowledge possessed by humans and LLMs. We validate the datasets by simulating semantic priming within the network models, and we briefly discuss how the datasets can be used for investigating implicit biases in humans and LLMs.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“Studying semantic memory involves creating representations of word meanings (semantic representations), often in terms of how words relate to other words. In humans, one common way to do this is using free associations1,8,9, which are usually accessed by prompting participants with a cue word and asking them to come up with (typically three) associated responses. Since the task is context neutral, responses represent the associative knowledge of words that we possess at an implicit level. Free associations have been extensively used in cognitive psychology and linguistics for studying lexical retrieval1,4, semantic organization8, and similarity judgments2,10,11. They have also been used for studying differences in cognitive processing between concrete and abstract words, i.e. concreteness effects12. Given that free associations have been shown to correlate with stable implicit attitudes13, they have also been used for studying affective biases9. Investigations of conceptual knowledge using free associations are often conducted within network models of semantic memory built from free associations by connecting cue words to their responses. This results in a complex network structure of human conceptual knowledge in which words get their meanings through relationships to other concepts.”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“While free associations have been widely used for studying semantic memory in humans, very different approaches have been applied for investigating conceptual knowledge in language models. Typically, semantic representations are directly accessed from the model’s embedding space in the form of word embeddings19, i.e. vector representations of words whose meanings are derived from statistical relationships in the training data. Word embeddings provide an advantageous way for investigating certain aspects of semantic memory because of the types of mathematical operations that can be applied within the embedding space. Specifically, the semantic similarity between two words can easily be calculated by computing the cosine similarity between their word vectors. Thus, this approach can be used for extracting word associations directly from the model’s architecture, and these associations can be used to study several aspects related to the model’s conceptual knowledge20,21. In recent years, there has been a great interest in investigating the biases encoded in language models, and measuring the strength of associations between words within the model’s embedding space has been extensively applied for accomplishing this goal22–26. Such an approach follows the same idea that the Implicit Association Test (IAT)27 uses to investigate implicit attitudes in humans. Essentially, it involves using the cosine similarity to measure the strength of the association between pairs of words for assessing biases, for example, man – doctor and woman – nurse. Depending on the strength of these respective associations, this method can reveal certain biases encoded in the model’s embedding space, such as gender biases that reflect the implicit analogy, man is to doctor as woman is to nurse22.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Extracting associations from the embedding space for investigating the conceptual knowledge encoded in language models has many advantages, but it also has some important limitations. Perhaps the most significant limitation is that this approach works well for older language models that use static word embeddings – which represent word meanings at the type level – but not so well for newer models, i.e. LLMs, that use contextual word embeddings – which represent word meanings at the token level. Operations on contextual embeddings require that the embeddings are first transformed into static embeddings26, but this can introduce bias and distort similarity estimates19. Another downside to the approach of accessing the embedding space is that it limits the possibility to make comparisons across models and with humans, since the cognitive architecture of each model is vastly different. These limitations have led to a recent shift from the bottom-up approach of accessing the embedding space for investigating the knowledge encoded in language models, towards a top-down approach that involves prompting models with tasks and using their output to make inferences about the knowledge encoded in their embedding space6,7,28. This approach mirrors methods from cognitive psychology that use behavioral experiments to make inferences about the workings of the human mind, and thus it has been aptly named “machine psychology”29. While there are certain limitations that come with prompting LLMs30,31 – for example, outputs may be highly sensitive to variations in prompts and can yield poor results – there are also many advantages to this top-down approach. One advantage is that it can be applied to virtually any LLM, without a deep technical understanding of the model’s embedding space, making it an accessible methodology for researchers from different fields. Another advantage of the machine psychology approach is that it allows for the use of preexisting and well-studied tools, measures, and methodologies that have been applied to humans for years7.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Since the LWOW datasets are based off the Small World of Words (SWOW) human-generated norms, we first gathered the cue words from the original SWOW dataset. The SWOW dataset was downloaded from the project’s research page, https://smallworldofwords.org/en/project/research, under the section English Data (SWOW-EN18). We used the preprocessed data (SWOW-EN.R100.csv) with 12,282 cue words and 100 sets of responses per cue. We used a list of these cues as input to the three LLMs along with a prompt that aimed to mimic the instructions provided to humans in the original SWOW free association task.”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“In a series of empirical simulations using spreadr41, we activated each prime from all 100 prime-target pairs and we observed the final activation levels of the 50 corresponding targets. We repeated these simulations in each of the four networks. As previously discussed, the spreadr library requires specification of the initial activation level of the activated node(s), and the number of iterations of the spreading activation process. We set the initial activation level of the prime node to the number of nodes in the entire network, and we set the number of iterations to two times the diameter of the network5. We specified that the networks are weighted so the edge weights were taken into consideration. Other parameters of the algorithm, such as the percentage of activation retained by each node, were set to default settings. For each network, the series of spreading activation processes yielded a matrix of final activation levels, such that the columns are all 100 prime nodes while the rows are all nodes of the network. Thus, each column of the matrix gives a vector of final activation levels of all nodes in the network after activating a single prime node, and a single entry in that vector is final activation level of the target node. The matrices were normalized first by normalizing columns of the matrix and then the rows. The normalization is necessary because it accounts for differences in the centrality of nodes within the semantic networks.”",
+        "page": 6,
+        "note": ""
+      },
+      {
+        "text": "“The LWOW datasets can potentially be used for investigating a variety of cognitive and linguistic properties of LLMs.”",
+        "page": 7,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "CorralJones2014",
+    "title": "The effects of relational structure on analogical learning",
+    "authors": "Corral & Jones",
+    "year": "2014",
+    "publication": "Cognition",
+    "doi": "10.1016/j.cognition.2014.04.007",
+    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0010027714000687",
+    "abstract": "Relational structure is important for various cognitive tasks, such as analogical transfer, but its role in learning of new relational concepts is poorly understood. This article reports two experiments testing people’s ability to learn new relational categories as a function of their relational structure. In Experiment 1, each stimulus consisted of 4 objects varying on 2 dimensions. Each category was deﬁned by two binary relations between pairs of objects. The manner in which the relations were linked (i.e., by operating on shared objects) varied between subjects, producing 3 logically different conditions. In Experiment 2, each stimulus consisted of 4 objects varying on 3 dimensions. Categories were deﬁned by three binary relations, leading to six logically different conditions. Various learning models were compared to the behavioral data, based on the theory of schema reﬁnement. The results highlight several shortcomings of schema reﬁnement as a model of relational learning: (1) it can make unreasonable demands on working memory, (2) it does not allow schemas to grow in complexity, and (3) it incorrectly predicts learning is insensitive to relational structure. We propose schema elaboration as an additional mechanism that provides a more complete account, and we relate this mechanism to previous proposals regarding interactions between analogy and representation construction. The current ﬁndings may advance understanding of the cognitive mechanisms involved in learning and representing relational concepts.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“How people learn structured relational concepts is thus a fundamental question for the study of higher-level cognition. However, there is reason to believe the cognitive processes that subserve relational learning are more complex than simply aligning examples to discover their shared structure. For scenarios of even moderate complexity, there is an exponential explosion of possible relations, which moreover can be represented at various levels of abstraction. Finding the right relational representations of both scenarios in an analogy is crucial for analogical reasoning to succeed (Chalmers, French, & Hofstadter, 1992; French, 1997; Mitchell & Hofstadter, 1990). Furthermore, some relational concepts seem intuitively more coherent than others, in that they are easier to learn and use. Conceptual coherence has been argued to arise from higherorder relational constraints that exist both within and between concepts (Murphy & Medin, 1985), but there is still a lack of understanding of what those constraints are or of how they confer coherence.”",
+        "page": 281,
+        "note": ""
+      },
+      {
+        "text": "“The primary aim of this article is to provide a rigorous definition of relational structure that is grounded in the literature on analogical reasoning, and to conduct a systematic empirical investigation of whether and how relational structure influences learnability of relational concepts. We define relational structure as the manner in which a system of relations is linked together by shared role-fillers (e.g., the object filling role 1 of relation 1 also fills role 1 of relation 2). We elaborate on this definition in Section 1.1 and explain how it is closely related to structure mapping, the dominant psychological theory of analogy (Gentner, 1983). In short, structure mapping is based on the principle of parallel connectivity, according to which two systems are alignable only if their constituent objects and relations are connected in the same way. Thus structure-mapping theory holds that analogy is precisely the process of identifying the shared relational structure between two scenarios (as defined here).”",
+        "page": 281,
+        "note": ""
+      },
+      {
+        "text": "“structure-mapping theory has provided a great deal of insight into the cognitive processes of analogical learning and transfer. Structure-mapping theory posits that forming an analogy between two scenarios involves an alignment process that puts their constituent objects and relations into one-to-one correspondence. The primary goal of the alignment process is parallel connectivity, the property that if two relations are aligned then their corresponding role-fillers are aligned as well. Consider the classic solar-system–atom analogy (Gentner, 1983), a subset of which is shown in Fig. 1: Planets revolve around the sun, and planets are smaller than the sun; electrons revolve around the nucleus, and electrons are smaller than the nucleus. The analogy works not only because the same first-order relations are present in both scenarios (i.e., SMALLER THAN and REVOLVES AROUND), but also because these relations share objects in the same way. Specifically, in both scenarios the object that is smaller is also the object doing the revolving, and the object that is larger is also the object being revolved around.”",
+        "page": 282,
+        "note": ""
+      },
+      {
+        "text": "“structure-mapping theory’s account of analogy is equivalent to recognition that two scenarios have the same relational structure, under the definition given here. Formally, we define the relational structure in (a person’s representation of) a scenario to comprise (1) the set of relations that are present and (2) how those relations are linked together by shared role-fillers. In the example above, there are two linkages between the SMALLER THAN and REVOLVES AROUND relations: one object fills both of their agent roles, and one object fills both of their patient roles. Thus two scenarios have the same relational structure if and only if (a) their relations can be put into correspondence and (b) the role-fillers of those relations can be put into correspondence in a way that preserves role binding (i.e., which object fills each role of each relation). The latter condition is exactly the parallel connectivity constraint. Hence relational structure appears to be a driving force for analogy, and the ability to learn and recognize different relational structures likely plays an important role in the effectiveness of analogical reasoning.”",
+        "page": 282,
+        "note": ""
+      },
+      {
+        "text": "“hese findings have been explained by the proposal that analogy leads to induction of a schema that embodies the relational structure common to both analogues (Hummel & Holyoak, 2003; Kuehne et al., 2000). The schema can then be mapped to future scenarios, allowing for inferences about scenarios that are recognized as analogous to the schema. For example, the schema for the solar-system–atom analogy (or the simplification given in Fig. 1) would consist of two generic object tokens linked by the relations SMALLER THAN and REVOLVES AROUND. This schema could be used to predict outcomes of new scenarios, such as the behavior of a man-made satellite projected beyond the earth’s atmosphere (i.e., the smaller object, the man-made satellite, will revolve around the larger object, the earth).”",
+        "page": 282,
+        "note": ""
+      },
+      {
+        "text": "“To develop a truly abstract concept that will generalize over superficial properties, many models of analogical learning propose an additional process of schema refinement (Doumas et al., 2008; Hummel & Holyoak, 2003; Kuehne et al., 2000). In schema refinement, analogical mapping between a schema and a new scenario results in modification (or replacement) of the schema, so that it contains only the structure that is common to the original schema and the new scenario. Continuing the example, comparison to the man-made satellite scenario would lead the NATURALLY OCCURRING property to be removed from the schema. Through comparison to successive instances of an abstract concept (as they are encountered), a schema can be refined so that it eventually includes only the information that is common to all instances.”",
+        "page": 282,
+        "note": ""
+      },
+      {
+        "text": "“Schema refinement thus offers a natural explanation for how people might learn a relational category in classification tasks like the ones reported here. Nevertheless, we argue that schema refinement has important shortcomings as a theory of relational learning. These shortcomings follow from the assumption that schemas are only modified by simplification (i.e., removal of objects or relations). First, contrary to the results presented in the experiments below, learning by refinement alone leads to a prediction of no false alarms during learning of a relational category. A false alarm occurs when a stimulus that does not fit the category is mistaken for a category member, because it contains all of the structure present in the subject’s current schema. This can only happen if the schema lacks relational constraints for what constitutes category membership. This is impossible under an idealized model of pure schema refinement, because relations that are present in all category members will never be removed from the schema.”",
+        "page": 282,
+        "note": ""
+      },
+      {
+        "text": "“On the other hand, this argument from memory limitations relies on an assumption that schema information is stored propositionally, or in some other capacity-limited form. If relational information can be stored in a way not subject to strong capacity limits, then learning by pure refinement may be viable. For example, the relations used in the present experiments could in principle be maintained spatially, in a system like a visuospatial sketchpad (Baddeley, 1986). To preview the results reported below, we find significant limitations in subjects’ relational learning, especially with more complex structures (Experiment 2), thus arguing against a model of relational learning by refinement alone.”",
+        "page": 283,
+        "note": ""
+      },
+      {
+        "text": "“The first experiment investigated people’s ability to learn arbitrary new relational categories. The study used a standard category-learning paradigm, with an A/not-A design in which the subject was presented with a series of stimuli and was asked to decide whether each stimulus did or did not belong to the category. The category to be learned was manipulated between subjects. The category structures all contained the same number and types of first-order relations, but differed in how those relations were connected (i.e., in their relational structure). We aimed to test models of relational concept acquisition by assessing how this manipulation of relational structure affects learning.”",
+        "page": 283,
+        "note": ""
+      },
+      {
+        "text": "“Ninety-four undergraduates participated for course credit in an introductory psychology course. Subjects were randomly assigned to three conditions (Ns = 34, 33, 27 for Conditions 1–3, respectively), which differed in the type of category structure to be learned.”",
+        "page": 283,
+        "note": ""
+      },
+      {
+        "text": "“Each dimension defines a comparative binary relation among the objects (i.e., BRIGHTER and LARGER). The category to be learned by each subject was defined by two such relations, one on each dimension. A stimulus was a member of the category if and only if it satisfied both of these relations. Fig. 2A illustrates an example category structure, in which the upper-right object must be larger than the upper-left object, and the lower-right object must be brighter than the lower-left object. Fig. 2B shows an example stimulus that is a member of this category. The category structures varied in how the relations were connected to each other, in terms of the objects on which they were defined, as shown schematically in Fig. 3A. Specifically, the two relations could operate on disjoint objects (Condition 1), on one shared object with one unique object for each relation (Condition 2), or on the same pair of objects (Condition 3). It is easy to see that, topologically, these are the only three possibilities. That is, these are the only three relational structures that can be formed by two binary relations operating on four objects (ignoring the directionality of the relations).”",
+        "page": 284,
+        "note": ""
+      },
+      {
+        "text": "“Because the duration of the experiment was determined by time, there was significant variability in the number of trials that subjects completed in the main task, ranging from 201 to 1493 (M = 863, SD = 233). The statistical requirement to analyze the same number of trials for all subjects forces a tradeoff between including a maximal number of subjects and analyzing enough trials to allow differences among conditions to emerge. By inspecting the distribution of number of trials across subjects—aggregated across all conditions—we settled on a minimum of 600 trials. This criterion eliminates seven additional subjects who were outliers in this distribution: two each in Conditions 1 and 2, and three in Condition 3.”",
+        "page": 285,
+        "note": ""
+      },
+      {
+        "text": "“Forgetting of information from the schema can occur between trials. For instance, even though we assume the schema is initialized as a complete representation of the example category member given during the instructions, much of that information might be forgotten before the first learning trial. We model forgetting by assuming that prior to each trial, every relation in the schema has an independent probability p of being forgotten, which depends on the total number of relations currently in the schema (r)”",
+        "page": 286,
+        "note": ""
+      },
+      {
+        "text": "“There is thus a symmetry between schema refinement and elaboration in a binary classification task, each interpretable as a learning mechanism for correcting the two types of errors that can occur (misses and false alarms, respectively). An important difference is that, after receiving feedback on a false alarm, the subject cannot logically infer how the schema needs to be changed. That is, it is ambiguous which relation(s) in the stimulus constitute a violation of the category and hence which relational constraints must be added to the schema. Thus schema elaboration is a potentially more flexible mechanism than is schema refinement. This flexibility enables sensitivity to relational structure that is not predicted by schema refinement alone. To implement schema elaboration, we assume that following a false alarm the model identifies all relations that the stimulus violates but that are absent from the schema, and treats each as a candidate to be added. For simplicity, we assume exactly one relation is added to the schema following any false alarm. This relation is chosen probabilistically among the candidates, by assigning an elaboration score, s, to each candidate, and applying a standard softmax or Luce choice rule”",
+        "page": 288,
+        "note": ""
+      },
+      {
+        "text": "“Cognitive load theory (van Merriënboer & Sweller, 2005) suggests that objects that do not participate in any of the category’s relations will act as extraneous distractors. Subjects’ attention may be drawn to such objects, making them more likely to add relations on new objects when elaborating a schema. Similarly, because people often struggle to recognize surface features as irrelevant information (Cooper & Sweller, 1987), irrelevant objects may place additional strain on working memory, while obscuring the category’s underlying relational structure. Consequently, category structures that contain the greatest numbers of irrelevant objects, such as Condition 3, would be most difficult to learn. This principle is formalized by defining the elaboration score for each candidate relation as the number of its objects (0, 1, or 2) that do not participate in any relations currently in the schema. This scoring rule is exactly opposite the economy of objects rule, and the two are equivalent under a substitution / ? /.”",
+        "page": 289,
+        "note": ""
+      },
+      {
+        "text": "“learning may be better for category structures composed of relations that are chained together (e.g., Condition 2), because people may be inclined to link known relational structure to new objects. Such a preference might arise from a causal learning perspective, in which subjects seek to discover causal chains among the objects. For example, upon learning that object A must be bigger than object B, people may be inclined to test whether object B must be brighter than object C. Thus, structures composed of relations that are chained together may be easier to acquire. This principle can be formalized in many ways, but we chose the following approach. For a candidate relation between objects A and B, let R1 be the number of relations already in the schema that operate on A, and let R2 be the number of relations already in the schema that operate on B. Assume A is the object with fewer relations (if there is a difference), so that R1 6 R2. In other words, the candidate relation operates on two objects, one of which already participates in R1 relations in the schema, and the other of which participates in R2 relations. The candidate’s elaboration score is given by the equation in Table 1. Although the equation appears complicated, it simply implements a lexicographic preference for small values of R1 followed by small values of R2 R1. Table 2 shows elaboration scores for different values of R1 and R2. As a special case, the elaboration score when R1 = R2 = 0 was set to zero, to implement a preference not to add isolated relations. Thus, the ideal candidate is one that extends an existing chain: R1 = 0, R2 = 1.”",
+        "page": 289,
+        "note": ""
+      },
+      {
+        "text": "“The empirical results of Experiment 2 are largely consistent with the conclusions of Experiment 1. Subjects exhibited partial learning of the task, but performance with these complex stimuli was quite low. Nevertheless, there were reliable differences across conditions, indicating that subjects were sensitive to relational structure. The model simulations again show that schema refinement alone achieves near-perfect performance that is well above that of subjects, adding forgetting leads to eventual chance performance, and adding elaboration allows for intermediate performance. Additionally, only the models that assume structure-sensitive elaboration predict learning differences among conditions. However, unlike in Experiment 1, none of these models reproduces the pattern of differences exhibited by subjects.”",
+        "page": 294,
+        "note": ""
+      },
+      {
+        "text": "“In the present study, we define relational structure as a pattern of connections among the relations that make up a relational concept or system, in terms of how those relations operate on shared objects (i.e., role fillers). Under the structure-mapping theory of analogy (Gentner, 1983), an analogy between two scenarios amounts to recognition that they have the same relational structure. Thus an understanding of the impact of relational structure on the relative learnability of different relational concepts might lead to new insights regarding the mechanisms underlying analogical reasoning, as well as the conditions under which such reasoning will be more or less successful.”",
+        "page": 295,
+        "note": ""
+      },
+      {
+        "text": "“Both experiments reported here constitute pure tests of the effects of relational structure on learning, in that all stimuli contained the same objects, features, and relations. The categories in the different experimental conditions were defined by the same set of relations, only configured differently in terms of how they were linked by shared objects. The significant performance differences among conditions in both experiments suggest that acquisition of relational categories is indeed affected by their relational structure. In particular, it appears that a relational category is easier to learn when multiple constituent relations operate on the same objects (to a greater extent in Experiment 1) and when relations are linked together in a chain (to a greater extent in Experiment 2). These results are far from providing a complete theory, but we believe they contribute an important first step in understanding the effects of relational structure on learning.”",
+        "page": 295,
+        "note": ""
+      },
+      {
+        "text": "“We have focused here on the implications of these results for schema-based models of relational learning. It is commonly proposed that relational concepts are represented as schemas (Rumelhart & Norman, 1978; Shank & Abelson, 1977) and that these representations are learned by a process of schema refinement via intersection with successive instances (Doumas et al., 2008; Kuehne et al., 2000). As demonstrated here, schema refinement alone cannot predict sensitivity to relational structure, because the intersection process treats each element of a schema independently. Moreover, schema refinement taken alone incorrectly predicts a lack of false alarms in relational category learning, and it requires unreasonable assumptions about working memory because all potentially relevant information must be maintained in the initial schema.”",
+        "page": 295,
+        "note": ""
+      },
+      {
+        "text": "“As a complement to schema refinement, we have proposed a schema elaboration mechanism that adds information to a schema when a false alarm indicates the schema is underconstrained. Because refinement alone can never lead to a false alarm, elaboration is only consequential in a model that also allows forgetting of true category-defining relations. An important property of schema elaboration is that it can be sensitive to relational structure. Unlike with refinement following a miss, there is ambiguity in how to elaborate the schema following a false alarm, and thus the choice can be guided by the other relations already present in the schema.4”",
+        "page": 295,
+        "note": ""
+      },
+      {
+        "text": "“he formal models tested here define a hierarchy that, when evaluated in sequence, provides support for each of our theoretical proposals. First, schema refinement alone (PR model) is psychologically implausible for relational learning, predicting performance far beyond the range of subjects. Second, refinement plus forgetting (RF) produces declining learning curves and eventual chance performance, suggesting that an elaboration mechanism that can grow a schema’s complexity is necessary to account for people’s intermediate performance. Third, in conjunction with refinement and forgetting, elaboration offers a plausible mechanism for how new or forgotten information can be (re)incorporated into a schema (RE). Fourth, schema refinement cannot explain differential learning of categories defined by different relational structures, but structure-sensitive elaboration can (OC, EO, PO, RC).”",
+        "page": 296,
+        "note": ""
+      },
+      {
+        "text": "“Beyond these conclusions, there are aspects of the data that the models do not fully explain. In Experiment 1, both the OC and EO models qualitatively matched the empirical pattern of differences across conditions. However, when more complex category structures were introduced in Experiment 2, none of the models’ predictions matched the empirical pattern of condition differences. Moreover, although the different forms of structure-sensitivity in these models were theoretically motivated, they were built in as scoring rules. Further work should investigate the learning or decision mechanisms that may underlie these tendencies, as well as whether they arise from explicit expectations about category structures or implicit learning mechanisms (cf. Ashby, Alfonso-Reese, Turken, & Waldron, 1998). In short, although it is clear that relational structure affects relational learning, the specific mechanisms behind this effect remain an open question.”",
+        "page": 296,
+        "note": ""
+      },
+      {
+        "text": "“Another shortcoming of the present structure-sensitive models is that they produced weaker condition differences than were observed empirically. To match the subjects’ overall performance level, the models had to assume a large forgetting rate (small L), leading to typically small schemas. Because the models’ structure-sensitivity derives from the information already in the schema during elaboration, the result was small condition differences. One possible solution would be to substitute the present all-or-none approach (in which a relation is either in the schema or not) with a continuous learning model, in which continuous-valued strengths are maintained for all possible relations in the schema. Mutual excitation or inhibition between relations could account for sensitivity to relational structure, following principles similar to the ones tested here. For example, the model might assume mutual excitation between any two relations sharing a pair of objects. Such a continuous learning model might generate low performance when its association strengths are weak but still retain some knowledge of the global category structure, thus showing greater structure-sensitivity.”",
+        "page": 296,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "GerwigEtAl2021",
+    "title": "The Relationship between Intelligence and Divergent Thinking—A Meta-Analytic Update",
+    "authors": "Gerwig et al.",
+    "year": "2021",
+    "publication": "Journal of Intelligence",
+    "doi": "10.3390/jintelligence9020023",
+    "url": "https://www.mdpi.com/2079-3200/9/2/23",
+    "abstract": "This paper provides a meta-analytic update on the relationship between intelligence and divergent thinking (DT), as research on this topic has increased, and methods have diversified since Kim’s meta-analysis in 2005. A three-level meta-analysis was used to analyze 849 correlation coefficients from 112 studies with an overall N = 34,610. The overall effect showed a significant positive correlation of r = .25. This increase of the correlation as compared to Kim’s prior meta-analytic findings could be attributed to the correction of attenuation because a difference between effect sizes prior-Kim vs. post-Kim was non-significant. Different moderators such as scoring methods, instructional settings, intelligence facets, and task modality were tested together with theoretically relevant interactions between some of these factors. These moderation analyses showed that the intelligence–DT relationship can be higher (up to r = .31–.37) when employing test-like assessments coupled with be-creative instructions, and considering DT originality scores. The facet of intelligence (g vs. gf vs. gc) did not affect the correlation between intelligence and DT. Furthermore, we found two significant sample characteristics: (a) average sample age was positively associated with the intelligence–DT correlation, and (b) the intelligence–DT correlation decreased for samples with increasing percentages of females in the samples. Finally, inter-moderator correlations were checked to take potential confounding into account, and also publication bias was assessed. This meta-analysis provides a comprehensive picture of current research and possible research gaps. Theoretical implications, as well as recommendations for future research, are discussed.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“DT describes the process of generating a variety of solutions (Guilford 1967). In the context of the standard definition of creativity, responses are considered to be creative if they are novel/original and appropriate/effective (Runco and Jaeger 2012). Following this reasoning, the ability to come up with various ideas (evaluated as being creative) constitutes DT ability as an indicator of creative potential (Runco and Acar 2012). Flexible, critical, and playful thinking, as well as problem-solving ability, and the willingness to accept ambiguous situations are expected to facilitate DT (Karwowski et al. 2016a; Plucker and Esping 2015). In a recent review, Plucker and Esping (2015) outlined various points of view regarding the question of where to locate DT: as a facet of intelligence, as a result of intelligence, or as a separate construct, sharing cognitive abilities with intelligence. A fair number of intelligence researchers consider DT as a subcomponent of intelligence (Carroll 1997; Guilford 1967; Jäger 1982; Karwowski et al. 2016a). (Carroll 1997; see also Chrysikou 2018; Dietrich 2015) stated that DT requires several mental abilities, such as the speed of retrieval (e.g., Forthmann et al. 2019), knowledge (e.g., Weisberg 2006), fluid intelligence (e.g., Beaty et al. 2014; Nusbaum et al. 2014), and motor skills (e.g., the ability to write quickly; see: Forthmann et al. 2017). This view emphasizes that multiple factors might moderate the strength of the association between intelligence and DT. Although DT and intelligence have been seen as somewhat different constructs in the past (Getzels and Jackson 1962; Wallach and Kogan 1965), some researchers have now adopted the view that the constructs might be more similar than previously thought (Silvia 2015). To conclude, a robust empirical examination of the relationship between intelligence and DT is expected to clarify the theoretical relationship of these constructs.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“It has been demonstrated that cognitive control (and executive functions more broadly) are involved in DT processes (Benedek and Fink 2019; Silvia 2015). In this context, working memory capacity and fluid intelligence are seen as necessary processes when working on DT tasks due to the ability to keep representations active and protect oneself from being distracted (e.g., Beaty et al. 2014; Engle et al. 1999). Fluid intelligence and executive functions are interrelated but not identical. Friedman et al. (2006) found a correlation between executive function updating (the ability to add to and delete information from the working memory) and fluid intelligence. In contrast, there was no correlation between fluid intelligence and executive functions inhibition (the ability to control mental operations) or shifting (the ability to switch between tasks), respectively. Diamond (2013) subsumed cognitive flexibility as part of the family of executive functions, which describe the ability to change perspectives and the ability to “think outside the box”. Flexibility, as assessed by DT tasks (Ionescu 2012) and switching in verbal fluency tasks (Nusbaum and Silvia 2011), can also be considered to reflect cognitive flexibility. Hence, it overlaps with creative thinking, task switching, and set-shifting (Diamond 2013). Diamond (2013) concluded that working memory, inhibitory control, and cognitive flexibility contribute to higher-order executive functions, namely reasoning, problem-solving, and planning, and that reasoning, as well as problem-solving, are identical with fluid intelligence. Taken together, DT might overlap with both executive functions and fluid intelligence. Benedek et al. (2012) specified that only certain types of intelligence are linked to certain aspects of creative thinking, and provided more differentiated insights into the relationship between these constructs. They found that inhibition, the ability to suppress irrelevant stimuli, was positively related to fluency (number of given responses) and flexibility (number of categories) of idea generation, whereas originality, reflecting the quality of ideas, was predicted by intelligence.”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“Data involved 849 coefficients from 112 studies (N = 34,610). The age of the participants across samples ranged from 4.00 to 72.93 years (M = 20.40, SD = 12.20). Most of the samples comprised of school students (40.50%), followed by university students (34.71%), and adults (15.70%). Other sample types were preschoolers (4.13%) or mixed samples of any of the previously mentioned sample types. The average gender ratio across samples was 0.55 (SD = 0.26) with a range from 0 (only male participants) to 1 (only female participants). The average sample size was 274.68 (SD = 615.28) with sample sizes ranging from N = 10 to N = 5337 participants. Most studies were from the USA (m = 51; UK: m = 12; Germany: m = 9; Austria: m = 8; other countries contributed up to 3 studies: Australia, Canada, Chile, China, France, Hungary, India, Israel, Italy, Korea, Lebanon, Netherlands, New Zealand, Norway, Philippines, Poland, Romania, Russia, Singapore, Spain, Taiwan, and United Arab Emirates). The most frequently used DT task was the Alternate Uses Task (33.80% of effect sizes). Next, 30.62% of the effect sizes were based on a DT test battery (e.g., TTCT, ATTA, Wallachand-Kogan, EPoC, BIS, VKT, and so forth). Moreover, 13.66% effect sizes were based on a composite of several DT tasks (i.e., a test battery created in an ad hoc fashion for research purposes). Other DT tasks that were used for 2% to 5% of the effect sizes were Pattern Meanings, Line Meanings, Instances, Similarities, and the Consequences task. The most frequent task modality for DT was verbal (70.20% of effect sizes), 19.55% of the effect sizes were based on figural DT tasks, and only 10.25% of the effect sizes relied on several task modalities. The most frequent intelligence test was one of the variants of the Wechsler test (17.83% of the effect sizes), followed by one of the variants of the IST (9.60%; German: Intelligenzstrukturtest; translates as Intelligence-Structure-Test) and a variant of the Raven’s (7.13%). Many other tests were used to measure intelligence and the interested reader has access to the fully coded data at the OSF repository (https://osf.io/s4hx5). Clearly, the used intelligence measures were far more heterogeneous as compared to the used DT measures. Moreover, task modality was more evenly distributed for intelligence measures with 36.98% of the effect sizes based on verbal, 28.86% based on figural, 27.33% based on several modalities, and 6.83% based on numerical intelligence measures.”",
+        "page": 10,
+        "note": ""
+      },
+      {
+        "text": "“The estimated overall correlation between DT and intelligence was r = .25, 95%-CI [.21, .30] (m = 112, k = 849). It was further revealed that both the variance components for betweenstudy variation (χ2(1) = 161.00, p < .001) and within-study variation (χ2(1) = 2758.15, p < .001) of effect sizes were needed in the multi-level model. A great amount of heterogeneity (I2 = 92.07%) could be accounted for by true effect size variance, with slightly more variance within (I2w = 46.58%) than between studies (Ib2 = 45.49%). That is, variation of effect sizes quantifying the correlation between DT and intelligence within the studies (e.g., when correlations are based on different measures of intelligence or DT) and between-study variation (i.e., when effect sizes are aggregated at the study level) were highly comparable. As expected, obtained effects were heterogeneous, QE(848) = 9206.17, p < .001.”",
+        "page": 10,
+        "note": ""
+      },
+      {
+        "text": "“As an initial step, we compared if testing was timed or not. We proposed an interaction effect between the timing of DT and timing of intelligence when a be-fluent instruction and scoring for fluency was used for DT measures. This interaction was not straightforwardly testable because we did not find any studies in the literature in which both DT and intelligence were tested in untimed conditions. Hence, we aimed at examining all correlation coefficients available when crossing the moderators: instruction (restricted to be-fluent and be-original/creative instructions) and DT scoring (restricted to fluency and originality/creative quality). However, there were not enough effect sizes available for the cells of the targeted interaction effect involving untimed tasks and, hence, the proposed interaction could not be tested in a reasonable way. Next, we focused on time-on-task in minutes (i.e., effect sizes based on untimed assessment conditions were excluded) and tested the interaction between time-on-task for DT and intelligence (be-fluent and fluency: k = 45, m = 15; be-creative and originality/creative quality: k = 109, m = 8) and found it to be non-significant (both ps > .674). Moreover, for both combinations of instruction and scoring none of the main effects of time-on-task was significant (all ps > .405).”",
+        "page": 15,
+        "note": ""
+      },
+      {
+        "text": "“Task modality varied at the level of DT tasks and intelligence tasks. First, we checked if an interaction between DT modality and intelligence modality improved model fit beyond a simple main effect model, which was not the case (χ2(6) = 1.68, p =.947). However, it was found that figural DT measures correlated significantly less strong with intelligence measures as compared to verbal DT measures (β = −0.10, z = −4.20, p < .001). However, this observation was not robust across all checks (see Section 4.3.12) and should be interpreted with caution. Given the theoretical and empirical relationship between intelligence taskmodality and intelligence facet (i.e., gc will most likely be measured by verbal tasks, whereas gf will most likely be measured by figural tasks), the same models were tested when substituting intelligence task-modality by intelligence facet (e.g., gc measures should correlate strongest with verbal DT).”",
+        "page": 15,
+        "note": ""
+      },
+      {
+        "text": "“DT task-type was found to be a significant moderator of the intelligence–DT correlation, QM(8) = 23.96, p < .001 (see Table 8). However, none of the specific contrasts reached statistical significance (all ps > .052).”",
+        "page": 16,
+        "note": ""
+      },
+      {
+        "text": "“n a meta-regression model that additionally included all other moderators that correlated > .40 with the moderators under consideration (see Table 1). In a second step, we reran the analysis now including all moderators that correlated > .20 in the confounding check. Results of the robustness checks are presented in Table 9. It shows that most but not all moderation effects provided to be at least fairly robust. For better readability of the results section, we refer ab”",
+        "page": 19,
+        "note": ""
+      },
+      {
+        "text": "“when participants are instructed to be-creative, the correlation between DT and gc and DT and gf was quite similar. Notably, the usually high correlation between gf and gc (r ≈ .60–.70; e.g., Bryan and Mayer 2020) could preclude finding a differential pattern for these intelligence facets. Hence, it seems that gc, namely knowledge, is required as a basic prerequisite and that gf is required to form and evaluate ideas when participants are explicitly instructed to be creative. In addition, the fact that gc and DT are correlated indicates that knowledge is required for DT, which supports the historical view of Mednick (1962). This knowledge could be used to simply recall relevant solutions (e.g., Miroshnik and Shcherbakova 2019), or provide the conceptual elements to be combined to original ideas. It must not be overlooked that by asking participants to produce many ideas, a DT test resembles verbal fluency tasks (Nusbaum et al. 2014). Beauducel and Kersting’s (2002) view that verbal fluency tasks are markers for gc would have suggested that DT and gc correlate more strongly (as compared to the DT–g or DT–gf correlations) when be-fluent instruction and fluency scoring are used to assess DT. However, this specific proposition was not supported in this study.”",
+        "page": 20,
+        "note": ""
+      },
+      {
+        "text": "“The correlations did not generally differ whether a be-fluent or a be-creative instruction (or any other variant of a hybrid instruction) is given (i.e., we did not find a main effect of instruction). However, correlations increased for the be-creative instruction when DT responses were scored for originality (i.e., in case of instruction-scoring fit) compared to fluency scorings when be-fluent instructions were used. This pattern has been expected by Silvia (2015). Be creative instructions are thought to induce more cognitively demanding strategies and thus increase the relevance of intelligence and executive control. In addition, the intelligence–DT correlation was also found to be stronger for the combination of becreative instructions and originality scoring as compared to be-creative instructions and fluency scoring. Clearly, the interaction of instruction and DT outcome has an impact on the relationship between intelligence and DT. Instructing participants to be-creative leads to more sophisticated responses, whereas instructing participants to be-fluent influences the number of responses.”",
+        "page": 20,
+        "note": ""
+      },
+      {
+        "text": "“Correlations in game-like instructions dropped to a small effect size that was nonsignificant. Compared to the test-like settings (or strategy instructions), it seems that under game-like instructions, the relationship between intelligence and DT diminishes. However, it remains unclear to what extent the testing situation influences the relationship between intelligence and DT. Affective/conative factors like current motivation, time pressure, or test anxiety may play a major role when assessing DT. For example, Byron et al. (2010) ran a meta-analysis on the relationship between stressors and creativity and found that when participants expect an evaluation, their creative performance is influenced in an inverted Ushaped manner. Strong evaluative stress or the absence of an evaluation of the performance hinders creative performance, whereas minor levels of evaluative stress support creative performance. Test situations imply the evaluation of the outcome and might be responsible for better performance. Since a considerable part of the participants are students, it can be assumed that they are familiar with test settings and that the expected evaluation of their results may have motivated them to give their best. On the other hand, the evaluative component is absent in a game-like setting and may hinder creative performance. In fact, playing a game does not necessarily stimulate the motivation to perform well. Furthermore, there were no time-constraints for the tasks in the game-like setting. What is more, game-like conditions can also drastically vary from study to study. Thus, not all studies with gamelike conditions rely on the same approach (see Said-Metwaly et al. 2017).”",
+        "page": 20,
+        "note": ""
+      },
+      {
+        "text": "“t was studied if modalities of DT and intelligence measures and their interplay affected the relationship between DT and intelligence. However, tests of this moderator were rather inconclusive (i.e., findings were not robust), and future primary studies are clearly needed to shed more light into the issue. As a more general point, it should be noted that common definitions of DT task modality just refer to the content modality of task items and responses, which does not necessarily define the modality of cognitive processes involved in task processing (Benedek and Fink 2019). Especially verbal DT tasks appear to be a quite heterogeneous group, encompassing tasks that require to work creatively with words (e.g., metaphor tasks) or objects (e.g., Alternate Uses Task). Neuroscientific investigations have shown that divergent thinking commonly implicates visual and motor activity, pointing to the involvement of mental simulations (e.g., object manipulations) and visually guided search processes even for verbal material (Benedek et al. 2020; Matheson and Kenett 2020).”",
+        "page": 21,
+        "note": ""
+      },
+      {
+        "text": "“Even though this meta-analysis has been prepared carefully in view of the current theories of DT and intelligence research, some limitations must be noted. Several studies did not report sufficient information on DT and intelligence tests, which made the coding procedure difficult. As a result, many intelligence tests were coded with g since there was no other information available. Sometimes it remained unclear which instruction was given in DT tests and, more importantly, how DT outcomes were scored. Consequently, coding might have been more detailed if more information had been provided. With regard to DT outcomes, a fully differentiated coding was not possible. All subjective scorings were subsumed under the DT outcome originality. However, the procedures were not similar in all studies. Splitting up subjective scorings into smaller categories might have provided more insight into the different scoring methods (i.e., topscoring, snapshot scoring) that are currently being discussed (Reiter-Palmon et al. 2019). It should further be mentioned that explicit instructions to focus on an aspect of creativity (e.g., “be creative”, “be original”) vary in terms of their exact wording (Acar et al. 2020; Runco et al. 2005). In the current work, we did not further distinguish between these subtleties. The main difference between be-creative and be-original instructions, for example, is the wording and while theoretically “creative” does not mean the same thing as “original”, it is far less clear if participants’ understanding of these words reflects the theoretical understanding of creativity researchers. Hence, it is an open question if these nuances in the instructions lead to a different understanding of the task.”",
+        "page": 22,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "BenedekEtAl2023",
+    "title": "The role of memory in creative ideation",
+    "authors": "Benedek, Beaty, Schacter & Kenett",
+    "year": "2023",
+    "publication": "Nature Reviews Psychology",
+    "doi": "10.1038/s44159-023-00158-z",
+    "url": "https://www.nature.com/articles/s44159-023-00158-z",
+    "abstract": "",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“we propose a memory in creative ideation (MemiC) framework that describes how creative ideas arise across four distinguishable stages of memory search, candidate idea construction, novelty evaluation and effectiveness evaluation.”",
+        "page": 246,
+        "note": ""
+      },
+      {
+        "text": "“the highly influential associative theory of creativity assumes that creative ideas result from spontaneous memory activation and recombination of memory elements in new and effective ways33. It was further proposed that combinations of more remote elements result in more creative ideas (also known as the remote associates view34), and that differences in semantic memory organization (flatter associative hierarchies) thus account for higher individual creativity35.”",
+        "page": 247,
+        "note": ""
+      },
+      {
+        "text": "“By contrast, the expertise view assumes that, especially in experts, the presentation of a problem results in retrieval of domain-specific knowledge (narrow associates), which is considered a more structured process guided by established associative connections compared with that in the remote associates view34. These associative theories have received some empirical support in the creativity literature by studies showing that creative ideation is guided by properties of semantic memory — the conceptual knowledge about the meaning of words and objects — such as category structure and domain knowledge36,37. Yet several notable discoveries in the cognitive science and neuroscience of creativity indicate that creative ideation is neither limited to merely spontaneous memory activation nor limited to semantic memory alone as assumed by the associative theory of creativity. A comprehensive account of creative ideation must accommodate the four major insights regarding memory and creative ideation discussed below.”",
+        "page": 247,
+        "note": ""
+      },
+      {
+        "text": "“First, creative ideation is supported by controlled memory retrieval. Attributing creative ideation solely to spontaneous memory activation32,35 does not account for the strong and robust association between creative ideation and cognitive control reported over the last decade38,39. Research consistently finds that creative ideation is predicted by executive abilities9,40, fluid and crystallized intelligence41,42, and especially broad retrieval ability22,43–45 — the goal-directed search and retrieval of information from semantic memory.”",
+        "page": 247,
+        "note": ""
+      },
+      {
+        "text": "“Further studies showed that individuals often adopt cognitive strategies involving cued memory search in creative ideation46–48. The substantial evidence for the role of cognitive control in creative ideation led to the development of the executive or controlled-attention theory of creativity, which assumes that creative ideation involves and benefits from goaldirected, strategic processes49.”",
+        "page": 247,
+        "note": ""
+      },
+      {
+        "text": "“Creative ideation refers to the cognitive activity of producing novel and effective solutions (that is, creative ideas). Creative ideation is typically examined with divergent thinking tasks that pose openended problems and ask individuals to think in different directions to find creative solutions5, which requires a goal-directed application of imagination.”",
+        "page": 247,
+        "note": ""
+      },
+      {
+        "text": "“divergent thinking tasks differ from convergent thinking tasks that require finding a single correct solution, such as those commonly used in intelligence tests. For example, a classic test of divergent thinking is the alternate uses task, in which individuals are asked to find creative uses for everyday objects (such as a car tyre)6. Divergent thinking test performance can be measured by scoring the quantity (fluency and flexibility of ideas) and the quality (originality and creativity of ideas) of responses produced by an individual in a given time period7, which is considered a valid index of human creative cognitive potential as it predicts real-life creative achievement8,9. Creative ideation — as measured with divergent thinking tasks — is the most thoroughly studied aspect of creative cognition to date10,11 and is broadly viewed as a central aspect of human creativity.”",
+        "page": 247,
+        "note": ""
+      },
+      {
+        "text": "“Whereas memory provides the building blocks of new ideas, coming up with something new is counteracted by the tendency to retrieve the most dominant, and thus unoriginal, information from memory16. In other words, what is highly effective in most other cognitive activities (for example, when meeting a friend we want to quickly recall their name rather than their favourite colour) undermines creative ideation and can even result in cognitive fixation17–19. In summary, memory appears to have a dual role for creative ideation as the foundation of creative ideas but also as a potentially constraining factor20.”",
+        "page": 247,
+        "note": ""
+      },
+      {
+        "text": "“reative ideas arise from the interplay of associative, spontaneous and largely automatic unconscious processes with controlled, goal-directed and largely deliberate conscious processes49–53 (Fig. 1).”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“Second, creative ideation involves both semantic and episodic memory. The associative theory and other existing theories of creativity54,55 focus exclusively on semantic memory, but fail to acknowledge the role of episodic memory — the collection and retrieval of personal events and experiences — in creativity56.”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“much evidence for the involvement of episodic memory in creative ideation exists, such as consistent associations between episodic retrieval specificity and creative performance57,58, substantial overlaps in neural activation during creative ideation and episodic memory tasks59–61, and impairments of performance in both creative ideation and episodic specificity after temporary disruption of hippocampal brain networks by transcranial magnetic stimulation62. These findings suggest that creative ideation involves episodic memory, yet the unique contributions of episodic versus semantic memory to creative ideation still need to be clarified.”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“Third, creative ideation builds on memory construction processes. Memory is increasingly acknowledged as a dynamic and constructive process63,64. Semantic memory accounts of the last decade often emphasize that conceptual representations are constantly changing and vary across different contexts, ranging from the imminent task demands to long-term experiences65,66. Moreover, successful creative problem solving has been associated with the forging of new links between previously unrelated concepts in semantic memory (such as by creating connections between problem and solution concepts), thereby resulting in changes to semantic memory structure67,68. Similarly, episodic simulation involves the flexible recombination of multimodal information to create complex mental simulations (for instance, a soccer player imagining how to execute an upcoming penalty shot). The constructive episodic simulation hypothesis69 states that retrieval from episodic memory is a constructive process supporting not only the reconstruction of past events from individual elements at the time of retrieval but also the simulation of future events and scenes3,70.”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“More generally, the constructive process of retrieval supports complex forms of imagination including creative thinking71,72. Moreover, creative performance has been linked to dynamic memory changes such as reconstructive interference73, false memories74 and even forgetting75. The similarity between memory retrieval and creative ideation is further evidenced by the presence of similar phenomena such as cognitive fixation76,77 — in which response generation gets constrained by previous solutions — and incubation effects78,79 — in which taking a break from a task overcomes cognitive fixation. Thus, the dynamic and constructive nature of memory has important implications for how knowledge is reconfigured and extended during creative ideation.”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“Last, creative ideation recruits memory at different stages. Creative ideation performance is commonly studied with divergent thinking tasks, requiring the continuous production of possible solutions to open-ended problems. Focusing only on the final output (ideas or products) of such extended divergent thinking tasks can easily obscure the specific role of memory throughout the creative ideation process10. Analyses of the time dynamics of response behaviour80,81 and the use of think-aloud protocols capturing ongoing thoughts in creative ideation studies47,82 have identified different sub-processes and strategies during creative ideation. Moreover, a few theoretical accounts have described the temporal dynamics underlying creative ideation. The blind variation and selective retention framework assumes that creative ideas result from a two-step process — analogous to Darwin’s theory of evolution where genetic variation and natural selection operate”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“involving variations of unguided solution attempts and subsequent selection of potentially improved solutions32,54. Similarly, the Geneplore framework proposes that creative thinking involves repeated cycles of generative and explorative phases83. Thus, there is broad theoretical agreement that the temporal dynamics underlying creative ideation involve at least two iteratively running stages which are commonly termed idea generation and idea evaluation84.”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“The seminal associative theory of creativity, dating back to the 1960s35, argued that individual differences in semantic memory structure influence creative thought24,68,191. It proposed that creative individuals are characterized by ‘flat’ associative hierarchies (numerous and weakly related associations to a given concept) rather than ‘steep’ associative hierarchies (few and strong associations to a given concept) in semantic memory. Direct evidence for the associative theory has long been lacking112. However, driven by the application of computational network science methodology, the role of semantic memory structure in facilitating individual differences in creative ideation has been increasingly elucidated over the past few years23. Several computational modelling studies have demonstrated how a ‘flexible’ semantic memory network structure — a structure where concepts are closer to each other and more richly connected (that is, a network with lower average shortest path length, lower modularity and higher clustering) — is conducive to higher creative ability24,26,112,192. Individual differences in semantic memory network structure also predicted real-life creative behaviour26,131 and were associated with switching behaviour during memory search93 and the intrinsic connectivity structure of the default, control and salience networks in the brain26,93. Thus, individual variation in semantic memory structure has an important ‘bottom-up’ role in how information is spontaneously accessed and associated during idea generation”",
+        "page": 248,
+        "note": ""
+      },
+      {
+        "text": "“Consistent with available theorizing, idea generation and idea evaluation are considered the two central iterative creative ideation stages in this framework: candidate solutions are produced during idea generation, which are subsequently evaluated for their creative quality during idea evaluation (Fig. 2). Importantly, the MemiC framework proposes that each central creative ideation stage can be further divided into two separable stages that differ in how memory is recruited.”",
+        "page": 249,
+        "note": ""
+      },
+      {
+        "text": "“real-life creative ideation case studies have documented known solutions retrieved from memory being effectively adapted to new problems29,34 (for example, Watson and Crick adopting, among others, Pauling’s insights on the spiral structures within protein configurations to elucidate the double helix structure of DNA)90, consistent with the expertise view of creativity and empirical evidence on opportunistic assimilation91, analogical mapping92 and exploitation strategies93,94. Yet the retrieved information from memory might also initially appear unrelated to the problem but still be potentially relevant to it (for example, Kekulé imagining a snake biting its tail inspiring the finding of the hexagonal structure of benzene)95, consistent with the remote associates view35 and the executive theory of creativity49 the former view focusing on bottom-up search processes and the latter on top-down search processes — and with empirical evidence on Janusian thinking96 and exploration strategies97,98.”",
+        "page": 249,
+        "note": ""
+      },
+      {
+        "text": "“In the next stage of idea generation, the retrieved information from memory gets linked to the problem via the construction of new connections. For conceptual ideation tasks — tasks that essentially rely on the manipulation of semantic information — this construction stage can be achieved with the identification of novel or indirect semantic associations between problem and target concepts99. By contrast, for ideation tasks that involve more complex forms of imagination — tasks relying on dynamic, multimodal representations such as object manipulations or entire scenes — this construction stage is expected to implicate episodic construction processes, which enable individuals to imagine plausible ways of integrating new information into given problem scenarios71,100.”",
+        "page": 249,
+        "note": ""
+      },
+      {
+        "text": "“Let us further illustrate the stages of the MemiC framework with an example from a classic creative ideation task, the alternate uses task102 (Fig. 2, bottom). The alternate uses task assesses divergent thinking by requiring individuals to find creative uses for everyday object problem cues such as a ‘car tyre’5 (Fig. 2). Individuals use various memory search strategies when generating potential creative uses for problem cues on the alternate uses task47,103. For instance, using a property-based strategy, individuals search their memory for an object that shares characteristic properties with the problem cue (for example, objects that are round and dark share characteristics of a car tyre). Individuals then try to construct object uses by connecting the problem cue (car tyre) with the retrieved objects (round and dark objects), which can be as simple as running an episodic simulation attempting object replacement104 (trying to replace the retrieved objects with a car tyre). The constructed candidate solutions are then subjected to an evaluation of novelty and effectiveness.”",
+        "page": 250,
+        "note": ""
+      },
+      {
+        "text": "“the outlined four-stage process captured within the MemiC framework should equally apply to other strategies in the alternate uses task (for example, disassembly use, where object parts are considered for original reuse)47 as well as to other divergent thinking tasks, both abstract (for example, the consequences task asking individuals to think of creative consequences of a utopian scenario, such as that humans no longer require sleep)106 and realistic (for example, creative reappraisal of an emotionally evocative event, such as an argument with a friend)107.”",
+        "page": 250,
+        "note": ""
+      },
+      {
+        "text": "“higher broad retrieval ability110 — the ability to fluently retrieve information from semantic memory — substantially predicts creative ideation performance (that is, divergent thinking) across different broad retrieval tasks such as letter fluency, category fluency and associative fluency (these tasks ask individuals to retrieve words for given initial letters, for categories or based on semantic relatedness, respectively)41,43,47,111.”",
+        "page": 251,
+        "note": ""
+      },
+      {
+        "text": "“The broad retrieval–divergent thinking relation holds after controlling for the influence of mental speed44 and of crystallized intelligence113,114.”",
+        "page": 251,
+        "note": ""
+      },
+      {
+        "text": "“creative ideation has also been related to the retrieval from memory of more remote, weak associations indicated by higher semantic distance115 — a computational measure of concept dissimilarity. In free association and association chaining, the generation of more distant verbs116, adjectives49 and even unrelated words117, as well as the production of more remote associations, is associated with higher creative performance118,119. Finally, analyses of creative ideation performance over time revealed distinct strategies that guide search during idea generation (clustering and switching; exploration and exploitation)48,97,120,121, again pointing to the strategic nature of this process. In summary, these findings show that creative ideation is facilitated by controlled search and the retrieval of many, often remote, associative elements.”",
+        "page": 251,
+        "note": ""
+      },
+      {
+        "text": "“greater amounts of episodic detail when imagining future autobiographical events was associated with higher divergent thinking performance on the alternate uses task57,122 and the consequences task123 (another test of divergent thinking).”",
+        "page": 251,
+        "note": ""
+      },
+      {
+        "text": "“Selective disruption of hippocampal brain networks by transcranial magnetic stimulation reduced both the number of episodic details during a future simulation task and the fluency of idea production on the alternate uses task62. Similarly, direct cortical stimulation of nodes in the default mode network (a neural system supporting imagination and mental simulation)13,126 in the exposed brain during presurgical preparation resulted in reduced fluency but not originality during performance of the alternate uses task127. Thus, episodic memory retrieval appears to have a selective role supporting ideational fluency not originality, suggesting that episodic memory provides candidate ideas which then require further processing to ensure their creative quality (that is, their novelty and effectiveness). However, prior work does not support a simplistic view of episodic memory as merely recalling known or old ideas in creative ideation, as episodic specificity induction boosted the generation of both new and old ideas on the alternate uses task123.”",
+        "page": 251,
+        "note": ""
+      },
+      {
+        "text": "“Abundant evidence supports the notion that constructing semantic links facilitates creative ideation. For example, the ability to generate numerous and original associative combinations predicts creative ideation performance, independent of the ability to retrieve original associations43,129. Similarly, performance in the remote associates test35 — a task requiring individuals to find semantic relations between three seemingly unrelated concepts (for instance, cheese would be the solution if given cottage, blue and cake as cottage cheese, blue cheese and cheesecake provide semantic relations between the terms) — is widely considered to be an index of creative ability130.”",
+        "page": 252,
+        "note": ""
+      },
+      {
+        "text": "“Interestingly, creative individuals judge remote concepts in relatedness judgement tasks as more related, suggesting that creative individuals are more sensitive to subtle, indirect semantic relationships131,132.”",
+        "page": 252,
+        "note": ""
+      },
+      {
+        "text": "“Evidence indicates that episodic simulation is another powerful mechanism supporting constructive thought57,122. Episodic simulation refers to the flexible recombination of multimodal information to create complex mental simulations — episodic constructions — and is viewed as central to spontaneous forms of imagination such as in mind wandering and dreaming21,72, as well as goal-directed forms of imagination such as future thinking and creative ideation3,71.”",
+        "page": 252,
+        "note": ""
+      },
+      {
+        "text": "“Long-term memory has been historically divided into the functionally distinct systems of semantic and episodic memory. Whereas semantic memory refers to general conceptual knowledge about the meaning of words and objects reflecting their semantic relatedness (for example, street is more related to car than to apple)66, episodic memory refers to the collection of autobiographic events reflecting contextualized, multimodal experiences where concepts co-occur in time and space (for example, witnessing a car accident on the street last weekend)193,194. Furthermore, the functional distinction between these memory types is supported by neuroimaging and clinical evidence. Semantic memory has been associated with brain networks spanning the inferior frontal cortex, posterior middle temporal gyrus and inferior parietal sulcus195, whereas episodic memory has been associated with networks spanning the posterior cingulate cortex, angular gyrus and medial temporal lobe196.”",
+        "page": 252,
+        "note": ""
+      },
+      {
+        "text": "“Notwithstanding these brain network differences, semantic memory and episodic memory have been increasingly recognized as interrelated memory types197,198. For instance, semantic and episodic memory share neural retrieval mechanisms associated with the left inferior frontal gyrus and the anterior insular cortex199,200. Further work indicated that semantic memory affected the encoding of new episodic memories136. Hence, semantic memory is now thought to support the organization of information during episodic memory acquisition and reconstruction by serving as a scaffold for episodic memory4,21,182.”",
+        "page": 252,
+        "note": ""
+      },
+      {
+        "text": "“Individuals are reasonably discerning in evaluating the creativity of their own ideas and of others’ ideas142,143 and their judgement strongly relies on the perceived novelty of ideas (the correlation between evaluations of novelty and evaluations of overall creativity are in the range of r = 0.80)87,144,145. Yet individuals exhibiting higher creativity, domainspecific expertise and openness to new experiences are consistently more discerning in idea evaluation146–148, suggesting that having more diverse and relevant experiences supports more accurate novelty judgements (for example, not misattributing known uncommon ideas as being novel). This notion is consistent with openness to new experiences being the strongest personality predictor of creative ideation performance149. Moreover, higher openness is associated with a more ‘flexible’ semantic memory structure150 and with higher efficiency of information processing in the default mode network151,152.”",
+        "page": 253,
+        "note": ""
+      },
+      {
+        "text": "“udging the effectiveness of novel ideas — or newly designed products — might not be achieved with memory retrieval alone but might also involve episodic (mental) simulations applying the idea (or product) under various contexts to test how well given affordances are met103,165. Effectiveness judgements also take longer for novel compared with familiar ideas, which lends further support to the notion that additional episodic simulation processes are taking place166,167.”",
+        "page": 253,
+        "note": ""
+      },
+      {
+        "text": "“The MemiC framework does not claim that creative ideation always follows all four stages in a constant linear sequence (for example, there may be considerable back and forth between search and construction before a candidate idea arises that can be subjected to evaluation) but, rather, describes crucial elements of creative ideation that build on each other and unfold in an iterative fashion over time. Explicit substages are further useful for understanding how cognitive activities map onto relevant processes. For example, when creative ideation is performed under ‘be fluent’ instructions171 — which emphasizes idea quantity over quality — and, more generally, during brainstorming172 which encourages coming up with many ‘wild’ ideas without considering their immediate feasibility — effectiveness evaluations might only have a minimal role.”",
+        "page": 254,
+        "note": ""
+      }
+    ]
+  }
+]

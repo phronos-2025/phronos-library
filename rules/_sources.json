@@ -1,0 +1,44 @@
+[
+  {
+    "key": "BeatyKenett2023",
+    "title": "Associative thinking at the core of creativity",
+    "authors": "Beaty & Kenett",
+    "year": "2023",
+    "publication": "Trends in Cognitive Sciences",
+    "doi": "10.1016/j.tics.2023.04.004",
+    "status": "anchor",
+    "annotations": [
+      {
+        "text": "According to the associative theory of creativity, what distinguishes more creative people is their capacity for association, i.e., making new connections between seemingly unrelated concepts stored in memory.",
+        "page": 4,
+        "note": "Core definition of associative theory"
+      },
+      {
+        "text": "A higher creative person has connections of similar strength between both common and uncommon concepts, facilitating the bypass of conventional associations to make novel/remote associations.",
+        "page": 4,
+        "note": "Structural signature of creativity"
+      },
+      {
+        "text": "The associative theory has received mixed empirical support, largely due to challenges in representing semantic memory structure.",
+        "page": 4,
+        "note": "Key limitation - validates moderate confidence"
+      }
+    ]
+  },
+  {
+    "key": "DeDeyne2019",
+    "title": "The Small World of Words English word association norms",
+    "authors": "De Deyne, Navarro, Perfors, Brysbaert & Storms",
+    "year": "2019",
+    "publication": "Behavior Research Methods",
+    "doi": "10.3758/s13428-018-1115-7",
+    "status": "anchor",
+    "annotations": [
+      {
+        "text": "Word association patterns exhibit stable individual differences across over 12,000 cue words.",
+        "page": 987,
+        "note": "Foundation for individual variation claim"
+      }
+    ]
+  }
+]
