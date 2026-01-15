@@ -100,25 +100,30 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       color: var(--gold);
     }
 
-    .article-meta-confidence-group {
+    .article-meta-status-group {
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
 
-    .article-meta-confidence-text {
+    .article-meta-status-text {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      color: var(--faded);
     }
 
-    .confidence-dot {
+    .status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       display: inline-block;
       flex-shrink: 0;
+    }
+
+    .status-dot.published {
+      background: var(--success);
       animation: pulse 2s infinite;
     }
 
@@ -164,6 +169,17 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       color: var(--faded);
       font-style: italic;
       line-height: 1.5;
+      margin-bottom: var(--space-md);
+    }
+
+    .confidence-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.35rem 0.6rem;
+      border: 1px solid currentColor;
     }
 
     /* Article content styling */
@@ -302,9 +318,9 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       <div class="article-meta-row">
         <span class="article-meta-id">{data.id}</span>
         <a href="/library/" class="article-meta-center article-meta-link">Research Synthesis</a>
-        <div class="article-meta-confidence-group">
-          <span class="article-meta-confidence-text" style={`color: ${confidenceColors[data.confidence]}`}>{confidenceLabel} Confidence</span>
-          <span class="confidence-dot" style={`background: ${confidenceColors[data.confidence]}`}></span>
+        <div class="article-meta-status-group">
+          <span class="article-meta-status-text">Published</span>
+          <span class="status-dot published"></span>
         </div>
       </div>
       <div class="article-meta-row">
@@ -317,6 +333,9 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       <header class="article-header">
         <h1>{data.title}</h1>
         <p class="question">{data.question}</p>
+        <div class="confidence-badge" style={`color: ${confidenceColors[data.confidence]}; border-color: ${confidenceColors[data.confidence]}`}>
+          {confidenceLabel} Confidence
+        </div>
       </header>
 
       <article class="article-content">
