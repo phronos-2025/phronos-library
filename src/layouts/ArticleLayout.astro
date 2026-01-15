@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/global/Nav.astro';
+import Footer from '../components/global/Footer.astro';
 
 interface Props {
   article: CollectionEntry<'library'>;
@@ -14,7 +16,8 @@ const confidenceColors = {
   high: 'var(--success)',
   moderate: 'var(--warning)',
   low: 'var(--alert)',
-  mixed: 'var(--gold)'
+  mixed: 'var(--gold)',
+  unknown: 'var(--faded)'
 };
 ---
 
@@ -47,25 +50,50 @@ const confidenceColors = {
   })} />
 
   <style>
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--ink);
+      color: var(--white);
+      padding: var(--space-sm) var(--space-md);
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
     .page-container {
       max-width: 800px;
       margin: 0 auto;
       padding: var(--space-xl) 5%;
     }
 
-    nav {
+    .breadcrumb {
       font-family: var(--font-mono);
       font-size: var(--text-xs);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: var(--space-xl);
+      margin-bottom: var(--space-lg);
     }
 
-    .nav-link {
-      margin-right: var(--space-md);
+    .breadcrumb a {
+      color: var(--faded);
+      text-decoration: none;
     }
 
-    header {
+    .breadcrumb a:hover {
+      color: var(--gold);
+    }
+
+    .breadcrumb span {
+      color: var(--faded);
+      margin: 0 var(--space-sm);
+    }
+
+    .article-header {
       margin-bottom: var(--space-xl);
       padding-bottom: var(--space-lg);
       border-bottom: var(--border-divider);
@@ -99,7 +127,7 @@ const confidenceColors = {
       border-radius: 50%;
     }
 
-    header h1 {
+    .article-header h1 {
       font-size: var(--text-xl);
       margin-bottom: var(--space-md);
     }
@@ -113,13 +141,17 @@ const confidenceColors = {
     }
 
     /* Article content styling */
-    main {
+    .article-content {
       font-family: var(--font-body);
       font-size: var(--text-base);
       line-height: 1.8;
     }
 
-    main h2 {
+    .article-content h1 {
+      display: none; /* Hide duplicate h1 from markdown */
+    }
+
+    .article-content h2 {
       font-family: var(--font-display);
       font-size: var(--text-lg);
       margin-top: var(--space-xl);
@@ -128,7 +160,7 @@ const confidenceColors = {
       border-bottom: var(--border-divider);
     }
 
-    main h3 {
+    .article-content h3 {
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-style: italic;
@@ -136,11 +168,11 @@ const confidenceColors = {
       margin-bottom: var(--space-sm);
     }
 
-    main p {
+    .article-content p {
       margin-bottom: var(--space-md);
     }
 
-    main blockquote {
+    .article-content blockquote {
       border-left: 3px solid var(--gold);
       padding: var(--space-md);
       padding-left: var(--space-md);
@@ -150,21 +182,31 @@ const confidenceColors = {
       font-style: italic;
     }
 
-    main ul, main ol {
+    .article-content ul, .article-content ol {
       margin-bottom: var(--space-md);
       padding-left: var(--space-lg);
     }
 
-    main li {
+    .article-content li {
       margin-bottom: var(--space-sm);
     }
 
-    main a {
+    .article-content a {
       color: var(--gold);
     }
 
-    main a:hover {
+    .article-content a:hover {
       color: var(--ink);
+    }
+
+    .article-content hr {
+      border: none;
+      border-top: var(--border-divider);
+      margin: var(--space-xl) 0;
+    }
+
+    .article-content strong {
+      font-weight: 600;
     }
 
     /* Source cards */
@@ -197,7 +239,7 @@ const confidenceColors = {
       margin: var(--space-lg) 0;
     }
 
-    footer {
+    .article-footer {
       margin-top: var(--space-xl);
       padding-top: var(--space-lg);
       border-top: var(--border-divider);
@@ -208,7 +250,7 @@ const confidenceColors = {
       color: var(--faded);
     }
 
-    footer p {
+    .article-footer p {
       margin-bottom: var(--space-sm);
     }
 
@@ -221,33 +263,41 @@ const confidenceColors = {
   </style>
 </head>
 <body>
-  <div class="page-container">
-    <nav>
-      <a href="/library/" class="nav-link">Library Index</a>
-      <a href="https://phronos.org/instruments" class="nav-link">Instruments</a>
-    </nav>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <Nav currentPage="article" />
 
-    <header>
-      <div class="meta-bar">
-        <span class="confidence-badge" style={`color: ${confidenceColors[data.confidence]}`}>
-          <span class="confidence-dot" style={`background: ${confidenceColors[data.confidence]}`}></span>
-          {data.confidence} confidence
-        </span>
-        <span>{data.sources} sources</span>
-        <span>Updated {data.updated}</span>
-      </div>
-      <h1>{data.title}</h1>
-      <p class="question">{data.question}</p>
-    </header>
+  <main id="main-content">
+    <div class="page-container">
+      <nav class="breadcrumb">
+        <a href="/library/">Library Index</a>
+        <span>&middot;</span>
+        <a href="https://instruments.phronos.org">Instruments</a>
+      </nav>
 
-    <main>
-      <slot />
-    </main>
+      <header class="article-header">
+        <div class="meta-bar">
+          <span class="confidence-badge" style={`color: ${confidenceColors[data.confidence]}`}>
+            <span class="confidence-dot" style={`background: ${confidenceColors[data.confidence]}`}></span>
+            {data.confidence} confidence
+          </span>
+          <span>{data.sources} sources</span>
+          <span>Updated {data.updated}</span>
+        </div>
+        <h1>{data.title}</h1>
+        <p class="question">{data.question}</p>
+      </header>
 
-    <footer>
-      <p>Part of the <a href="/library/">Phronos Library</a> &mdash; research synthesis for cognitive self-observation.</p>
-      <p>Article ID: {data.id} | Status: {data.status}</p>
-    </footer>
-  </div>
+      <article class="article-content">
+        <slot />
+      </article>
+
+      <footer class="article-footer">
+        <p>Part of the <a href="/library/">Phronos Library</a> &mdash; research synthesis for cognitive self-observation.</p>
+        <p>Article ID: {data.id} | Status: {data.status}</p>
+      </footer>
+    </div>
+  </main>
+
+  <Footer showSubscribe={true} />
 </body>
 </html>

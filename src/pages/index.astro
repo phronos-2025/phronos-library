@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/global/Nav.astro';
+import Footer from '../components/global/Footer.astro';
 
 const articles = await getCollection('library');
 const sortedArticles = articles.sort((a, b) => {
@@ -37,26 +39,60 @@ const confidenceColors = {
   </script>
 
   <style>
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--ink);
+      color: var(--white);
+      padding: var(--space-sm) var(--space-md);
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
     .page-container {
       max-width: 800px;
       margin: 0 auto;
       padding: var(--space-xl) 5%;
     }
 
-    header {
+    .page-header {
       margin-bottom: var(--space-xl);
     }
 
-    h1 {
-      margin-bottom: var(--space-sm);
-    }
-
-    .subtitle {
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
       font-family: var(--font-mono);
       font-size: var(--text-sm);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--faded);
+      margin-bottom: var(--space-md);
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+    }
+
+    h1 {
+      margin-bottom: var(--space-md);
+    }
+
+    .subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: var(--faded);
+      line-height: 1.5;
     }
 
     .intro {
@@ -144,59 +180,47 @@ const confidenceColors = {
     .status-drafting {
       opacity: 0.6;
     }
-
-    footer {
-      margin-top: var(--space-xl);
-      padding-top: var(--space-lg);
-      border-top: var(--border-divider);
-      font-family: var(--font-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--faded);
-    }
-
-    footer p {
-      margin-bottom: var(--space-sm);
-    }
   </style>
 </head>
 <body>
-  <div class="page-container">
-    <header>
-      <h1>Phronos Library</h1>
-      <p class="subtitle">Research synthesis for cognitive self-observation</p>
-    </header>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <Nav currentPage="library" />
 
-    <div class="intro">
-      <p>The Library is a curated synthesis of research relevant to measuring cognitive phenotypes from conversational data. Each article answers one question and grows incrementally as evidence accumulates.</p>
-      <p>Articles are organized by <strong>testable hypotheses</strong> with explicit confidence levels. This is living documentation that tracks what we know, what we don't, and what remains to be tested.</p>
-      <p>The Library supports the development of <a href="https://phronos.org/instruments">Instruments</a> for cognitive self-assessment.</p>
+  <main id="main-content">
+    <div class="page-container">
+      <header class="page-header">
+        <div class="section-label">Research Synthesis</div>
+        <h1>Library</h1>
+        <p class="subtitle">A curated synthesis of research relevant to measuring cognitive phenotypes from conversational data.</p>
+      </header>
+
+      <div class="intro">
+        <p>Each article answers one question and grows incrementally as evidence accumulates.</p>
+        <p>Articles are organized by <strong>testable hypotheses</strong> with explicit confidence levels. This is living documentation that tracks what we know, what we don't, and what remains to be tested.</p>
+        <p>The Library supports the development of <a href="https://instruments.phronos.org">Instruments</a> for cognitive self-assessment.</p>
+      </div>
+
+      <ul class="articles-list">
+        {sortedArticles.map((article) => (
+          <li class={`article-card ${article.data.status === 'drafting' ? 'status-drafting' : ''}`}>
+            <a href={`/library/${article.data.articleSlug}/`}>
+              <h2>{article.data.id}: {article.data.title}</h2>
+              <p class="question">{article.data.question}</p>
+              <div class="article-meta">
+                <span class="confidence-badge" style={`color: ${confidenceColors[article.data.confidence]}`}>
+                  <span class="confidence-dot" style={`background: ${confidenceColors[article.data.confidence]}`}></span>
+                  {article.data.confidence}
+                </span>
+                <span>{article.data.sources} sources</span>
+                <span>{article.data.status}</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
+  </main>
 
-    <ul class="articles-list">
-      {sortedArticles.map((article) => (
-        <li class={`article-card ${article.data.status === 'drafting' ? 'status-drafting' : ''}`}>
-          <a href={`/library/${article.data.articleSlug}/`}>
-            <h2>{article.data.id}: {article.data.title}</h2>
-            <p class="question">{article.data.question}</p>
-            <div class="article-meta">
-              <span class="confidence-badge" style={`color: ${confidenceColors[article.data.confidence]}`}>
-                <span class="confidence-dot" style={`background: ${confidenceColors[article.data.confidence]}`}></span>
-                {article.data.confidence}
-              </span>
-              <span>{article.data.sources} sources</span>
-              <span>{article.data.status}</span>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <footer>
-      <p>Part of <a href="https://phronos.org">Phronos</a> &mdash; tools for cognitive self-observation.</p>
-      <p>See also: <a href="https://phronos.org/instruments">Instruments</a></p>
-    </footer>
-  </div>
+  <Footer showSubscribe={true} />
 </body>
 </html>

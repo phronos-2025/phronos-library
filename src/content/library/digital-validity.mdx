@@ -3,19 +3,22 @@ id: LIB-002
 articleSlug: digital-validity
 title: "Digital Validity"
 question: "Under what conditions can chat data serve as valid proxies for cognitive states?"
-status: drafting
+status: published
 confidence: moderate
-sources: 13
+sources: 19
 updated: "2026-01-15"
 tier: 2
 depends_on: ["LIB-001"]
 supports: ["INS-001", "LIB-008"]
 hypotheses:
+  - id: H1.7
+    claim: "Embedding cosine similarity approximates human semantic relatedness judgments"
+    confidence: moderate
+  - id: H1.8
+    claim: "Mean pairwise semantic distance measures divergent thinking"
+    confidence: moderate
   - id: H2.1
     claim: "Chat data has ecological validity for certain constructs"
-    confidence: moderate
-  - id: H2.2
-    claim: "Anonymity alters self-disclosure patterns"
     confidence: moderate
   - id: H2.3
     claim: "Test-retest reliability is acceptable"
@@ -35,69 +38,120 @@ hypotheses:
 
 **Question:** Under what conditions can chat data serve as valid proxies for cognitive states?
 
-This article synthesizes research on the validity of digital behavioral traces—particularly conversational data—as measures of cognitive constructs. It establishes the conditions under which chat-derived measures can be trusted, identifies critical gaps, and distinguishes between task-based assessment (structured prompts) and naturalistic measurement (inferred from unstructured conversation).
+This article synthesizes research on the validity of digital behavioral traces—particularly conversational data—as measures of cognitive constructs. It grounds the measurement approach used in INS-001 (semantic divergence scoring) and identifies conditions under which chat-derived measures can be trusted.
 
 ---
 
 ## Synthesis
 
-### Ecological Validity of Digital Traces
+### Foundational Claims
 
-Digital phenotyping—the use of data from digital interactions to infer psychological states—has emerged as a paradigm for measurement with high ecological validity. Unlike laboratory tasks that assess cognition in artificial contexts, digital traces capture behavior as it naturally occurs.
+Digital phenotyping proposes that behavioral traces from digital interactions encode psychological states with ecological validity exceeding laboratory tasks. The claim is not trivial—it requires that linguistic behavior reflect cognition, not merely communicative performance.
 
-The semantic structure of language use provides a window into cognition. Thompson, Roberts & Lupyan (2020) demonstrated that semantic alignment—how word meanings cluster—varies predictably across cultures and languages, with alignment patterns reflecting "cultural, historical and geographical factors" (p. 6). This finding suggests that linguistic behavior encodes meaningful variation, not just noise.
+The semantic structure of language use provides a window into cognition. Thompson, Roberts & Lupyan (2020) demonstrated that semantic alignment—how word meanings cluster—varies predictably across cultures and languages, with alignment patterns reflecting "cultural, historical and geographical factors" (p. 6). Distributional semantics operates on the principle that "it is possible to understand the meaning of words by observing the contexts in which they are used—'you shall know a word by the company it keeps'" (p. 2). This approach underlies both traditional corpus analysis and modern embedding-based assessment.
 
-For cognitive assessment specifically, distributional semantics offers a principled approach. As Thompson et al. note, distributional semantics operates on the principle that "it is possible to understand the meaning of words by observing the contexts in which they are used—'you shall know a word by the company it keeps'" (p. 2). This approach underlies both traditional corpus analysis and modern embedding-based assessment.
+This section grounds F1 (cognitive phenotypes are real and measurable) and F2 (chat data reveals cognition, not just communication).
 
-**Confidence:** Moderate. The paradigm is established for population-level analysis; individual-level validity requires demonstration.
+**Confidence:** Moderate for population-level analysis; individual-level validity requires demonstration.
 
-### Task-Based vs. Naturalistic Assessment
+### Embedding Validity for Semantic Distance
 
-A critical distinction for digital validity is whether cognitive constructs are measured through structured tasks or inferred from naturalistic behavior. Each modality has different validity properties.
+The core assumption underlying INS-001 is that cosine similarity in embedding space approximates human semantic distance judgments. This section evaluates that assumption.
 
-**Task-based assessment** (e.g., word association tasks, divergent thinking prompts) elicits behavior under controlled conditions. Merseal et al. (2025) found that even highly creative individuals—"world-renowned visual artists and scientists"—show differential performance depending on task constraints: "artists generated more distant associations overall, this effect was driven by substantially more distant responses in the free association condition" (p. 7). This suggests that task structure influences what is measured.
+**Validation against human judgments.** Reimers & Gurevych (2019) evaluated Sentence-BERT embeddings against semantic textual similarity (STS) benchmarks, demonstrating that cosine similarity in embedding space correlates with human similarity judgments. The approach "outperforms other state-of-the-art sentence embeddings methods" on STS tasks while enabling efficient computation—reducing pairwise comparison from 65 hours to 5 seconds for 10,000 sentences.
+
+**Similarity vs. relatedness.** Hill, Reichart & Korhonen (2015) introduced SimLex-999, a benchmark that explicitly distinguishes similarity from association. They note that "the psychological literature refers to the conceptual relationship between these concepts as association, although it has been given a range of names including relatedness (Budanitsky and Hirst 2006)" (p. 666). The distinction matters: embeddings trained on distributional statistics capture association/relatedness better than strict taxonomic similarity. SimLex-999 provides a gold standard where "pairs of entities that are associated but not actually similar (Freud, psychology) have a low rating."
+
+**Benchmarking semantic measures.** Budanitsky & Hirst (2006) systematically evaluated WordNet-based measures of lexical semantic relatedness against human judgment, establishing methodological standards for validating computational semantic measures.
+
+**Cognitive process alignment.** Auguste, Rey & Favre (2017) evaluated word embeddings against cognitive processes using primed reaction times in lexical decision and naming tasks. They found that "GloVe embeddings lead to significantly higher correlation with experimental measurements than other controlled and off-the-shelf embeddings" and that "the cognitive phenomenon covers more aspects than simply word relatedness or similarity."
+
+This matters for INS-001 because the instrument measures associative spread, not categorical similarity. Embeddings are well-suited to capture the former.
+
+**Limitation.** Embeddings trained on corpus statistics encode cultural biases and frequency effects. Thompson et al. (2020) found that alignment patterns reflect "cultural, historical and geographical factors"—the same property that makes embeddings useful for measuring individual differences also means they are not culture-neutral.
+
+**Confidence:** Moderate. Validation exists for general semantic relatedness; application to individual-difference measurement in cognitive assessment requires further demonstration. Supports H1.7.
+
+### Divergent Thinking via Semantic Distance
+
+The Divergent Association Task (DAT) operationalizes a specific claim: that the capacity to generate semantically distant associations—divergent thinking—is measurable via mean pairwise embedding distance and correlates with broader creative ability.
+
+**The DAT methodology.** Olson et al. (2021) asked 8,914 participants to name 10 words "as different from each other as possible." A computational algorithm estimated mean pairwise semantic distance between words; related words (e.g., cat and dog) have shorter distances than unrelated ones (e.g., cat and thimble). The task takes approximately 4 minutes.
+
+**Validation.** Semantic distance showed "moderate to strong correlations" with two established creativity measures (Alternative Uses Task and Bridge-the-Associative-Gap Task). Performance correlated r ≈ 0.40 with composite creativity scores. Critically, "semantic distance correlated at least as strongly with established creativity measures as those measures did with each other." Across 98 countries, distances varied only slightly by demographic variables.
+
+**Complementary network methodology.** Kenett et al. (2018) used percolation analysis to show that creative individuals have more robust semantic networks, with "stronger links connecting between different components of similar semantic words" (p. 867). Both approaches—mean pairwise distance and network analysis—measure semantic spread.
+
+**Associative thinking and creativity.** Beaty & Kenett (2023) synthesize evidence that "higher creative people are more associative in their thinking: they generate a broader, more idiosyncratic set of associative responses compared to less creative people" (p. 8). This pattern emerges across measurement approaches.
+
+**Bounded validity.** Said-Metwaly et al. (2024) provide a critical caveat: the meta-analytic correlation between divergent thinking (DT) and creative achievement (CA) is r = .18, with "only 3% of variance shared between DT and CA" (p. 18). Divergence measures capture a meaningful component of creativity without exhausting it.
+
+**Confidence:** Moderate for divergence as creativity component; the construct is validated but bounded. Supports H1.8.
+
+### Ecological vs. Task-Based Validity
+
+A critical distinction for digital validity is whether cognitive constructs are measured through structured tasks or inferred from naturalistic behavior. INS-001 uses task-based assessment (structured prompts, embedding-scored responses), positioning it differently from naturalistic chat-derived measurement.
+
+**Task-based assessment** elicits behavior under controlled conditions. Merseal et al. (2025) found that even highly creative individuals—"world-renowned visual artists and scientists"—show differential performance depending on task constraints: "artists generated more distant associations overall, this effect was driven by substantially more distant responses in the free association condition" (p. 7). Task structure shapes what is measured.
 
 **Naturalistic assessment** infers constructs from unstructured interaction. The advantage is ecological validity; the challenge is construct validity. Beaty & Kenett (2023) note that free association "has been studied for nearly 150 years, largely viewed as a window into the unconscious mind" (p. 5), but extracting reliable individual differences from such open-ended behavior requires careful methodology.
 
-The meta-analysis by Said-Metwaly et al. (2024) provides a cautionary finding: divergent thinking (DT) correlates only weakly with creative achievement (CA), with "only 3% of variance shared between DT and CA" (p. 18). This suggests that task-based measures, even well-validated ones, may not fully capture the constructs they target.
+**Convergent validity question (H2.6).** The convergent validity question asks whether task-based semantic assessment and naturalistic chat-derived measures capture the same constructs. If they diverge, each modality may have distinct validity properties—task-based measures offering standardization and comparability, naturalistic measures offering ecological fidelity. INS-001's constrained format (generate clues related to a seed/pair) may capture different variance than unconstrained association.
 
-**Confidence:** Low for convergent validity between modalities. This is a critical empirical question (H2.6).
+**Confidence:** Low for convergent validity between modalities. This is a priority empirical question.
 
-### Semantic Network Structure as Individual Difference
+### Reliability and Stability
 
-The most promising approach to digital validity may be semantic network analysis—measuring the structure of associations between concepts rather than single responses. Multiple lines of evidence support semantic structure as a stable individual difference:
+The reliability of embedding-based semantic distance measures remains undercharacterized. This gap is critical: without reliability evidence, distinguishing true cognitive change from measurement error is not possible.
 
-Kenett et al. (2018) showed that creative individuals have more robust semantic networks, with "stronger links connecting between different components of similar semantic words" (p. 867). Critically, this structural property predicted creative ability, not just task performance.
+**Divergent thinking scoring reliability.** Silvia et al. (2008) examined reliability and validity of subjective scoring methods for divergent thinking tasks. Their generalizability analysis showed that "subjective ratings of unusual-uses tasks and instances tasks yield dependable scores with only 2 or 3 raters" (p. 68). However, this addresses inter-rater reliability for human-scored responses, not test-retest reliability for embedding-based automated scoring.
 
-Beaty & Kenett (2023) synthesize evidence that "higher creative people are more associative in their thinking: they generate a broader, more idiosyncratic set of associative responses compared to less creative people" (p. 8). This pattern emerges across multiple measurement approaches.
+**DAT reliability.** Olson et al. (2021) demonstrated convergent validity but published test-retest coefficients are not readily available in the primary publication.
 
-Abramski et al. (2025) extended semantic network methodology to compare humans and LLMs, demonstrating that network analysis can capture "implicit relational structures" with "interpretable pathways of associations" (p. 18). Notably, they found both convergences and divergences between human and LLM semantic structures—relevant for human-AI interaction research.
+**Network stability.** Kenett et al. (2018) found stable network structure differences between creative groups, suggesting the underlying construct has temporal stability. However, this is between-group stability, not individual-level test-retest reliability.
 
-**Confidence:** Moderate for semantic structure as meaningful individual difference. The methodology is established; validation for chat-derived measures specifically is needed.
+**Evidence gap.** No published test-retest coefficients exist for embedding-based semantic distance measures in individual-difference assessment. INS-001 could contribute longitudinal data if participants complete assessments at multiple timepoints. This gap blocks claims about tracking cognitive change over time (H8.4).
 
-### Cross-Cultural and Cross-Platform Concerns
+**Confidence:** Unknown. This gap must be addressed before downstream work can proceed. Supports H2.3.
 
-A significant validity threat is whether measures generalize across contexts. Thompson et al. (2020) found that "cultural and linguistic contexts strongly shape the structure of cognitive memory networks" (p. 20), raising questions about cross-cultural validity.
+### Generalization Concerns
 
-For Phronos specifically, this translates to H2.4: do cognitive phenotypes identified in one AI system (e.g., ChatGPT) transfer to interactions with other systems? The evidence base is currently thin.
+Validity threats include cross-platform generalization (H2.4), cross-cultural differences (H7.2), and selection effects (H2.5).
 
-**Confidence:** Unknown for cross-platform generalization. High that selection effects exist.
+**Cross-cultural validity.** Thompson et al. (2020) found that "cultural and linguistic contexts strongly shape the structure of cognitive memory networks" (p. 20). Semantic alignment patterns differ systematically across languages and cultures. Measures validated in one cultural context may not transfer.
 
-### Test-Retest Reliability
+**Cross-platform validity.** Abramski et al. (2025) compared human and LLM semantic structures using word association network methodology, demonstrating that network analysis can capture "implicit relational structures" with "interpretable pathways of associations" (p. 18). They found both convergences and divergences between human and LLM semantic structures. If human semantic networks differ from LLM networks, and LLMs vary, then human phenotypes measured in interaction with one LLM may not transfer to others.
 
-Perhaps the most critical unknown for digital validity is reliability. H2.3 asks whether cognitive phenotype measurements show acceptable test-retest reliability across sessions.
+**Selection effects.** The population generating AI chat data—particularly power users—differs systematically from general populations in ways that affect prevalence estimates. WildChat power user analysis (DSP-001) characterizes these differences. Selection effects are characterizable but not eliminable; any reference class must specify its scope.
 
-The creativity literature provides mixed signals. Said-Metwaly et al. (2024) note significant heterogeneity in the DT-CA link across studies, suggesting measurement instability. However, Kenett et al. (2018) found stable network structure differences between creative groups.
-
-For chat-derived measures specifically, no direct evidence exists. This is a priority empirical question.
-
-**Confidence:** Unknown. This gap must be addressed before downstream work can proceed.
+**Confidence:** High that selection effects exist; moderate that adjustment is possible; unknown for cross-platform generalization.
 
 ---
 
 ## Sources
 
 ### Anchor Papers
+
+**Olson et al. 2021** — Naming unrelated words predicts creativity
+*PNAS* · [DOI](https://doi.org/10.1073/pnas.2022340118)
+
+Validation of the Divergent Association Task (DAT). Mean pairwise semantic distance correlates r ≈ 0.40 with composite creativity across established measures. Provides the methodological foundation for divergence scoring.
+
+---
+
+**Reimers & Gurevych 2019** — Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks
+*EMNLP 2019* · [arXiv:1908.10084](https://arxiv.org/abs/1908.10084)
+
+Validates sentence embeddings against semantic textual similarity benchmarks. Establishes that cosine similarity in embedding space approximates human semantic relatedness judgments.
+
+---
+
+**Hill et al. 2015** — SimLex-999: Evaluating Semantic Models with (Genuine) Similarity Estimation
+*Computational Linguistics* · [DOI](https://doi.org/10.1162/COLI_a_00237)
+
+Distinguishes similarity from relatedness in embedding evaluation. Establishes benchmark for evaluating whether computational models capture semantic relationships as humans judge them.
+
+---
 
 **Beaty & Kenett 2023** — Associative thinking at the core of creativity
 *Trends in Cognitive Sciences* · [DOI](https://doi.org/10.1016/j.tics.2023.04.004)
@@ -116,18 +170,20 @@ Demonstrates percolation analysis of semantic networks as quantitative measure o
 **Said-Metwaly et al. 2024** — Divergent thinking and creative achievement
 *Psychology of Aesthetics, Creativity, and the Arts* · [DOI](https://doi.org/10.1037/aca0000507)
 
-Meta-analysis (N=14,901) finding weak DT-CA link (r=.18, 3% shared variance). Critical evidence that task-based measures may not fully capture target constructs.
+Meta-analysis (N=14,901) finding weak DT-CA link (r=.18, 3% shared variance). Critical evidence that task-based measures capture meaningful but bounded variance.
 
 ---
 
 ### Supporting Sources
 
+- **Budanitsky & Hirst 2006** — Evaluating WordNet-based Measures of Lexical Semantic Relatedness. *Computational Linguistics*. [DOI](https://doi.org/10.1162/coli.2006.32.1.13)
+- **Silvia et al. 2008** — Assessing Creativity With Divergent Thinking Tasks. *Psychology of Aesthetics, Creativity, and the Arts*. [DOI](https://doi.org/10.1037/1931-3896.2.2.68)
+- **Auguste et al. 2017** — Evaluation of word embeddings against cognitive processes. *CogACLL 2017*. [ACL](http://aclweb.org/anthology/W17-5304)
+- **Thompson et al. 2020** — Cultural influences on word meanings. *Nature Human Behaviour*. [DOI](https://doi.org/10.1038/s41562-020-0924-8)
 - **Abramski et al. 2025** — Word association network methodology for evaluating biases in LLMs
-- **Thompson et al. 2020** — Cultural influences on word meanings (Nature Human Behaviour)
 - **Merseal et al. 2025** — Free association in Big-C creativity
-- **Reimers & Gurevych 2019** — Sentence-BERT embedding validation
 - **Gerwig et al. 2021** — Intelligence and divergent thinking meta-analysis
-- **Vicente & Matute 2023** — Humans inherit AI biases (Scientific Reports)
+- **Vicente & Matute 2023** — Humans inherit AI biases. *Scientific Reports*
 
 ---
 
@@ -135,14 +191,19 @@ Meta-analysis (N=14,901) finding weak DT-CA link (r=.18, 3% shared variance). Cr
 
 ### Critical Unknowns
 
-- **Test-retest reliability (H2.3)**: No direct evidence for chat-derived measures
-- **Cross-platform generalization (H2.4)**: Untested whether phenotypes transfer across AI systems
-- **Task-naturalistic convergence (H2.6)**: Do structured tasks and open chat measure the same constructs?
+**Test-retest reliability (H2.3):** No published reliability coefficients for embedding-based semantic distance measures in individual-difference assessment. INS-001 could contribute longitudinal data if participants complete assessments at multiple timepoints. This gap blocks claims about tracking cognitive change over time.
 
-### Weak Evidence
+**Cross-platform generalization (H2.4):** Untested whether phenotypes identified in one AI system transfer to interactions with other systems. The Abramski et al. finding of human-LLM divergence suggests this is not guaranteed.
 
-- Selection effects in AI chat users (high that effects exist, limited characterization)
-- Anonymity effects on disclosure (theoretical support, limited empirical demonstration)
+**Task-naturalistic convergence (H2.6):** Do structured tasks and open chat measure the same constructs? If not, each modality has distinct validity properties. INS-001 data combined with naturalistic chat analysis could address this directly.
+
+### Partially Addressed
+
+**Embedding validity (H1.7):** Supported by STS benchmark validation (Reimers & Gurevych) and cognitive process correlation (Auguste et al.), but application to individual-difference measurement requires further demonstration.
+
+**Divergence as creativity component (H1.8):** Supported by DAT validation (Olson et al.) with r ≈ 0.40 correlation. Bounded by weak DT-CA link (Said-Metwaly et al.).
+
+**Selection effects (H2.5):** High confidence that effects exist; characterization in progress via DSP-001.
 
 ### Out of Scope
 
@@ -156,4 +217,20 @@ Meta-analysis (N=14,901) finding weak DT-CA link (r=.18, 3% shared variance). Cr
 
 | Date | Change |
 |------|--------|
+| 2026-01-15 | Major revision: added embedding validity section, DAT/divergent thinking section, restructured per LIB-002-revision-prompt |
 | 2026-01-15 | Initial synthesis from Zotero Report - LIB-002 Semantic Networks |
+
+---
+
+## Motivates
+
+This research synthesis informs the following methods and instruments:
+
+### Methods
+
+- **[MTH-001: Observational Chat Analysis](https://phronos.org/methods/observational-chat-analysis/)** — Framework for analyzing real-world human-AI conversations at scale. Applies the ecological validity principles established here.
+- **MTH-002: Structured Assessment Protocol** — *Coming soon.* Task-based measurement protocol applying DAT-style divergent thinking assessment.
+
+### Instruments
+
+- **[INS-001: Semantic Divergence](https://instruments.phronos.org)** — Measures associative breadth through embedding-based semantic distance scoring. Directly implements the validity framework from this synthesis.
