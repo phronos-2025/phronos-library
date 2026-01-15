@@ -19,6 +19,16 @@ const confidenceColors = {
   mixed: 'var(--gold)',
   unknown: 'var(--faded)'
 };
+
+// Format the date
+const formattedDate = new Date(data.updated).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// Capitalize confidence
+const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidence.slice(1);
 ---
 
 <!DOCTYPE html>
@@ -50,66 +60,97 @@ const confidenceColors = {
   })} />
 
   <style>
-    .page-container {
+    /* Meta bar - matches Methods styling */
+    .article-meta-bar {
       max-width: 800px;
       margin: 0 auto;
-      padding: var(--space-xl) 5%;
+      padding: 4rem 5% 1.5rem;
     }
 
-    .breadcrumb {
+    .article-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .article-meta-row + .article-meta-row {
+      margin-top: 0.25rem;
+    }
+
+    .article-meta-id {
       font-family: var(--font-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-lg);
-    }
-
-    .breadcrumb a {
-      color: var(--faded);
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
+      font-size: 0.75rem;
       color: var(--gold);
     }
 
-    .breadcrumb span {
+    .article-meta-center {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: var(--faded);
-      margin: 0 var(--space-sm);
+    }
+
+    .article-meta-link {
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .article-meta-link:hover {
+      color: var(--gold);
+    }
+
+    .article-meta-confidence-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .article-meta-confidence-text {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .confidence-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .article-meta-sources {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--faded);
+    }
+
+    .article-meta-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--faded);
+    }
+
+    /* Article header */
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 5% var(--space-xl);
     }
 
     .article-header {
       margin-bottom: var(--space-xl);
       padding-bottom: var(--space-lg);
       border-bottom: var(--border-divider);
-    }
-
-    .meta-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      align-items: center;
-      margin-bottom: var(--space-md);
-      font-family: var(--font-mono);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--faded);
-    }
-
-    .confidence-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      padding: var(--space-xs) var(--space-sm);
-      border: 1px solid currentColor;
-      font-weight: 500;
-    }
-
-    .confidence-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
     }
 
     .article-header h1 {
@@ -139,8 +180,8 @@ const confidenceColors = {
     .article-content h2 {
       font-family: var(--font-display);
       font-size: var(--text-lg);
-      margin-top: var(--space-xl);
-      margin-bottom: var(--space-md);
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
       padding-bottom: var(--space-sm);
       border-bottom: var(--border-divider);
     }
@@ -149,31 +190,35 @@ const confidenceColors = {
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-style: italic;
-      margin-top: var(--space-lg);
-      margin-bottom: var(--space-sm);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
     .article-content p {
-      margin-bottom: var(--space-md);
+      margin-bottom: 1.25rem;
     }
 
     .article-content blockquote {
       border-left: 3px solid var(--gold);
       padding: var(--space-md);
       padding-left: var(--space-md);
-      margin: var(--space-lg) 0;
+      margin: 1.75rem 0;
       background: var(--white);
       color: var(--faded);
       font-style: italic;
     }
 
     .article-content ul, .article-content ol {
-      margin-bottom: var(--space-md);
+      margin-bottom: 1.5rem;
       padding-left: var(--space-lg);
     }
 
     .article-content li {
-      margin-bottom: var(--space-sm);
+      margin-bottom: 0.5rem;
+    }
+
+    .article-content li + li {
+      margin-top: 0.25rem;
     }
 
     .article-content a {
@@ -252,22 +297,24 @@ const confidenceColors = {
   <Nav currentPage="article" />
 
   <main id="main-content">
-    <div class="page-container">
-      <nav class="breadcrumb">
-        <a href="/library/">Library Index</a>
-        <span>&middot;</span>
-        <a href="https://instruments.phronos.org">Instruments</a>
-      </nav>
-
-      <header class="article-header">
-        <div class="meta-bar">
-          <span class="confidence-badge" style={`color: ${confidenceColors[data.confidence]}`}>
-            <span class="confidence-dot" style={`background: ${confidenceColors[data.confidence]}`}></span>
-            {data.confidence} confidence
-          </span>
-          <span>{data.sources} sources</span>
-          <span>Updated {data.updated}</span>
+    <!-- Meta bar above content, matching Methods styling -->
+    <div class="article-meta-bar">
+      <div class="article-meta-row">
+        <span class="article-meta-id">{data.id}</span>
+        <a href="/library/" class="article-meta-center article-meta-link">Research Synthesis</a>
+        <div class="article-meta-confidence-group">
+          <span class="article-meta-confidence-text" style={`color: ${confidenceColors[data.confidence]}`}>{confidenceLabel} Confidence</span>
+          <span class="confidence-dot" style={`background: ${confidenceColors[data.confidence]}`}></span>
         </div>
+      </div>
+      <div class="article-meta-row">
+        <span class="article-meta-sources">{data.sources} sources</span>
+        <span class="article-meta-date">{formattedDate}</span>
+      </div>
+    </div>
+
+    <div class="page-container">
+      <header class="article-header">
         <h1>{data.title}</h1>
         <p class="question">{data.question}</p>
       </header>
