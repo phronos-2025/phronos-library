@@ -20,5 +20,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# Zotero reports (copyright/IP sensitive)
+reports/
+
 # jetbrains setting folder
 .idea/
