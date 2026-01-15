@@ -182,18 +182,18 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       border: 1px solid currentColor;
     }
 
-    /* Article content styling */
+    /* Article content styling - use :global() for MDX content */
     .article-content {
       font-family: var(--font-body);
       font-size: var(--text-base);
       line-height: 1.8;
     }
 
-    .article-content h1 {
-      display: none; /* Hide duplicate h1 from markdown */
+    .article-content :global(h1) {
+      display: none !important; /* Hide duplicate h1 from markdown */
     }
 
-    .article-content h2 {
+    .article-content :global(h2) {
       font-family: var(--font-display);
       font-size: var(--text-lg);
       margin-top: 3.5rem;
@@ -202,7 +202,7 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       border-bottom: var(--border-divider);
     }
 
-    .article-content h3 {
+    .article-content :global(h3) {
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-style: italic;
@@ -210,11 +210,11 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       margin-bottom: 1rem;
     }
 
-    .article-content p {
+    .article-content :global(p) {
       margin-bottom: 1.75rem;
     }
 
-    .article-content blockquote {
+    .article-content :global(blockquote) {
       border-left: 3px solid var(--gold);
       padding: var(--space-md);
       padding-left: var(--space-md);
@@ -224,34 +224,34 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       font-style: italic;
     }
 
-    .article-content ul, .article-content ol {
+    .article-content :global(ul), .article-content :global(ol) {
       margin-bottom: 2rem;
       padding-left: var(--space-lg);
     }
 
-    .article-content li {
+    .article-content :global(li) {
       margin-bottom: 0.5rem;
     }
 
-    .article-content li + li {
+    .article-content :global(li + li) {
       margin-top: 0.25rem;
     }
 
-    .article-content a {
+    .article-content :global(a) {
       color: var(--gold);
     }
 
-    .article-content a:hover {
+    .article-content :global(a:hover) {
       color: var(--ink);
     }
 
-    .article-content hr {
+    .article-content :global(hr) {
       border: none;
       border-top: var(--border-divider);
       margin: var(--space-xl) 0;
     }
 
-    .article-content strong {
+    .article-content :global(strong) {
       font-weight: 600;
     }
 
