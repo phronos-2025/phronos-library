@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
 
 interface Props {
   article: CollectionEntry<'library'>;
@@ -8,22 +9,22 @@ interface Props {
 const { article } = Astro.props;
 const { data } = article;
 
-// Confidence badge colors
+// Confidence badge colors using Phronos design tokens
 const confidenceColors = {
-  high: '#16a34a',
-  moderate: '#ca8a04',
-  low: '#dc2626',
-  mixed: '#6366f1'
+  high: 'var(--success)',
+  moderate: 'var(--warning)',
+  low: 'var(--alert)',
+  mixed: 'var(--gold)'
 };
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{data.title} | Phronos Library</title>
-  <meta name="description" content={data.question}>
+  <BaseHead
+    title={`${data.title} | Phronos Library`}
+    description={data.question}
+  />
 
   <!-- SEO -->
   <link rel="canonical" href={`https://phronos.org/library/${data.articleSlug}/`}>
@@ -46,171 +47,207 @@ const confidenceColors = {
   })} />
 
   <style>
-    :root {
-      --color-text: #1a1a1a;
-      --color-text-muted: #666;
-      --color-bg: #fff;
-      --color-border: #e5e5e5;
-      --color-accent: #2563eb;
-      --font-sans: system-ui, -apple-system, sans-serif;
-      --font-serif: Georgia, serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      color: var(--color-text);
-      background: var(--color-bg);
-      max-width: 48rem;
+    .page-container {
+      max-width: 800px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
+      padding: var(--space-xl) 5%;
+    }
+
+    nav {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-xl);
+    }
+
+    .nav-link {
+      margin-right: var(--space-md);
     }
 
     header {
-      margin-bottom: 3rem;
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 2rem;
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-lg);
+      border-bottom: var(--border-divider);
     }
 
-    .meta {
+    .meta-bar {
       display: flex;
-      gap: 1rem;
+      flex-wrap: wrap;
+      gap: var(--space-md);
       align-items: center;
-      margin-bottom: 1rem;
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--faded);
     }
 
     .confidence-badge {
-      display: inline-block;
-      padding: 0.125rem 0.5rem;
-      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid currentColor;
       font-weight: 500;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: white;
     }
 
-    h1 {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 1rem;
+    .confidence-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    header h1 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-md);
     }
 
     .question {
-      font-size: 1.25rem;
-      color: var(--color-text-muted);
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: var(--faded);
       font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* Article content styling */
+    main {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.8;
     }
 
     main h2 {
-      font-size: 1.25rem;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 0.5rem;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--border-divider);
     }
 
     main h3 {
-      font-size: 1.1rem;
-      margin-top: 2rem;
-      margin-bottom: 0.75rem;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-style: italic;
+      margin-top: var(--space-lg);
+      margin-bottom: var(--space-sm);
     }
 
     main p {
-      margin-bottom: 1rem;
+      margin-bottom: var(--space-md);
     }
 
     main blockquote {
-      border-left: 3px solid var(--color-accent);
-      padding-left: 1rem;
-      margin: 1.5rem 0;
-      color: var(--color-text-muted);
+      border-left: 3px solid var(--gold);
+      padding: var(--space-md);
+      padding-left: var(--space-md);
+      margin: var(--space-lg) 0;
+      background: var(--white);
+      color: var(--faded);
       font-style: italic;
     }
 
     main ul, main ol {
-      margin-bottom: 1rem;
-      padding-left: 1.5rem;
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-lg);
     }
 
     main li {
-      margin-bottom: 0.5rem;
+      margin-bottom: var(--space-sm);
     }
 
     main a {
-      color: var(--color-accent);
+      color: var(--gold);
     }
 
+    main a:hover {
+      color: var(--ink);
+    }
+
+    /* Source cards */
     .source-card {
-      background: #f9fafb;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
+      background: var(--white);
+      border: var(--border-primary);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
     }
 
     .source-card h4 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      margin-bottom: var(--space-sm);
     }
 
     .source-card .meta {
-      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--faded);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Callout boxes */
+    .callout {
+      background: var(--gold-dim);
+      border: 1px solid var(--gold);
+      padding: var(--space-md);
+      margin: var(--space-lg) 0;
     }
 
     footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--color-border);
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: var(--border-divider);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--faded);
     }
 
-    .nav-link {
-      display: inline-block;
-      margin-right: 1rem;
+    footer p {
+      margin-bottom: var(--space-sm);
+    }
+
+    @media (max-width: 600px) {
+      .meta-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="/library/" class="nav-link">Library Index</a>
-    <a href="https://instruments.phronos.org" class="nav-link">Instruments</a>
-  </nav>
+  <div class="page-container">
+    <nav>
+      <a href="/library/" class="nav-link">Library Index</a>
+      <a href="https://phronos.org/instruments" class="nav-link">Instruments</a>
+    </nav>
 
-  <header>
-    <div class="meta">
-      <span class="confidence-badge" style={`background: ${confidenceColors[data.confidence]}`}>
-        {data.confidence} confidence
-      </span>
-      <span>{data.sources} sources</span>
-      <span>Updated {data.updated}</span>
-    </div>
-    <h1>{data.title}</h1>
-    <p class="question">{data.question}</p>
-  </header>
+    <header>
+      <div class="meta-bar">
+        <span class="confidence-badge" style={`color: ${confidenceColors[data.confidence]}`}>
+          <span class="confidence-dot" style={`background: ${confidenceColors[data.confidence]}`}></span>
+          {data.confidence} confidence
+        </span>
+        <span>{data.sources} sources</span>
+        <span>Updated {data.updated}</span>
+      </div>
+      <h1>{data.title}</h1>
+      <p class="question">{data.question}</p>
+    </header>
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot />
+    </main>
 
-  <footer>
-    <p>Part of the <a href="/library/">Phronos Library</a> — research synthesis for cognitive self-observation.</p>
-    <p>Article ID: {data.id} | Status: {data.status}</p>
-  </footer>
+    <footer>
+      <p>Part of the <a href="/library/">Phronos Library</a> &mdash; research synthesis for cognitive self-observation.</p>
+      <p>Article ID: {data.id} | Status: {data.status}</p>
+    </footer>
+  </div>
 </body>
 </html>
