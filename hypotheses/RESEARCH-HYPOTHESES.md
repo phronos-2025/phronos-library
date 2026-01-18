@@ -526,7 +526,7 @@ Cognitive phenotype causally influences outcomes (performance, fitness, health),
 
 ## Version History
 
-| Date | Change |
-|------|--------|
-| 2026-01-15 | Initial hypothesis specification from Research Goals |
-| 2026-01-15 | Added H1.7, H1.8, H2.6 per INS-001 gap analysis; created per-hypothesis changelog |
+|Version| Date | Change |
+|---|------|--------|
+| 0.2 | 2026-01-15 | Initial hypothesis specification from Research Goals |
+| 0.1 | 2026-01-15 | Added H1.7, H1.8, H2.6 per INS-001 gap analysis; created per-hypothesis changelog |

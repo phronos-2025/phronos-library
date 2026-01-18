@@ -1,0 +1,114 @@
+{
+  "H1.1": {
+    "claim": "Pronoun patterns correlate with psychological states",
+    "status": "supported",
+    "strength": "high",
+    "primary_article": "LIB-001",
+    "key_sources": ["Pennebaker2011", "KoutsoumpisEtAl2022", "IrelandPennebaker2010"],
+    "gap": null
+  },
+  "H1.2": {
+    "claim": "Semantic networks vary across individuals and correlate with creativity",
+    "status": "supported",
+    "strength": "moderate",
+    "primary_article": "LIB-001",
+    "key_sources": ["BeatyKenett2023", "DeDeyne2019", "Kenett2014"],
+    "gap": "Cross-cultural replication; brief-task validity"
+  },
+  "H1.3": {
+    "claim": "Semantic networks can be inferred from chat behavior",
+    "status": "gap",
+    "strength": null,
+    "primary_article": "LIB-001",
+    "key_sources": [],
+    "gap": "No direct studies; hypothesis to test empirically"
+  },
+  "H1.4": {
+    "claim": "Self-concept, values, and beliefs measurable from chat",
+    "status": "partial",
+    "strength": "low",
+    "primary_article": "LIB-001",
+    "key_sources": ["PonizovskiyEtAl2020", "SorensenEtAl2024"],
+    "gap": "Chat-specific validation needed"
+  },
+  "H1.5": {
+    "claim": "Big Five personality traits can be inferred from chat patterns",
+    "status": "partial",
+    "strength": "moderate",
+    "primary_article": "LIB-001",
+    "key_sources": ["KoutsoumpisEtAl2022", "MairesseEtAl2007", "StajnerYenikent2020"],
+    "gap": "Chat-specific validation; effect sizes small"
+  },
+  "H1.6": {
+    "claim": "Reasoning style differences are detectable from chat",
+    "status": "gap",
+    "strength": null,
+    "primary_article": "LIB-001",
+    "key_sources": [],
+    "gap": "No direct studies; hypothesis requiring empirical work"
+  },
+  "H1.7": {
+    "claim": "Embedding distances reflect cognitive semantic distance",
+    "status": "supported",
+    "strength": "moderate",
+    "primary_article": "LIB-001",
+    "key_sources": ["AugusteEtAl2017", "Hill2015", "ReimersGurevych2019"],
+    "gap": "Individual-difference prediction (vs. population average)"
+  },
+  "H1.8": {
+    "claim": "DAT methodology measures divergent thinking",
+    "status": "supported",
+    "strength": "moderate",
+    "primary_article": "LIB-001",
+    "key_sources": ["OlsonEtAl2021"],
+    "gap": "Adaptation to shorter formats (INS-001 uses 5 vs. 10 words)"
+  },
+  "H2.1": {
+    "claim": "Chat data has ecological validity for cognitive patterns",
+    "status": "partial",
+    "strength": "moderate",
+    "primary_article": "LIB-002",
+    "key_sources": ["Insel2017", "Torous2016"],
+    "gap": "Chat-specific validation vs. mobile sensing"
+  },
+  "H2.2": {
+    "claim": "Anonymous chat elicits different self-disclosure",
+    "status": "partial",
+    "strength": "moderate",
+    "primary_article": "LIB-002",
+    "key_sources": [],
+    "gap": "Needs empirical demonstration in AI chat context"
+  },
+  "H2.3": {
+    "claim": "Cognitive phenotype measurements show acceptable test-retest reliability",
+    "status": "gap",
+    "strength": null,
+    "primary_article": "LIB-002",
+    "key_sources": [],
+    "gap": "Critical empirical question; no direct studies"
+  },
+  "H2.4": {
+    "claim": "Cognitive phenotypes generalize across AI platforms",
+    "status": "gap",
+    "strength": null,
+    "primary_article": "LIB-002",
+    "key_sources": [],
+    "gap": "Empirical question requiring cross-platform study"
+  },
+  "H2.5": {
+    "claim": "Selection effects are systematic and adjustable",
+    "status": "partial",
+    "strength": "high",
+    "primary_article": "LIB-002",
+    "key_sources": ["WildChat", "DSP-001"],
+    "gap": "Adjustment effectiveness unknown"
+  },
+  "H2.6": {
+    "claim": "Task-based and naturalistic measures show convergent validity",
+    "status": "gap",
+    "strength": null,
+    "primary_article": "LIB-002",
+    "key_sources": [],
+    "gap": "No direct studies; requires empirical work"
+  }
+}

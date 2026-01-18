@@ -98,7 +98,12 @@ def parse_item(item) -> dict:
         "doi": meta.get('DOI', ''),
         "url": meta.get('URL', ''),
         "abstract": meta.get('Abstract', ''),
-        "status": "cite",  # Default status; change manually
+        "status": "cite",  # Default status: anchor | cite | challenge | gap | skip
+        "role": {
+            "establishes": [],  # Hypothesis IDs or claims this validates
+            "supports_instruments": [],  # INS-XXX references
+            "limitations": []  # Caveats that affect instrument design
+        },
         "annotations": annotations
     }
 

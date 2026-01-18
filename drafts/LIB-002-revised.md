@@ -1,33 +1,8 @@
----
-id: LIB-002
-articleSlug: digital-validity
-title: "Digital Validity"
-question: "Under what conditions can digital interactions—chat logs, task responses, game behaviors—serve as valid proxies for cognitive states?"
-status: published
-confidence: low
-sources: 7
-updated: "2026-01-18"
-tier: 2
-depends_on: ["LIB-001"]
-supports: ["INS-001", "LIB-008"]
-hypotheses:
-  - id: H2.1
-    claim: "Digital behavior reflects cognition, not just communication style"
-    confidence: moderate
-  - id: H2.3
-    claim: "Test-retest reliability is acceptable"
-    confidence: unknown
-  - id: H2.5
-    claim: "Selection effects are characterizable"
-    confidence: moderate
-  - id: H2.6
-    claim: "Task-based and naturalistic measures show convergent validity"
-    confidence: low
----
+# LIB-002: Digital Validity
 
-INS-001 instruments exist entirely in digital space. Participants type words into a web interface; we measure semantic distances between those words and draw inferences about their cognitive capacities. This chain of inference rests on several assumptions that must be examined.
+## Question
 
-The core challenge: digital behavior is *mediated* behavior. Between cognition and measurement sit layers of translation—language production, typing, interface affordances, participant motivation, context effects. Each layer introduces potential slippage between what we measure and what we care about.
+Under what conditions can digital interactions—chat logs, task responses, game behaviors—serve as valid proxies for cognitive states?
 
 ---
 
@@ -39,13 +14,13 @@ The core challenge: digital behavior is *mediated* behavior. Between cognition a
 
 This library article addresses whether digital semantic association tasks can yield valid measurements. Five claims require attention:
 
-1. **Digital behavior reflects cognition, not just communication style** ([H2.1](https://phronos.org/research-agenda#lib-002-digital-validity)) — Ecological validity
-2. **Measurements are stable across occasions** ([H2.3](https://phronos.org/research-agenda#lib-002-digital-validity)) — Test-retest reliability
-3. **Selection effects are characterizable** ([H2.5](https://phronos.org/research-agenda#lib-002-digital-validity)) — Who takes digital assessments?
-4. **Task-based and naturalistic measures converge** ([H2.6](https://phronos.org/research-agenda#lib-002-digital-validity)) — Construct validity across contexts
+1. **Digital behavior reflects cognition, not just communication style** (H2.1) — Ecological validity
+2. **Measurements are stable across occasions** (H2.3) — Test-retest reliability
+3. **Selection effects are characterizable** (H2.5) — Who takes digital assessments?
+4. **Task-based and naturalistic measures converge** (H2.6) — Construct validity across contexts
 5. **AI interaction doesn't invalidate measurement** — Reflexivity concern
 
-Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/methods/semantic-association-metrics/spread-fidelity-scoring/) where available.
+Each claim is evaluated below, with links to empirical findings in [MTH-002.1](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/) where available.
 
 ---
 
@@ -54,14 +29,14 @@ Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/
 | Type | Items |
 |------|-------|
 | **Instruments** | INS-001.1, INS-001.2 (measurement validity) |
-| **Hypotheses** | [H2.1](https://phronos.org/research-agenda#lib-002-digital-validity), [H2.3](https://phronos.org/research-agenda#lib-002-digital-validity), [H2.5](https://phronos.org/research-agenda#lib-002-digital-validity), [H2.6](https://phronos.org/research-agenda#lib-002-digital-validity) |
+| **Hypotheses** | H2.1, H2.3, H2.5, H2.6 |
 | **Methods** | MTH-002 (scoring validity), all future instruments |
 
 ---
 
 ## 3. Must Establish
 
-### [H2.1](https://phronos.org/research-agenda#lib-002-digital-validity): Ecological Validity
+### H2.1: Ecological Validity
 
 **Claim:** Digital task responses reflect actual cognitive processes, not artifacts of the digital medium or communication conventions.
 
@@ -76,7 +51,7 @@ Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/
 
 ---
 
-### [H2.3](https://phronos.org/research-agenda#lib-002-digital-validity): Test-Retest Reliability
+### H2.3: Test-Retest Reliability
 
 **Claim:** Spread measurements are stable within individuals across testing occasions, reflecting trait-like properties rather than momentary fluctuations.
 
@@ -85,7 +60,7 @@ Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/
 **Evidence:**
 - Olson et al. (2021) did not report test-retest reliability for DAT
 - No published studies examine stability of semantic spread measures
-- [MTH-002.1 §9](/methods/semantic-association-metrics/spread-fidelity-scoring/#9-limitations) lists "Single-trial reliability: High variance per trial" as a documented limitation
+- [MTH-002.1 §9](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#9-limitations) lists "Single-trial reliability: High variance per trial" as a documented limitation
 
 **Mitigation:** MTH-002.1 recommends using multiple trials and reporting aggregates. However, this addresses measurement precision, not construct stability.
 
@@ -93,7 +68,7 @@ Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/
 
 ---
 
-### [H2.5](https://phronos.org/research-agenda#lib-002-digital-validity): Selection Effects
+### H2.5: Selection Effects
 
 **Claim:** The population of digital assessment takers has characterizable properties, allowing appropriate generalization or caveat of findings.
 
@@ -107,7 +82,7 @@ Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/
 
 ---
 
-### [H2.6](https://phronos.org/research-agenda#lib-002-digital-validity): Task-Naturalistic Convergence
+### H2.6: Task-Naturalistic Convergence
 
 **Claim:** Task-based measures (INS-001) and naturalistic measures (derived from chat logs or conversation) tap the same underlying constructs.
 
@@ -170,12 +145,12 @@ Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/
 
 | Gap | Status | Reference |
 |-----|--------|-----------|
-| **Test-retest reliability** | Unknown. No published data for DAT or spread measures. MTH-002.1 acknowledges high single-trial variance. | [MTH-002.1 §9](/methods/semantic-association-metrics/spread-fidelity-scoring/#9-limitations) |
-| **Task-naturalistic convergence** | Zero evidence. No studies comparing INS-001-style tasks to chat-derived measures. | [H2.6](https://phronos.org/research-agenda#lib-002-digital-validity) |
+| **Test-retest reliability** | Unknown. No published data for DAT or spread measures. MTH-002.1 acknowledges high single-trial variance. | [MTH-002.1 §9](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#9-limitations) |
+| **Task-naturalistic convergence** | Zero evidence. No studies comparing INS-001-style tasks to chat-derived measures. | H2.6 |
 | **AI interaction effects** | Documented for bias but not creativity. Vicente & Matute (2023) establishes the concern; magnitude for semantic measures unknown. | — |
-| **Human validation** | Pending. Current scoring uses Claude Haiku 4.5 as standardized reference; human-AI divergence unquantified. | [MTH-002.1 §9](/methods/semantic-association-metrics/spread-fidelity-scoring/#9-limitations) |
-| **Task constraint effects** | Documented but interpretation uncertain. Task constraints significantly affect spread measurement (d = 1.02 between unconstrained DAT and constrained INS-001.2). | [MTH-002.1 §4.6](/methods/semantic-association-metrics/spread-fidelity-scoring/#4-dat-calibration) |
-| **Selection effects quantification** | Not studied. Population characteristics of digital assessment takers are unknown. | [H2.5](https://phronos.org/research-agenda#lib-002-digital-validity) |
+| **Human validation** | Pending. Current scoring uses Claude Haiku 4.5 as standardized reference; human-AI divergence unquantified. | [MTH-002.1 §9](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#9-limitations) |
+| **Task constraint effects** | Documented but interpretation uncertain. Task constraints significantly affect spread measurement (d = 1.02 between unconstrained DAT and constrained INS-001.2). | [MTH-002.1 §4.6](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#4-dat-calibration) |
+| **Selection effects quantification** | Not studied. Population characteristics of digital assessment takers are unknown. | H2.5 |
 
 ---
 
@@ -185,9 +160,9 @@ Each claim is evaluated below, with links to empirical findings in [MTH-002.1](/
 
 Ecological validity for game-based measures (Pedersen 2023) supports domain-specific games (memory, attention) but not creativity tasks. We are extrapolating precedent without direct validation.
 
-Task-naturalistic convergence ([H2.6](https://phronos.org/research-agenda#lib-002-digital-validity)) is conceptually important but has zero supporting evidence. If task-elicited and naturalistic semantic behavior diverge, INS-001 measures task performance rather than cognitive style.
+Task-naturalistic convergence (H2.6) is conceptually important but has zero supporting evidence. If task-elicited and naturalistic semantic behavior diverge, INS-001 measures task performance rather than cognitive style.
 
-Test-retest reliability ([H2.3](https://phronos.org/research-agenda#lib-002-digital-validity)) is unknown. Without stability data, we cannot distinguish individual differences from measurement noise. The [MTH-002.1 calibration](/methods/semantic-association-metrics/spread-fidelity-scoring/) documents metric properties (spread, fidelity, constraint effects) but does not address these fundamental validity gaps.
+Test-retest reliability (H2.3) is unknown. Without stability data, we cannot distinguish individual differences from measurement noise. The [MTH-002.1 calibration](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/) documents metric properties (spread, fidelity, constraint effects) but does not address these fundamental validity gaps.
 
 The confidence rating reflects an honest assessment: we have built an instrument with documented metric properties but limited evidence that those metrics capture stable, ecologically valid cognitive constructs.
 
@@ -198,7 +173,7 @@ The confidence rating reflects an honest assessment: we have built an instrument
 Individual confidence ratings treat gaps as independent. When multiple LIB articles are combined for instrument development (e.g., INS-001 depends on LIB-001, LIB-002, and LIB-008), joint confidence is substantially lower than any single rating suggests.
 
 **Key compounding uncertainties for INS-001:**
-- Embedding validity for individuals (LIB-001 [H1.7](https://phronos.org/research-agenda#lib-001-linguistic-markers-of-cognition)) × Test-retest reliability (LIB-002 [H2.3](https://phronos.org/research-agenda#lib-002-digital-validity)) × Creativity-game transfer (LIB-008 [H8.1](https://phronos.org/research-agenda#lib-008-instrument-design))
+- Embedding validity for individuals (LIB-001 H1.7) × Test-retest reliability (LIB-002 H2.3) × Creativity-game transfer (LIB-008 H8.1)
 
 Until these are independently validated, INS-001 confidence should be interpreted as **Low** despite moderate ratings on component claims.
 

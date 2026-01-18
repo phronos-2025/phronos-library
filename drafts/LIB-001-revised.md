@@ -1,0 +1,157 @@
+# LIB-001: Linguistic Markers of Cognition
+
+## Question
+
+What features of language reliably encode cognitive processes, and which are measurable at scale?
+
+---
+
+## 1. Why This Matters for INS-001
+
+Semantic association instruments rest on a fundamental assumption: that the words people produce reveal something stable about how their minds organize meaning. If this assumption fails—if word choice reflects only communication style, momentary context, or measurement noise—then INS-001 measures nothing coherent.
+
+This library article establishes the theoretical warrant for treating linguistic output as a window into cognition. Three claims must hold:
+
+1. **Semantic networks vary meaningfully across individuals** (H1.2) — People differ in how concepts connect in memory, and these differences predict creative behavior
+2. **Embedding distances approximate cognitive semantic distance** (H1.7) — Computational measures of word similarity track psychological reality
+3. **Semantic spread correlates with creativity** (H1.8) — The Divergent Association Task methodology captures something real about divergent thinking
+
+Each claim carries caveats documented below and empirically examined in [MTH-002.1](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/).
+
+---
+
+## 2. Enables
+
+| Type | Items |
+|------|-------|
+| **Instruments** | INS-001.1, INS-001.2 |
+| **Hypotheses** | H1.2, H1.7, H1.8 |
+| **Methods** | MTH-002 (theoretical basis for spread scoring) |
+
+---
+
+## 3. Must Establish
+
+### H1.2: Semantic Networks Vary Meaningfully
+
+**Claim:** Individuals differ in the topology of their semantic networks—how densely concepts cluster, how efficiently paths connect distant ideas—and these structural differences predict creative performance.
+
+**Status:** Supported
+
+**Evidence:**
+- Kenett et al. (2014) demonstrated that highly creative individuals show lower clustering and shorter path lengths in semantic networks derived from free associations
+- Beaty & Kenett (2023) synthesized associative theories of creativity, establishing that network structure reflects individual differences in creative cognition
+
+**Implication for INS-001:** We can meaningfully compare how individuals traverse semantic space, not merely record random variation.
+
+---
+
+### H1.7: Embedding Validity for Semantic Distance
+
+**Claim:** Computational word embeddings (vector representations learned from text corpora) approximate the semantic distances humans perceive between concepts.
+
+**Status:** Partially supported at population level; individual-level validity untested
+
+**Evidence:**
+- Hill et al. (2015) validated embeddings against SimLex-999, a benchmark of human similarity judgments. However, SimLex-999 measures *aggregate* human judgments, not individual differences.
+- Auguste et al. (2017) showed embeddings predict semantic priming reaction times at population level, providing cognitive validation. Individual-difference validity was not tested.
+
+**Complication:** [MTH-002.1 §4.3](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#4-dat-calibration) documents that different embedding models produce substantially different scores:
+- GloVe vs. OpenAI text-embedding-3-small: r = 0.60 (moderate, not interchangeable)
+- Systematic difference: 20.7 points on the DAT scale
+
+**Implication for INS-001:** Spread scores are model-dependent. A score of 65 using OpenAI embeddings is not equivalent to 65 using GloVe. We standardize on OpenAI text-embedding-3-small, but this choice affects interpretation.
+
+---
+
+### H1.8: Semantic Spread Correlates with Creativity
+
+**Claim:** The Divergent Association Task—asking participants to generate 10 unrelated words and measuring mean pairwise semantic distance—captures divergent thinking ability.
+
+**Status:** Supported for 10-word unconstrained task; transfer to brief constrained format empirically calibrated but not externally validated
+
+**Evidence:**
+- Olson et al. (2021) validated DAT against established creativity measures: r = 0.40 with Alternative Uses Task (AUT), r = 0.28 with Remote Associates Test (RAT)
+- Said-Metwaly et al. (2024) meta-analysis of divergent thinking and creative achievement finds r = 0.18, calibrating effect size expectations
+
+**Complication:** INS-001 uses 2–5 words under constraint rather than 10 words unconstrained. [MTH-002.1 §3.3](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#3-spread) documents this difference empirically:
+- INS-001.1 spread: 8.6 points lower than DAT reference
+- INS-001.2 spread: 8.0 points lower than DAT reference
+
+The gap is documented but its meaning is ambiguous: does it reflect reduced construct validity, or simply geometric compression from constraints?
+
+**Implication for INS-001:** Spread measures *something* related to the DAT construct, but the relationship is calibrated rather than validated.
+
+---
+
+## 4. Key Sources
+
+| Source | Contribution | Caveats |
+|--------|--------------|---------|
+| **Olson et al. 2021** | DAT validation (r = 0.40 with AUT, r = 0.28 with RAT) | Supports H1.8 for 10-word unconstrained task. INS-001 uses 2–5 words under constraint; transfer validity untested. See [MTH-002.1 §3.3](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#3-spread). |
+| **Beaty & Kenett 2023** | Associative creativity theory synthesis | Supports H1.2. Theoretical framework, not direct INS-001 validation. |
+| **Kenett et al. 2014** | Network topology predicts creativity | Supports H1.2. Establishes that semantic structure reflects individual differences. |
+| **Hill et al. 2015** | SimLex-999 embedding benchmark | Supports H1.7 for population-average semantic similarity judgments. Explicitly evaluates aggregate human judgments, not individual differences. |
+| **Auguste et al. 2017** | Embeddings predict priming RT | Partially supports H1.7 at population level. Individual-difference validity untested. See [MTH-002.1 §4.3](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#4-dat-calibration) documenting 20.7-point model-dependent scoring effects. |
+| **Said-Metwaly et al. 2024** | DT-CA meta-analysis (r = 0.18) | Calibrates effect size expectations for creativity measures. |
+
+---
+
+## 5. Scope
+
+**In scope:**
+- Semantic network structure and creativity (theoretical basis)
+- Embedding validity for semantic distance (scoring rationale)
+- Divergent Association Task methodology (spread metric)
+- Free vs. goal-directed association distinction (instrument design)
+
+**Out of scope:**
+- Platform effects on expression → LIB-003
+- Digital measurement validity → LIB-002
+- Game-based assessment → LIB-008
+- Cross-cultural invariance → LIB-007 (Note: [MTH-002.1 §9](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#9-limitations) explicitly scopes INS-001 to English only)
+
+---
+
+## 6. Current Gaps
+
+| Gap | Status | Reference |
+|-----|--------|-----------|
+| **Test-retest reliability** | Unknown. No published data for spread measures. Critical for establishing that measurements reflect stable individual properties. | Affects stability claim for H1.2 |
+| **Brief-task validity** | Empirically calibrated but not externally validated. INS-001 uses 2–5 words vs. DAT's 10, producing 8–9 point lower spread scores. | [MTH-002.1 §5.6, §6.5](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/) |
+| **Embedding validity for individuals** | Not validated. MTH-002.1 documents large effects of embedding model choice (20.7-point difference between GloVe and OpenAI), suggesting scores are model-dependent rather than reflecting stable individual properties. | [MTH-002.1 §4.3](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/#4-dat-calibration) |
+| **Task-naturalistic convergence** | No studies comparing INS-001-style tasks to measures derived from naturalistic chat. | Affects H2.6 |
+
+---
+
+## 7. Confidence
+
+**Low-to-Moderate.**
+
+H1.2 (semantic networks vary meaningfully) has strong empirical support from the Kenett lab. The theoretical framework is well-established.
+
+H1.8 (DAT validity) is supported for the original 10-word task, but transfer to INS-001's brief constrained format is empirically calibrated ([MTH-002.1](https://phronos.org/methods/semantic-association-metrics/spread-fidelity-scoring/)) without external criterion validation. We know INS-001 produces lower spread scores; we don't know if this affects what the scores *mean*.
+
+H1.7 (embedding validity) is documented for population semantics but shows large model-dependent effects (20.7 points) that complicate individual-level interpretation. Embeddings approximate group-level semantic judgments; whether they capture meaningful individual differences is an empirical question we have not answered.
+
+The stability claim remains unvalidated—no test-retest data exists for semantic spread measures.
+
+---
+
+## 8. Joint Confidence Note
+
+Individual confidence ratings treat gaps as independent. When multiple LIB articles are combined for instrument development (e.g., INS-001 depends on LIB-001, LIB-002, and LIB-008), joint confidence is substantially lower than any single rating suggests.
+
+**Key compounding uncertainties for INS-001:**
+- Embedding validity for individuals (LIB-001 H1.7) × Test-retest reliability (LIB-002 H2.3) × Creativity-game transfer (LIB-008 H8.1)
+
+Until these are independently validated, INS-001 confidence should be interpreted as **Low** despite moderate ratings on component claims.
+
+---
+
+## Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | 2026-01-18 | Initial publication |
+

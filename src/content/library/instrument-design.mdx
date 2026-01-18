@@ -1,0 +1,213 @@
+---
+id: LIB-008
+articleSlug: instrument-design
+title: "Instrument Design"
+question: "How can cognitive instruments be designed to be engaging, valid, and interpretable without causing harm?"
+status: published
+confidence: low-to-moderate
+sources: 9
+updated: "2026-01-18"
+tier: 2
+depends_on: ["LIB-001", "LIB-002"]
+supports: ["INS-001", "INS-002"]
+hypotheses:
+  - id: H8.1
+    claim: "Game-based formats maintain psychometric validity"
+    confidence: moderate
+  - id: H8.2
+    claim: "Word association games provide valid windows into semantic cognition"
+    confidence: moderate
+  - id: H8.3
+    claim: "Task constraints affect measured constructs"
+    confidence: high
+  - id: H8.4
+    claim: "Results can be presented without psychological harm"
+    confidence: unknown
+---
+
+Traditional cognitive assessments optimize for psychometric validity while treating participant experience as secondary. The result: reliable measurements from disengaged participants who may never return. Digital instruments face an additional constraint: they compete with everything else on a phone screen.
+
+INS-001 attempts a different approach—using game mechanics to create intrinsically motivating tasks while preserving measurement validity. This library article examines whether this is possible and what trade-offs it entails.
+
+---
+
+## 1. Why This Matters for INS-001
+
+Traditional cognitive assessments optimize for psychometric validity while treating participant experience as secondary. The result: reliable measurements from disengaged participants who may never return. Digital instruments face an additional constraint: they compete with everything else on a phone screen.
+
+INS-001 attempts a different approach—using game mechanics to create intrinsically motivating tasks while preserving measurement validity. This library article examines whether this is possible and what trade-offs it entails.
+
+Three design challenges require attention:
+
+1. **Gamification validity** ([H8.1](https://phronos.org/research-agenda#lib-008-instrument-design)) — Can game-based formats maintain psychometric properties?
+2. **Task parameter calibration** — How do design choices (clue count, time pressure, constraints) affect what we measure?
+3. **Harm prevention** ([H8.4](https://phronos.org/research-agenda#lib-008-instrument-design)) — How do we present results without causing psychological harm?
+
+The first two have empirical grounding; the third is acknowledged but unstudied.
+
+---
+
+## 2. Enables
+
+| Type | Items |
+|------|-------|
+| **Instruments** | INS-001.1, INS-001.2, all future instruments |
+| **Hypotheses** | [H8.1](https://phronos.org/research-agenda#lib-008-instrument-design), [H8.2](https://phronos.org/research-agenda#lib-008-instrument-design), [H8.3](https://phronos.org/research-agenda#lib-008-instrument-design), [H8.4](https://phronos.org/research-agenda#lib-008-instrument-design) |
+| **Methods** | MTH-002 (design rationale) |
+
+---
+
+## 3. Must Establish
+
+### [H8.1](https://phronos.org/research-agenda#lib-008-instrument-design): Game-Based Assessment Validity
+
+**Claim:** Game-based and gamified cognitive assessments can maintain psychometric validity while increasing engagement relative to traditional formats.
+
+**Status:** Supported for memory and attention; creativity-specific gamification not validated
+
+**Evidence:**
+- Pedersen et al. (2023) validated Skill Lab, demonstrating that mobile cognitive games can achieve substantial correlations (r = 0.40–0.60) with laboratory tasks for memory and attention
+- Lumsden et al. (2016) systematic review established design principles for gamified cognitive assessment, documenting conditions under which gamification preserves validity
+
+**Complication:** Neither study validated gamification for creativity or divergent thinking tasks. INS-001 represents an extrapolation from memory/attention domains to semantic association.
+
+**Implication for INS-001:** We have methodological precedent but no direct validation that game-based word association preserves the construct validity established for traditional DAT.
+
+---
+
+### [H8.2](https://phronos.org/research-agenda#lib-008-instrument-design): Word Association Games Provide Valid Windows
+
+**Claim:** Word association game mechanics (as used in games like Codenames, Connector) can reveal meaningful semantic cognition.
+
+**Status:** Supported by game design precedent
+
+**Evidence:**
+- Kumar et al. (2021) validated the Connector game for measuring semantic association between concepts
+- Stephenson et al. (2024) established LLM-human comparison methodology using Codenames as a benchmark
+- Cazalets & Dambre (2025) developed human-AI synchronization paradigms using word association
+- Xu et al. (2025) validated CK-Arena for game-based conceptual knowledge assessment
+
+**Implication for INS-001:** Word association games have established precedent as measurement contexts. INS-001.2 (Bridging) adapts the Connector paradigm; INS-001.1 (Radiation) adapts free association with AI-guesser validation.
+
+---
+
+### [H8.3](https://phronos.org/research-agenda#lib-008-instrument-design): Task Constraints Affect Measured Constructs
+
+**Claim:** Design parameters—clue count, time pressure, explicit constraints—systematically affect what constructs are measured and how scores should be interpreted.
+
+**Status:** Empirically documented in MTH-002.1
+
+**Evidence:**
+- [MTH-002.1](/methods/semantic-association-metrics/spread-fidelity-scoring/) documents optimal clue counts:
+  - INS-001.1: 2 clues recommended (maximizes spread while maintaining 100% communicability)
+  - INS-001.2: 4 clues recommended (40% clue-clue pairs, SD = 4.7)
+- Constraint effects are substantial: Cohen's d = 1.02 between unconstrained DAT and constrained INS-001.2 ([MTH-002.1 §4.6](/methods/semantic-association-metrics/spread-fidelity-scoring/#4-dat-calibration))
+- Relevance-spread redundancy required metric redesign: original relevance metric showed r = -0.77 with spread in INS-001.1, r = -0.61 in INS-001.2 ([MTH-002.1 §2.4](/methods/semantic-association-metrics/spread-fidelity-scoring/#2-metric-overview))
+
+**Implication for INS-001:** Design choices have large effects on measurement. The calibration assumption—that constrained spread reflects the same construct as unconstrained spread—is documented but not validated.
+
+---
+
+### [H8.4](https://phronos.org/research-agenda#lib-008-instrument-design): Results Can Be Presented Without Harm
+
+**Claim:** Cognitive assessment results can be communicated to participants in ways that inform without causing psychological harm.
+
+**Status:** Acknowledged concern; not studied
+
+**Evidence:**
+- No published studies examine psychological effects of creativity score feedback
+- Self-location in a distribution (learning one is "below average" at creativity) could affect self-concept
+- Particular concern for creativity, which may be more identity-linked than memory or attention
+
+**Implication for INS-001:** We have ethical obligations to consider result presentation carefully, but no empirical guidance on how to do so safely.
+
+---
+
+## 4. Key Sources
+
+| Source | Contribution | Caveats |
+|--------|--------------|---------|
+| **Pedersen et al. 2023** | Skill Lab validation | Supports H8.1 for memory and attention games. Creativity/divergent thinking games not validated. See [MTH-002.1](/methods/semantic-association-metrics/spread-fidelity-scoring/) for INS-001-specific calibration. |
+| **Lumsden et al. 2016** | Gamification systematic review | Supports design principles. Conditions for creativity-task gamification not established. |
+| **Kumar et al. 2021** | Connector game validation | Supports H8.2. Establishes word association game mechanics for semantic measurement. |
+| **Cazalets & Dambre 2025** | Word Synchronization paradigm | Supports human-AI collaborative assessment formats. |
+| **Stephenson et al. 2024** | Codenames benchmark | Supports H8.2. Establishes LLM-human comparison methodology in word games. |
+| **Rafferty et al. 2014** | Optimal game design framework | Provides principled design framework for educational games. |
+| **Xu et al. 2025** | CK-Arena | Supports game-based conceptual knowledge assessment methodology. |
+| **MTH-002.1** | Spread-fidelity calibration | Documents metric independence problem and solution; optimal clue counts; constraint effects. [Full document](/methods/semantic-association-metrics/spread-fidelity-scoring/) |
+
+---
+
+## 5. Scope
+
+**In scope:**
+- Game-based cognitive assessment validity
+- Word association game mechanics (Codenames, Connector, synchronization games)
+- Task design parameters (clue count, time pressure, constraints)
+- Result presentation and interpretation
+- Human-AI interaction in assessment contexts
+
+**Out of scope:**
+- Semantic network theory → LIB-001
+- Measurement validity (test-retest, ecological) → LIB-002
+- Reflexive identity effects → LIB-003
+- Cross-cultural design → LIB-007
+
+---
+
+## 6. Current Gaps
+
+| Gap | Status | Reference |
+|-----|--------|-----------|
+| **Creativity-specific gamification** | Not validated. Pedersen (2023) validates memory/attention, not divergent thinking. | [H8.1](https://phronos.org/research-agenda#lib-008-instrument-design) |
+| **Constraint calibration vs. validation** | Documented but not validated. MTH-002.1 calibrates INS-001 against DAT; whether constrained spread measures the same construct is assumed, not tested. | [MTH-002.1 §4.6](/methods/semantic-association-metrics/spread-fidelity-scoring/#4-dat-calibration) |
+| **Harm from self-location** | Not studied. No evidence on psychological effects of creativity score feedback. | [H8.4](https://phronos.org/research-agenda#lib-008-instrument-design) |
+| **Long-term engagement** | Unknown. Only single-session validation exists; retention and re-engagement not studied. | — |
+
+---
+
+## 7. The Design Tension
+
+INS-001 navigates a fundamental tension: engaging formats may alter what is measured.
+
+**The optimistic view:** Game mechanics increase motivation and reduce test anxiety, yielding more valid measurements of underlying capacity by reducing performance-irrelevant variance.
+
+**The pessimistic view:** Game constraints introduce construct-irrelevant variance. What we call "divergent thinking under constraint" may be a different capacity than unconstrained divergent thinking.
+
+[MTH-002.1](/methods/semantic-association-metrics/spread-fidelity-scoring/) documents this tension empirically:
+- Constraint produces large effects (d = 1.02)
+- We calibrate against DAT to interpret scores
+- We cannot determine whether calibration preserves construct validity
+
+The honest position: we have built instruments with documented metric properties and known relationships to established measures. Whether they capture the same underlying constructs is an empirical question we have not answered.
+
+---
+
+## 8. Confidence
+
+**Low-to-Moderate.**
+
+Game-based assessment validity is well-established for memory and attention (Pedersen 2023, Lumsden 2016). Word association games have precedent (Kumar 2021, Codenames). The methodology is sound.
+
+Creativity-specific gamification is not validated—INS-001 design choices are empirically calibrated ([MTH-002.1](/methods/semantic-association-metrics/spread-fidelity-scoring/)) but lack external criterion validation against established creativity measures. We know how our scores relate to DAT; we don't know if the game format preserves what DAT measures.
+
+Harm prevention remains acknowledged but unstudied. We have ethical obligations we cannot yet discharge with evidence.
+
+---
+
+## 9. Joint Confidence Note
+
+Individual confidence ratings treat gaps as independent. When multiple LIB articles are combined for instrument development (e.g., INS-001 depends on LIB-001, LIB-002, and LIB-008), joint confidence is substantially lower than any single rating suggests.
+
+**Key compounding uncertainties for INS-001:**
+- Embedding validity for individuals (LIB-001 [H1.7](https://phronos.org/research-agenda#lib-001-linguistic-markers-of-cognition)) × Test-retest reliability (LIB-002 [H2.3](https://phronos.org/research-agenda#lib-002-digital-validity)) × Creativity-game transfer (LIB-008 [H8.1](https://phronos.org/research-agenda#lib-008-instrument-design))
+
+Until these are independently validated, INS-001 confidence should be interpreted as **Low** despite moderate ratings on component claims.
+
+---
+
+## Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | 2026-01-18 | Initial publication |
