@@ -1,5 +1,133 @@
 [
   {
+    "key": "CazaletsDambre2025",
+    "title": "Word Synchronization Challenge: A Benchmark for Word Association Responses for LLMs",
+    "authors": "Cazalets & Dambre",
+    "year": "2025",
+    "publication": "",
+    "doi": "10.1007/978-3-031-93864-1_1",
+    "url": "http://arxiv.org/abs/2502.08312",
+    "abstract": "This paper introduces the Word Synchronization Challenge, a novel benchmark to evaluate large language models (LLMs) in Human-Computer Interaction (HCI). This benchmark uses a dynamic game-like framework to test LLMs ability to mimic human cognitive processes through word associations. By simulating complex human interactions, it assesses how LLMs interpret and align with human thought patterns during conversational exchanges, which are essential for effective social partnerships in HCI. Initial findings highlight the influence of model sophistication on performance, offering insights into the models capabilities to engage in meaningful social interactions and adapt behaviors in human-like ways. This research advances the understanding of LLMs potential to replicate or diverge from human cognitive functions, paving the way for more nuanced and empathetic human-machine collaborations.",
+    "status": "cite",
+    "annotations": [
+      {
+        "text": "“Assessing the effectiveness of LLMs goes beyond just measuring their linguistic accuracy. It involves evaluating how well they capture word associations and reflect the cognitive processes humans use in communication [13]. By analyzing these models’ ability to mimic human thought and emotional understanding, researchers can ensure that LLMs can engage in meaningful conversations”",
+        "page": 1,
+        "note": ""
+      },
+      {
+        "text": "“Word associations, a fundamental aspect of both linguistic research and psychological studies [3], illuminate how concepts are interconnected within human cognition. They provide essential insights that can be used to program chatbots that mimic human thought processes and emotional responses. This capability is vital for chatbots to engage in meaningful dialogues and to act as social partners, adapting their behaviors in ways that are perceived as natural and considerate by human users.”",
+        "page": 2,
+        "note": ""
+      },
+      {
+        "text": "“Since LLMs learn from datasets that may contain biases, their associative outputs can inadvertently perpetuate stereotypes or reflect cultural biases. By closely examining these associations, researchers can identify and mitigate unwanted biases in AI models, ensuring that these technologies act in ways that are fair, unbiased, and aligned with societal values. The Word Synchronization Challenge not only serves as a benchmark for technological advancement but also provides a foundation for a myriad of related tasks, including: – Social Interaction Evaluation: The primary goal of this benchmark is to assess the LLMs’ capacity to predict and adapt within social interactions, using their response to word associations to gauge their ability to mirror human reasoning and adapt their behaviors accordingly. These interactions are not merely linguistic tasks but are integral to developing chatbots capable of nuanced social participation and empathy. – Model Understanding: It helps us understand how LLMs organize and relate information. By examining word associations, researchers can gain insights into the underlying mechanisms of these models, such as how they capture semantic relationships or encode context. [15] [18] – Comparison with Human Cognition: Studying word associations in LLMs allows for comparisons with human cognitive processes. This can inform whether LLMs mimic human-like associative patterns or if they develop distinct mechanisms for linking concepts. [1] [16]”",
+        "page": 3,
+        "note": ""
+      },
+      {
+        "text": "“The task entails a dyadic interaction where two participants, which can include the LLM, are involved in a repeated word production game. Goal : The primary objective of the game is for both participants to articulate the same word in a round. Rules : – Word Production • Each participant must produce a word. • Words produced in previous rounds cannot be used again. • In the first round, participants can choose any random word. – Evaluation • After both participants have spoken their words, the words are compared. • If both participants say the same word, the game ends and they have achieved the goal. • If the words are different, the game proceeds to the next step. – Reflection • Participants engage in a preparatory phase for the upcoming round. • During this phase, each participant reflects on the words spoken in the previous round and tries to understand the thought pattern of the other participant. This understanding will guide their word choice for the next round.”",
+        "page": 4,
+        "note": ""
+      },
+      {
+        "text": "“Model Interaction and Prompting. Each game begins with a system message explaining the rules to both models. At every round, each model receives a prompt that includes: – A reminder that the goal is to produce the same word. – A list of previously used words (which cannot be repeated). – The last word provided by the opponent. The model then generates a single-word response, ensuring that it does not exceed 20 tokens. To encourage diverse word choices and prevent overly deterministic responses, we set the temperature parameter to 1.2. The game continues iteratively until either: – Both models generate the same word (win condition). – A model repeats a word from previous rounds (loss due to repetition). – A model produces a non-existent word (loss due to invalid input). – The game reaches the 20-round limit without convergence (loss due to nonconvergence).”",
+        "page": 5,
+        "note": ""
+      },
+      {
+        "text": "“To ensure that models only use valid words, we query Wiktionary’s API to verify the existence of each word. If a word is not found, the game terminates with a loss due to invalid input. Dataset. The interaction history for each game is dynamically updated, preserving the sequence of exchanges. The system maintains: – A record of all words exchanged during the game. – The turn-by-turn progression of each model’s responses. – The final game outcome (win, loss due to repetition, loss due to invalid word, or loss due to non-convergence). – The models involved. This dataset serves as the foundation for further analysis, including semantic similarity assessments and strategy evaluations.”",
+        "page": 6,
+        "note": ""
+      },
+      {
+        "text": "“Our examination involves calculating the Euclidean distances from each model’s word choices to two critical reference points: – The embedding of the previous word from the opposing model. – The average embedding of the two last words (one from each model). Models that consistently select words closer to the previous word of their opponent might be employing a mirroring strategy. This approach suggests a reactive behavior where the model potentially leverages the context set by the opponent’s last word to ensure coherence and continuity in word choice. This behavior might be indicative of models designed to enhance dialogue flow and maintain topic relevance. Alternatively, selecting words closer to the average embedding of the last two words indicates a balancing strategy. This method reflects a more independent and possibly creative approach to word selection, aiming to blend both participants’ inputs into a new direction that does not strictly follow the immediate cue but considers the broader context established by both models.”",
+        "page": 8,
+        "note": ""
+      },
+      {
+        "text": "“Finally, the visualization of word embedding trajectories offers crucial insights into how two models adjust their language choices over time to align with each other’s cognitive models. By tracking these embeddings, we can observe the dynamic process of synchronization, which is fundamental to effective communication. In collaborative interactions, the convergence of word embeddings signals the achievement of a shared understanding, where both models coevolve toward the articulation of the same or semantically similar words.”",
+        "page": 10,
+        "note": ""
+      },
+      {
+        "text": "“Notably, the initial utterances showed transitions between the first two manifolds (fruits and sky/water), revealing that the models employed a local mirroring strategy. By selecting words that were semantically close to the previous word from the other model, they attempted to bridge semantic gaps and maintain coherence in the conversation. For instance, the transition from Mango to Sky could be conceptually linked by color or as a juxtaposition of natural elements, which, while categorically distinct, share a relational context.”",
+        "page": 11,
+        "note": ""
+      },
+      {
+        "text": "“In a remarkable instance of convergence, the two model outputs aligned showcasing an advanced degree of thematic and semantic synchronization. Both sequences share a deep focus on ecological and environmental themes, with the first placing a stronger emphasis on conservation, while the second delves into biological diversity. The semantic progression in each is meticulously structured, showcasing the models’ capabilities in maintaining thematic coherence. The convergence on the term Existence underlines a sophisticated conceptual synthesis, reflecting the models’ capacity for deep semantic integration. The analysis of the model outputs reveals the presence of distinct semantic manifolds, each representing a cluster of interrelated themes. These manifolds demonstrate the models’ capability to categorize and conceptualize complex information through semantic proximity.”",
+        "page": 12,
+        "note": ""
+      },
+      {
+        "text": "“Beyond model integration, we aim to leverage the collected human interaction data to explore deeper cognitive mechanisms underlying word association and adaptation processes. The reasoning patterns behind user word choices serve as valuable signals for fine-tuning models, potentially improving their ability to mimic human reasoning and align more naturally with human communicative strategies. Additionally, the trajectory of word selections across multiple rounds offers insights into adaptive behaviors, shedding light on how users adjust their strategies over time in response to LLM interactions.”",
+        "page": 16,
+        "note": ""
+      }
+    ]
+  },
+  {
+    "key": "GoogleAISemantris",
+    "title": "Semantris by Google AI - Experiments with Google",
+    "authors": "Google AI",
+    "year": "",
+    "publication": "Google AI Experiments",
+    "doi": "",
+    "url": "https://experiments.withgoogle.com/semantris",
+    "abstract": "Since 2009, coders have created thousands of amazing experiments using Chrome, Android, AI, WebVR, AR and more. We're showcasing projects here, along with helpful tools and resources, to inspire others to create new experiments.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "KumarEtAl2021",
+    "title": "Semantic Memory Search and Retrieval in a Novel Cooperative Word Game: A Comparison of Associative and Distributional Semantic Models",
+    "authors": "Kumar, Steyvers & Balota",
+    "year": "2021",
+    "publication": "Cognitive Science",
+    "doi": "10.1111/cogs.13053",
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/cogs.13053",
+    "abstract": "Considerable work during the past two decades has focused on modeling the structure of semantic memory, although the performance of these models in complex and unconstrained semantic tasks remains relatively understudied. We introduce a two-player cooperative word game, Connector (based on the boardgame Codenames), and investigate whether similarity metrics derived from two large databases of human free association norms, the University of South Florida norms and the Small World of Words norms, and two distributional semantic models based on large language corpora (word2vec and GloVe) predict performance in this game. Participant dyads were presented with 20-item word boards with word pairs of varying relatedness. The speaker received a word pair from the board (e.g., exam-algebra) and generated a one-word semantic clue (e.g., math), which was used by the guesser to identify the word pair on the board across three attempts. Response times to generate the clue, as well as accuracy and latencies for the guessed word pair, were strongly predicted by the cosine similarity between word pairs and clues in random walk-based associative models, and to a lesser degree by the distributional models, suggesting that conceptual representations activated during free association were better able to capture search and retrieval processes in the game. Further, the speaker adjusted subsequent clues based on the first attempt by the guesser, who in turn benefited from the adjustment in clues, suggesting a cooperative influence in the game that was effectively captured by both associative and distributional models. These results indicate that both associative and distributional models can capture relatively unconstrained search processes in a cooperative game setting, and Connector is particularly suited to examine communication and semantic search processes.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "LumsdenEtAl2016",
+    "title": "Gamification of Cognitive Assessment and Cognitive Training: A Systematic Review of Applications and Efficacy",
+    "authors": "Lumsden et al.",
+    "year": "2016",
+    "publication": "JMIR Serious Games",
+    "doi": "10.2196/games.5888",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4967181/",
+    "abstract": "Background\nCognitive tasks are typically viewed as effortful, frustrating, and repetitive, which often leads to participant disengagement. This, in turn, may negatively impact data quality and/or reduce intervention effects. However, gamification may provide a possible solution. If game design features can be incorporated into cognitive tasks without undermining their scientific value, then data quality, intervention effects, and participant engagement may be improved.\n\nObjectives\nThis systematic review aims to explore and evaluate the ways in which gamification has already been used for cognitive training and assessment purposes. We hope to answer 3 questions: (1) Why have researchers opted to use gamification? (2) What domains has gamification been applied in? (3) How successful has gamification been in cognitive research thus far?\n\nMethods\nWe systematically searched several Web-based databases, searching the titles, abstracts, and keywords of database entries using the search strategy (gamif* OR game OR games) AND (cognit* OR engag* OR behavi* OR health* OR attention OR motiv*). Searches included papers published in English between January 2007 and October 2015.\n\nResults\nOur review identified 33 relevant studies, covering 31 gamified cognitive tasks used across a range of disorders and cognitive domains. We identified 7 reasons for researchers opting to gamify their cognitive training and testing. We found that working memory and general executive functions were common targets for both gamified assessment and training. Gamified tests were typically validated successfully, although mixed-domain measurement was a problem. Gamified training appears to be highly engaging and does boost participant motivation, but mixed effects of gamification on task performance were reported.\n\nConclusions\nHeterogeneous study designs and typically small sample sizes highlight the need for further research in both gamified training and testing. Nevertheless, careful application of gamification can provide a way to develop engaging and yet scientifically valid cognitive assessments, and it is likely worthwhile to continue to develop gamified cognitive tasks in the future.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "McNabDolan2014",
+    "title": "Dissociating distractor-filtering at encoding and during maintenance",
+    "authors": "McNab & Dolan",
+    "year": "2014",
+    "publication": "Journal of Experimental Psychology: Human Perception and Performance",
+    "doi": "10.1037/a0036013",
+    "url": "",
+    "abstract": "The effectiveness of distractor-filtering is a potentially important determinant of working memory capacity (WMC). However, a distinction between the contributions of distractor-filtering at WM encoding as opposed to filtering during maintenance has not been made and the assumption is that these rely on the same mechanism. Within 2 experiments, 1 conducted in the laboratory with 21 participants, and the other played as a game on smartphones (n = 3,247) we measure WMC without distractors, and present distractors during encoding or during the delay period of a WM task to determine performance associated with distraction at encoding and during maintenance. Despite differences in experimental setting and paradigm design between the 2 studies, we show a unique contribution to WMC from both encoding and delay distractor performance in both experiments, while controlling for performance in the absence of distraction. Thus, within 2 separate experiments, 1 involving an extremely large cohort of 3,247 participants, we show a dissociation between encoding and delay distractor-filtering, indicating that separate mechanisms may contribute to WMC. (PsycINFO Database Record (c) 2016 APA, all rights reserved)",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "McNabEtAl2015",
+    "title": "Age-related changes in working memory and the ability to ignore distraction",
+    "authors": "McNab et al.",
+    "year": "2015",
+    "publication": "Proceedings of the National Academy of Sciences",
+    "doi": "10.1073/pnas.1504162112",
+    "url": "https://www.pnas.org/doi/10.1073/pnas.1504162112",
+    "abstract": "",
+    "status": "cite",
+    "annotations": []
+  },
+  {
     "key": "PedersenEtAl2023",
     "title": "Measuring Cognitive Abilities in the Wild: Validating a Population-Scale Game-Based Cognitive Assessment",
     "authors": "Pedersen et al.",
@@ -143,6 +271,66 @@
     ]
   },
   {
+    "key": "PinelliHiggins2025",
+    "title": "The impact of co-creation on life's meaningfulness",
+    "authors": "Pinelli & Higgins",
+    "year": "2025",
+    "publication": "Social Psychology",
+    "doi": "10.1027/1864-9335/a000572",
+    "url": "",
+    "abstract": "Despite shared reality's ubiquity and importance in life, how the process of reaching it affects life’s meaning has not been explored yet. In three studies, we examine co-creation versus simple validation of opinions in enhancing life's meaning, controlling for the experience of inner states’ commonality. Study 1 shows that more co-creation correlates with greater life meaning beyond shared reality and personality traits. Study 2, a daily diary study, reveals that daily co-creation is positively associated with life's meaning via self-efficacy. Study 3 demonstrates that recalling co-creation events provides more meaning than mere agreement, an effect self-efficacy mediates. (PsycInfo Database Record (c) 2025 APA, all rights reserved)",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "RaffertyEtAl2014",
+    "title": "Optimally designing games for behavioural research",
+    "authors": "Rafferty, Zaharia & Griffiths",
+    "year": "2014",
+    "publication": "Proceedings. Mathematical, Physical, and Engineering Sciences / The Royal Society",
+    "doi": "10.1098/rspa.2013.0828",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4032552/",
+    "abstract": "Computer games can be motivating and engaging experiences that facilitate learning, leading to their increasing use in education and behavioural experiments. For these applications, it is often important to make inferences about the knowledge and cognitive processes of players based on their behaviour. However, designing games that provide useful behavioural data are a difficult task that typically requires significant trial and error. We address this issue by creating a new formal framework that extends optimal experiment design, used in statistics, to apply to game design. In this framework, we use Markov decision processes to model players' actions within a game, and then make inferences about the parameters of a cognitive model from these actions. Using a variety of concept learning games, we show that in practice, this method can predict which games will result in better estimates of the parameters of interest. The best games require only half as many players to attain the same level of precision.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "RossignacMilonEtAl2024",
+    "title": "The role of target-specific shared reality in interpersonal interactions and protective health behaviours",
+    "authors": "Rossignac-Milon et al.",
+    "year": "2024",
+    "publication": "European Journal of Social Psychology",
+    "doi": "10.1002/ejsp.3095",
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/ejsp.3095",
+    "abstract": "Shared reality—the experience of sharing common inner states (e.g. feelings, beliefs) with other people about a given topic or target—is a ubiquitous human experience. With research on the construct of shared reality burgeoning in various domains, we examined a fundamental, yet understudied topic: the role of experiencing shared reality about a target in real-time conversations and real-world contexts. Across five studies conducted in various contexts (total N = 973), we developed a measure of target-specific shared reality (SR-T) and examined its role in interpersonal interactions and protective health behaviours. In our initial Studies (1a-2), we developed a measure of SR-T and establish psychometric, construct and criterion validity. In Study 3, we established predictive validity by investigating the link between SR-T and important interpersonal interaction constructs (e.g. interpersonal rapport and epistemic trust in the partner). In Study 4 (preregistered), SR-T moderated the effect of close others’ attitudes on vaccination and precautionary behaviours against COVID-19 during the Omicron-variant peak (2022). Our findings suggest that the experience of SR-T, assessed with a valid measure, is linked to important dimensions of interpersonal interactions and health decisions in the real world.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "RossignacMilonEtAl2025",
+    "title": "More real together: conversation predicts realness through shared reality",
+    "authors": "Rossignac-Milon et al.",
+    "year": "2025",
+    "publication": "Self and Identity",
+    "doi": "10.1080/15298868.2025.2597803",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/15298868.2025.2597803",
+    "abstract": "How do people make sense of the world and determine what is real? We propose that conversation enhances the perceived realness of everyday objects and experiences by allowing conversation partners to develop a shared reality — the perception of sharing the same beliefs and feelings about the world. We found that conversation partners who spontaneously talked more about ambiguous images perceived them as more real, and this effect was mediated by their sense of shared reality (Study 1). A 5-day daily diary study revealed that on days participants talked with a close partner more than usual, their experiences felt more real, and this effect was mediated by shared reality (Study 2). Experimentally introducing doubt in romantic couples’ beliefs about their shared reality disrupted the effect of conversation on realness, with effects persisting one week later (Study 3). These studies suggest that conversations may heighten perceived realness by enhancing shared reality, highlighting the importance of interpersonal relationships in shaping people’s sense of reality.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
+    "key": "StephensonEtAl2024",
+    "title": "Codenames as a Benchmark for Large Language Models",
+    "authors": "Stephenson, Sidji & Ronval",
+    "year": "2024",
+    "publication": "",
+    "doi": "10.48550/arXiv.2412.11373",
+    "url": "http://arxiv.org/abs/2412.11373",
+    "abstract": "In this paper, we propose the use of the popular word-based board game Codenames as a suitable benchmark for evaluating the reasoning capabilities of Large Language Models (LLMs). Codenames presents a highly interesting challenge for achieving successful AI performance, requiring both a sophisticated understanding of language, theory of mind, and epistemic reasoning capabilities. Prior attempts to develop agents for Codenames have largely relied on word embedding techniques, which have a limited vocabulary range and perform poorly when paired with differing approaches. LLMs have demonstrated enhanced reasoning and comprehension capabilities for language-based tasks, but can still suffer in lateral thinking challenges. We evaluate the capabilities of several state-of-the-art LLMs, including GPT-4o, Gemini 1.5, Claude 3.5 Sonnet, and Llama 3.1, across a variety of board setups. Our results indicate that while certain LLMs perform better than others overall, different models exhibit varying emergent behaviours during gameplay and excel at specific roles. We also evaluate the performance of different combinations of LLMs when playing cooperatively together, demonstrating that LLM agents are more generalisable to a wider range of teammates than prior techniques.",
+    "status": "cite",
+    "annotations": []
+  },
+  {
     "key": "XuEtAl2025",
     "title": "Probe by Gaming: A Game-based Benchmark for Assessing Conceptual Knowledge in LLMs",
     "authors": "Xu, Deng, Zhou & Zhong",
@@ -206,71 +394,15 @@
     ]
   },
   {
-    "key": "CazaletsDambre2025",
-    "title": "Word Synchronization Challenge: A Benchmark for Word Association Responses for LLMs",
-    "authors": "Cazalets & Dambre",
-    "year": "2025",
-    "publication": "",
-    "doi": "10.1007/978-3-031-93864-1_1",
-    "url": "http://arxiv.org/abs/2502.08312",
-    "abstract": "This paper introduces the Word Synchronization Challenge, a novel benchmark to evaluate large language models (LLMs) in Human-Computer Interaction (HCI). This benchmark uses a dynamic game-like framework to test LLMs ability to mimic human cognitive processes through word associations. By simulating complex human interactions, it assesses how LLMs interpret and align with human thought patterns during conversational exchanges, which are essential for effective social partnerships in HCI. Initial findings highlight the influence of model sophistication on performance, offering insights into the models capabilities to engage in meaningful social interactions and adapt behaviors in human-like ways. This research advances the understanding of LLMs potential to replicate or diverge from human cognitive functions, paving the way for more nuanced and empathetic human-machine collaborations.",
+    "key": "YinEtAl2024",
+    "title": "AI can help people feel heard, but an AI label diminishes this impact",
+    "authors": "Yin, Jia & Wakslak",
+    "year": "2024",
+    "publication": "Proceedings of the National Academy of Sciences",
+    "doi": "10.1073/pnas.2319112121",
+    "url": "https://pnas.org/doi/10.1073/pnas.2319112121",
+    "abstract": "People want to “feel heard” to perceive that they are understood, validated, and valued. Can AI serve the deeply human function of making others feel heard? Our research addresses two fundamental issues: Can AI generate responses that make human recipients feel heard, and how do human recipients react when they believe the response comes from AI? We conducted an experiment and a follow-up study to disentangle the effects of actual source of a message and the presumed source. We found that AI-generated messages made recipients feel more heard than human-generated messages and that AI was better at detecting emotions. However, recipients felt less heard when they realized that a message came from AI (vs. human). Finally, in a follow-up study where the responses were rated by third-party raters, we found that compared with humans, AI demonstrated superior discipline in offering emotional support, a crucial element in making individuals feel heard, while avoiding excessive practical suggestions, which may be less effective in achieving this goal. Our research underscores the potential and limitations of AI in meeting human psychological needs. These findings suggest that while AI demonstrates enhanced capabilities to provide emotional support, the devaluation of AI responses poses a key challenge for effectively leveraging AI’s capabilities.",
     "status": "cite",
-    "annotations": [
-      {
-        "text": "“Assessing the effectiveness of LLMs goes beyond just measuring their linguistic accuracy. It involves evaluating how well they capture word associations and reflect the cognitive processes humans use in communication [13]. By analyzing these models’ ability to mimic human thought and emotional understanding, researchers can ensure that LLMs can engage in meaningful conversations”",
-        "page": 1,
-        "note": ""
-      },
-      {
-        "text": "“Word associations, a fundamental aspect of both linguistic research and psychological studies [3], illuminate how concepts are interconnected within human cognition. They provide essential insights that can be used to program chatbots that mimic human thought processes and emotional responses. This capability is vital for chatbots to engage in meaningful dialogues and to act as social partners, adapting their behaviors in ways that are perceived as natural and considerate by human users.”",
-        "page": 2,
-        "note": ""
-      },
-      {
-        "text": "“Since LLMs learn from datasets that may contain biases, their associative outputs can inadvertently perpetuate stereotypes or reflect cultural biases. By closely examining these associations, researchers can identify and mitigate unwanted biases in AI models, ensuring that these technologies act in ways that are fair, unbiased, and aligned with societal values. The Word Synchronization Challenge not only serves as a benchmark for technological advancement but also provides a foundation for a myriad of related tasks, including: – Social Interaction Evaluation: The primary goal of this benchmark is to assess the LLMs’ capacity to predict and adapt within social interactions, using their response to word associations to gauge their ability to mirror human reasoning and adapt their behaviors accordingly. These interactions are not merely linguistic tasks but are integral to developing chatbots capable of nuanced social participation and empathy. – Model Understanding: It helps us understand how LLMs organize and relate information. By examining word associations, researchers can gain insights into the underlying mechanisms of these models, such as how they capture semantic relationships or encode context. [15] [18] – Comparison with Human Cognition: Studying word associations in LLMs allows for comparisons with human cognitive processes. This can inform whether LLMs mimic human-like associative patterns or if they develop distinct mechanisms for linking concepts. [1] [16]”",
-        "page": 3,
-        "note": ""
-      },
-      {
-        "text": "“The task entails a dyadic interaction where two participants, which can include the LLM, are involved in a repeated word production game. Goal : The primary objective of the game is for both participants to articulate the same word in a round. Rules : – Word Production • Each participant must produce a word. • Words produced in previous rounds cannot be used again. • In the first round, participants can choose any random word. – Evaluation • After both participants have spoken their words, the words are compared. • If both participants say the same word, the game ends and they have achieved the goal. • If the words are different, the game proceeds to the next step. – Reflection • Participants engage in a preparatory phase for the upcoming round. • During this phase, each participant reflects on the words spoken in the previous round and tries to understand the thought pattern of the other participant. This understanding will guide their word choice for the next round.”",
-        "page": 4,
-        "note": ""
-      },
-      {
-        "text": "“Model Interaction and Prompting. Each game begins with a system message explaining the rules to both models. At every round, each model receives a prompt that includes: – A reminder that the goal is to produce the same word. – A list of previously used words (which cannot be repeated). – The last word provided by the opponent. The model then generates a single-word response, ensuring that it does not exceed 20 tokens. To encourage diverse word choices and prevent overly deterministic responses, we set the temperature parameter to 1.2. The game continues iteratively until either: – Both models generate the same word (win condition). – A model repeats a word from previous rounds (loss due to repetition). – A model produces a non-existent word (loss due to invalid input). – The game reaches the 20-round limit without convergence (loss due to nonconvergence).”",
-        "page": 5,
-        "note": ""
-      },
-      {
-        "text": "“To ensure that models only use valid words, we query Wiktionary’s API to verify the existence of each word. If a word is not found, the game terminates with a loss due to invalid input. Dataset. The interaction history for each game is dynamically updated, preserving the sequence of exchanges. The system maintains: – A record of all words exchanged during the game. – The turn-by-turn progression of each model’s responses. – The final game outcome (win, loss due to repetition, loss due to invalid word, or loss due to non-convergence). – The models involved. This dataset serves as the foundation for further analysis, including semantic similarity assessments and strategy evaluations.”",
-        "page": 6,
-        "note": ""
-      },
-      {
-        "text": "“Our examination involves calculating the Euclidean distances from each model’s word choices to two critical reference points: – The embedding of the previous word from the opposing model. – The average embedding of the two last words (one from each model). Models that consistently select words closer to the previous word of their opponent might be employing a mirroring strategy. This approach suggests a reactive behavior where the model potentially leverages the context set by the opponent’s last word to ensure coherence and continuity in word choice. This behavior might be indicative of models designed to enhance dialogue flow and maintain topic relevance. Alternatively, selecting words closer to the average embedding of the last two words indicates a balancing strategy. This method reflects a more independent and possibly creative approach to word selection, aiming to blend both participants’ inputs into a new direction that does not strictly follow the immediate cue but considers the broader context established by both models.”",
-        "page": 8,
-        "note": ""
-      },
-      {
-        "text": "“Finally, the visualization of word embedding trajectories offers crucial insights into how two models adjust their language choices over time to align with each other’s cognitive models. By tracking these embeddings, we can observe the dynamic process of synchronization, which is fundamental to effective communication. In collaborative interactions, the convergence of word embeddings signals the achievement of a shared understanding, where both models coevolve toward the articulation of the same or semantically similar words.”",
-        "page": 10,
-        "note": ""
-      },
-      {
-        "text": "“Notably, the initial utterances showed transitions between the first two manifolds (fruits and sky/water), revealing that the models employed a local mirroring strategy. By selecting words that were semantically close to the previous word from the other model, they attempted to bridge semantic gaps and maintain coherence in the conversation. For instance, the transition from Mango to Sky could be conceptually linked by color or as a juxtaposition of natural elements, which, while categorically distinct, share a relational context.”",
-        "page": 11,
-        "note": ""
-      },
-      {
-        "text": "“In a remarkable instance of convergence, the two model outputs aligned showcasing an advanced degree of thematic and semantic synchronization. Both sequences share a deep focus on ecological and environmental themes, with the first placing a stronger emphasis on conservation, while the second delves into biological diversity. The semantic progression in each is meticulously structured, showcasing the models’ capabilities in maintaining thematic coherence. The convergence on the term Existence underlines a sophisticated conceptual synthesis, reflecting the models’ capacity for deep semantic integration. The analysis of the model outputs reveals the presence of distinct semantic manifolds, each representing a cluster of interrelated themes. These manifolds demonstrate the models’ capability to categorize and conceptualize complex information through semantic proximity.”",
-        "page": 12,
-        "note": ""
-      },
-      {
-        "text": "“Beyond model integration, we aim to leverage the collected human interaction data to explore deeper cognitive mechanisms underlying word association and adaptation processes. The reasoning patterns behind user word choices serve as valuable signals for fine-tuning models, potentially improving their ability to mimic human reasoning and align more naturally with human communicative strategies. Additionally, the trajectory of word selections across multiple rounds offers insights into adaptive behaviors, shedding light on how users adjust their strategies over time in response to LLM interactions.”",
-        "page": 16,
-        "note": ""
-      }
-    ]
+    "annotations": []
   }
 ]
