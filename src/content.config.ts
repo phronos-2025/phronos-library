@@ -7,7 +7,7 @@ const library = defineCollection({
     articleSlug: z.string(),
     title: z.string(),
     question: z.string(),
-    status: z.enum(['drafting', 'published', 'archived']),
+    status: z.enum(['drafting', 'editing', 'published', 'archived']),
     confidence: z.enum(['low', 'moderate', 'high', 'mixed']),
     sources: z.number(),
     updated: z.string(),

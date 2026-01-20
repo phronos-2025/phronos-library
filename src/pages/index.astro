@@ -167,6 +167,16 @@ const confidenceColors = {
       background: var(--gold);
     }
 
+    .status-dot.editing {
+      background: var(--gold);
+      animation: pulse-gold 2s infinite;
+    }
+
+    @keyframes pulse-gold {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.4; }

@@ -127,7 +127,17 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
       animation: pulse 2s infinite;
     }
 
+    .status-dot.editing {
+      background: var(--gold);
+      animation: pulse-gold 2s infinite;
+    }
+
     @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes pulse-gold {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.4; }
     }
@@ -319,8 +329,8 @@ const confidenceLabel = data.confidence.charAt(0).toUpperCase() + data.confidenc
         <span class="article-meta-id">{data.id}</span>
         <a href="/library/" class="article-meta-center article-meta-link">Research Synthesis</a>
         <div class="article-meta-status-group">
-          <span class="article-meta-status-text">Published</span>
-          <span class="status-dot published"></span>
+          <span class="article-meta-status-text">{data.status}</span>
+          <span class={`status-dot ${data.status}`}></span>
         </div>
       </div>
       <div class="article-meta-row">
