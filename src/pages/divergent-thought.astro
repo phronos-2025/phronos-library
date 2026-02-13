@@ -56,6 +56,11 @@ const fullArticleBody = essaySections
     "description": essayMeta.description,
     "datePublished": essayMeta.datePublished,
     "dateModified": essayMeta.dateModified,
+    "author": {
+      "@type": "Person",
+      "name": "Vishal Patel",
+      "honorificSuffix": "MD, PhD"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "Phronos",
@@ -284,6 +289,49 @@ const fullArticleBody = essaySections
       margin: 0;
     }
 
+    /* ── Author ────────────────────────────────────────── */
+    .essay-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    .essay-author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(210, 170, 50, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .essay-author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .essay-author-name {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(242, 240, 233, 0.85);
+    }
+
+    .essay-author-credentials {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-style: italic;
+      color: rgba(242, 240, 233, 0.4);
+    }
+
     /* ── Text sections container ──────────────────────── */
     /* Offset to the right so canvas visuals breathe on the left */
     .essay-sections {
@@ -379,6 +427,27 @@ const fullArticleBody = essaySections
       background: var(--gold);
       z-index: 10;
       transition: height 0.3s ease;
+    }
+
+    /* ── Contact line ──────────────────────────────────── */
+    .essay-contact {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: rgba(242, 240, 233, 0.35);
+      padding-top: 3rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .essay-contact a {
+      color: rgba(242, 240, 233, 0.5);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color var(--transition-fast);
+    }
+
+    .essay-contact a:hover {
+      color: var(--gold);
     }
 
     /* ── Back to library link ─────────────────────────── */
@@ -737,6 +806,14 @@ const fullArticleBody = essaySections
         <header class="essay-header">
           <h1 class="essay-title">{essayMeta.title}</h1>
           <p class="essay-subtitle">{essayMeta.subtitle}</p>
+
+          <div class="essay-author">
+            <span class="essay-author-avatar">VP</span>
+            <div class="essay-author-info">
+              <span class="essay-author-name">Vishal Patel</span>
+              <span class="essay-author-credentials">MD · PhD</span>
+            </div>
+          </div>
         </header>
 
         <!-- Sections -->
@@ -754,6 +831,11 @@ const fullArticleBody = essaySections
               legend={section.legend}
             />
           ))}
+
+          <p class="essay-contact">
+            If you have questions, concerns, or general interest, you can reach out to us via
+            <a href="mailto:research@phronos.org">research@phronos.org</a>.
+          </p>
 
           <a href="/library/" class="essay-back">
             &larr; Back to Library
