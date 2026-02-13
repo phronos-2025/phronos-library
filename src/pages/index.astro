@@ -305,8 +305,7 @@ const confidenceColors = {
         <h1 class="library-title">Library</h1>
         <p class="library-intro">
           A curated synthesis of research relevant to measuring cognitive
-          phenotypes from conversational data. Each article answers one question
-          with explicit confidence levels.
+          phenotypes from conversational data.
         </p>
       </header>
 
@@ -344,10 +343,6 @@ const confidenceColors = {
                 )}
 
                 <div class="card-footer">
-                  <span class="confidence-badge" style={`color: ${confidenceColors[article.data.confidence]}; border-color: ${confidenceColors[article.data.confidence]}`}>
-                    <span class="confidence-dot" style={`background: ${confidenceColors[article.data.confidence]}`}></span>
-                    {article.data.confidence}
-                  </span>
                   <span class="card-sources">{article.data.sources} sources</span>
                 </div>
               </article>
