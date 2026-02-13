@@ -25,13 +25,13 @@ const fullArticleBody = essaySections
   />
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://phronos.org/library/essay/">
+  <link rel="canonical" href="https://phronos.org/library/divergent-thought/">
 
   <!-- Open Graph -->
   <meta property="og:title" content={`${essayMeta.title}: ${essayMeta.subtitle}`}>
   <meta property="og:description" content={essayMeta.description}>
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://phronos.org/library/essay/">
+  <meta property="og:url" content="https://phronos.org/library/divergent-thought/">
   <meta property="og:site_name" content="Phronos">
   <meta property="article:published_time" content={essayMeta.datePublished}>
   <meta property="article:modified_time" content={essayMeta.dateModified}>
@@ -61,7 +61,7 @@ const fullArticleBody = essaySections
       "name": "Phronos",
       "url": "https://phronos.org"
     },
-    "mainEntityOfPage": "https://phronos.org/library/essay/",
+    "mainEntityOfPage": "https://phronos.org/library/divergent-thought/",
     "articleBody": fullArticleBody,
     "hasPart": essaySections.map((s) => ({
       "@type": "CreativeWork",
@@ -881,7 +881,7 @@ const fullArticleBody = essaySections
           const response = await fetch('https://api.instruments.phronos.org/api/v1/mailing/subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, source: 'essay' }),
+            body: JSON.stringify({ email, source: 'divergent-thought' }),
           });
 
           const data = await response.json();

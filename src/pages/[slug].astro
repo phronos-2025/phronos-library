@@ -4,8 +4,8 @@ import ArticleLayout from '../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const articles = await getCollection('library');
-  // Exclude articles with dedicated pages (e.g. essay.astro handles LIB-001)
-  const CUSTOM_PAGE_SLUGS = ['essay'];
+  // Exclude articles with dedicated pages (e.g. divergent-thought.astro handles LIB-001)
+  const CUSTOM_PAGE_SLUGS = ['divergent-thought'];
   return articles
     .filter((article) => !CUSTOM_PAGE_SLUGS.includes(article.data.articleSlug))
     .map((article) => ({
