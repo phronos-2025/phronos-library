@@ -25,3 +25,6 @@ reports/
 
 # jetbrains setting folder
 .idea/
+
+# working drafts
+revised parser/
