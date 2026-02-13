@@ -1,0 +1,1063 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/global/Nav.astro';
+import Footer from '../components/global/Footer.astro';
+import ThoughtSection from '../components/article/ThoughtSection.astro';
+import { essaySections, essayMeta } from '../data/essay-sections';
+
+// Build full articleBody for JSON-LD (strip HTML tags)
+const fullArticleBody = essaySections
+  .map(
+    (s) =>
+      s.coreThought.replace(/<[^>]*>/g, '') +
+      ' ' +
+      s.deepDive.replace(/<[^>]*>/g, '')
+  )
+  .join(' ');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <BaseHead
+    title={`${essayMeta.title} | Phronos`}
+    description={essayMeta.description}
+  />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://phronos.org/library/essay/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={`${essayMeta.title}: ${essayMeta.subtitle}`}>
+  <meta property="og:description" content={essayMeta.description}>
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://phronos.org/library/essay/">
+  <meta property="og:site_name" content="Phronos">
+  <meta property="article:published_time" content={essayMeta.datePublished}>
+  <meta property="article:modified_time" content={essayMeta.dateModified}>
+  <meta property="article:author" content="Phronos">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="creativity">
+  <meta property="article:tag" content="generative AI">
+  <meta property="article:tag" content="divergent thinking">
+  <meta property="article:tag" content="cognitive science">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={`${essayMeta.title}: ${essayMeta.subtitle}`}>
+  <meta name="twitter:description" content={essayMeta.description}>
+  <meta name="twitter:site" content="@phronos_org">
+
+  <!-- JSON-LD structured data for SEO + GEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": essayMeta.title,
+    "description": essayMeta.description,
+    "datePublished": essayMeta.datePublished,
+    "dateModified": essayMeta.dateModified,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Phronos",
+      "url": "https://phronos.org"
+    },
+    "mainEntityOfPage": "https://phronos.org/library/essay/",
+    "articleBody": fullArticleBody,
+    "hasPart": essaySections.map((s) => ({
+      "@type": "CreativeWork",
+      "name": `${s.numeral}. ${s.title} \u2014 ${s.subtitle}`,
+      "text":
+        s.coreThought.replace(/<[^>]*>/g, '') +
+        ' ' +
+        s.deepDive.replace(/<[^>]*>/g, ''),
+    })),
+  })} />
+
+  <style>
+    /* Override base.css scroll-behavior: smooth — it causes programmatic scrollTo
+       calls to animate instead of jumping instantly, which fights with the
+       ResizeObserver scroll correction during Deep Dive expand/collapse. */
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    /* ── Dark-mode nav (matches instruments dark theme) ──
+         !important needed to override Astro's scoped [data-astro-cid-*]
+         attribute selectors on Nav.astro which have higher specificity. ── */
+    :global(.nav) {
+      background: rgba(0, 0, 0, 0.85) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border-bottom-color: rgba(242, 240, 233, 0.08) !important;
+    }
+
+    :global(.nav-wordmark) {
+      color: rgba(242, 240, 233, 0.5) !important;
+    }
+
+    :global(.nav-logo-group:hover .nav-wordmark) {
+      color: var(--gold) !important;
+    }
+
+    :global(.nav-link) {
+      color: rgba(242, 240, 233, 0.5) !important;
+    }
+
+    :global(.nav-link:hover) {
+      color: var(--gold) !important;
+      border-bottom-color: var(--gold) !important;
+    }
+
+    :global(.nav-link--active) {
+      color: #F2F0E9 !important;
+      border-bottom-color: var(--gold) !important;
+    }
+
+    :global(.nav-subscribe) {
+      color: #F2F0E9 !important;
+      background: transparent !important;
+      border-color: rgba(242, 240, 233, 0.2) !important;
+    }
+
+    :global(.nav-subscribe:hover) {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+    }
+
+    :global(.nav-hamburger span) {
+      background: rgba(242, 240, 233, 0.7) !important;
+    }
+
+    :global(.nav-mobile-menu) {
+      background: #0a0a0a !important;
+    }
+
+    :global(.nav-mobile-link) {
+      color: rgba(242, 240, 233, 0.5) !important;
+      border-bottom-color: rgba(242, 240, 233, 0.08) !important;
+    }
+
+    :global(.nav-mobile-link--active) {
+      color: var(--gold) !important;
+    }
+
+    :global(.nav-mobile-close::before),
+    :global(.nav-mobile-close::after) {
+      background: rgba(242, 240, 233, 0.7) !important;
+    }
+
+    :global(.nav-mobile-subscribe) {
+      color: #F2F0E9 !important;
+      background: transparent !important;
+      border-color: rgba(242, 240, 233, 0.2) !important;
+    }
+
+    /* ── Full-bleed canvas layout ──────────────────────── */
+    .essay-page {
+      --text-col: clamp(380px, 40vw, 680px);
+      position: relative;
+      min-height: 100vh;
+      background: #000000;
+    }
+
+    /* ── Fixed full-screen canvas behind everything ───── */
+    .essay-canvas-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .essay-canvas-layer canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ── Scrolling content layer above canvas ─────────── */
+    .essay-content-layer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Meta bar (matches ArticleLayout / Methods header) ── */
+    .essay-meta-bar {
+      max-width: var(--text-col);
+      margin: 0 2rem 0 auto;
+      padding: 5rem 2rem 1.5rem 0;
+    }
+
+    .essay-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .essay-meta-row + .essay-meta-row {
+      margin-top: 0.25rem;
+    }
+
+    .essay-meta-id {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    .essay-meta-center {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(242, 240, 233, 0.4);
+    }
+
+    .essay-meta-status-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .essay-meta-status-text {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(242, 240, 233, 0.4);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      background: var(--success);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .essay-meta-sources {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(242, 240, 233, 0.35);
+    }
+
+    .essay-meta-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: rgba(242, 240, 233, 0.35);
+    }
+
+    /* ── Article header (below meta bar) ──────────────── */
+    .essay-header {
+      max-width: var(--text-col);
+      margin: 0 2rem 0 auto;
+      padding: 0 2rem 6rem 0;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .essay-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 400;
+      color: var(--paper);
+      margin: 0 0 0.75rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .essay-subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      font-style: italic;
+      color: rgba(242, 240, 233, 0.5);
+      margin: 0;
+    }
+
+    /* ── Text sections container ──────────────────────── */
+    /* Offset to the right so canvas visuals breathe on the left */
+    .essay-sections {
+      max-width: var(--text-col);
+      margin: 0 2rem 0 auto;
+      padding: 0 2rem 0 0;
+    }
+
+    /* ── Dark-mode overrides for ThoughtSection ──────── */
+    /* Translucent text card floating over canvas — very light glass */
+    .essay-sections :global(.text-block) {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: none;
+      border-left: 2px solid rgba(242, 240, 233, 0.08);
+    }
+
+    /* Section header */
+    .essay-sections :global(.section-numeral) {
+      color: var(--gold);
+    }
+
+    .essay-sections :global(.section-title) {
+      color: var(--paper);
+    }
+
+    .essay-sections :global(.section-subtitle) {
+      color: rgba(242, 240, 233, 0.4);
+    }
+
+    /* Legend labels */
+    .essay-sections :global(.legend-label) {
+      color: rgba(242, 240, 233, 0.35);
+    }
+
+    /* Core thought text */
+    .essay-sections :global(.core-thought p) {
+      color: rgba(242, 240, 233, 0.85);
+    }
+
+    /* Expand indicator */
+    .essay-sections :global(.expand-line) {
+      background: rgba(242, 240, 233, 0.08);
+    }
+
+    .essay-sections :global(.expand-label) {
+      color: var(--gold);
+    }
+
+    /* Deep dive text */
+    .essay-sections :global(.deep-dive-inner p) {
+      color: rgba(242, 240, 233, 0.7);
+    }
+
+    /* Citations */
+    .essay-sections :global(.section-citations) {
+      border-top-color: rgba(242, 240, 233, 0.08);
+    }
+
+    .essay-sections :global(.citations-toggle-label) {
+      color: rgba(242, 240, 233, 0.35);
+    }
+
+    .essay-sections :global(.citations-chevron) {
+      color: rgba(242, 240, 233, 0.35);
+    }
+
+    .essay-sections :global(.citation-item) {
+      color: rgba(242, 240, 233, 0.4);
+    }
+
+    .essay-sections :global(.citation-authors) {
+      color: rgba(242, 240, 233, 0.7);
+    }
+
+    .essay-sections :global(.citation-doi) {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .essay-sections :global(.citation-count) {
+      color: rgba(242, 240, 233, 0.3);
+    }
+
+    /* ── Progress bar ────────────────────────────────── */
+    .essay-progress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 0%;
+      background: var(--gold);
+      z-index: 10;
+      transition: height 0.3s ease;
+    }
+
+    /* ── Back to library link ─────────────────────────── */
+    .essay-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(242, 240, 233, 0.35);
+      text-decoration: none;
+      padding: 4rem 0 6rem;
+      transition: color var(--transition-fast);
+    }
+
+    .essay-back:hover {
+      color: var(--gold);
+    }
+
+    /* ── Updates / Subscribe section (dark mode) ──────── */
+    .essay-updates {
+      position: relative;
+      z-index: 1;
+      background: #000000;
+      border-top: 1px solid rgba(242, 240, 233, 0.08);
+      padding: 4rem 2rem;
+    }
+
+    .essay-updates-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .essay-updates-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: rgba(242, 240, 233, 0.85);
+      margin: 0 0 0.5rem;
+    }
+
+    .essay-updates-desc {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: rgba(242, 240, 233, 0.5);
+      line-height: 1.6;
+      margin: 0 0 0.5rem;
+    }
+
+    .essay-updates-note {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(242, 240, 233, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .essay-updates-note a {
+      color: rgba(242, 240, 233, 0.3);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .essay-updates-note a:hover {
+      color: var(--gold);
+    }
+
+    .essay-updates-form-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .essay-updates-form {
+      display: flex;
+      gap: 0;
+      width: 100%;
+    }
+
+    .essay-updates-input {
+      flex: 1;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(242, 240, 233, 0.2);
+      border-right: none;
+      background: rgba(242, 240, 233, 0.05);
+      color: rgba(242, 240, 233, 0.85);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .essay-updates-input::placeholder {
+      color: rgba(242, 240, 233, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .essay-updates-input:focus {
+      border-color: var(--gold);
+    }
+
+    .essay-updates-btn {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 500;
+      color: #000000;
+      background: rgba(242, 240, 233, 0.85);
+      border: 1px solid rgba(242, 240, 233, 0.2);
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .essay-updates-btn:hover:not(:disabled) {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000000;
+    }
+
+    .essay-updates-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .essay-updates-btn-loading {
+      display: none;
+    }
+
+    .essay-updates-form.is-loading .essay-updates-btn-text {
+      visibility: hidden;
+    }
+
+    .essay-updates-form.is-loading .essay-updates-btn-loading {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border: 2px solid transparent;
+      border-top-color: #000000;
+      border-radius: 50%;
+      animation: essay-spin 0.8s linear infinite;
+    }
+
+    @keyframes essay-spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .essay-updates-message {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-height: 1.2em;
+      text-align: right;
+      color: rgba(242, 240, 233, 0.3);
+    }
+
+    .essay-updates-message.is-success {
+      color: var(--gold);
+    }
+
+    .essay-updates-message.is-error {
+      color: #c44;
+    }
+
+    @media (max-width: 767px) {
+      .essay-updates {
+        padding: 3rem 1.25rem;
+      }
+
+      .essay-updates-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .essay-updates-message {
+        text-align: center;
+      }
+    }
+
+    /* ── Footer override for dark context ─────────────── */
+    .essay-footer-wrap {
+      position: relative;
+      z-index: 1;
+      background: #000000;
+    }
+
+    .essay-footer-wrap :global(.footer) {
+      border-top-color: rgba(242, 240, 233, 0.08);
+    }
+
+    .essay-footer-wrap :global(.footer-tagline) {
+      color: rgba(242, 240, 233, 0.25);
+    }
+
+    .essay-footer-wrap :global(.footer-link) {
+      color: rgba(242, 240, 233, 0.4);
+    }
+
+    .essay-footer-wrap :global(.footer-link:hover) {
+      color: var(--gold);
+    }
+
+    .essay-footer-wrap :global(.footer-separator) {
+      color: rgba(242, 240, 233, 0.15);
+    }
+
+    .essay-footer-wrap :global(.footer-copyright) {
+      color: rgba(242, 240, 233, 0.2);
+    }
+
+    /* ── Mobile layout: canvas in bottom-third with fade ── */
+    @media (max-width: 768px) {
+      /* Solid black nav on mobile — semi-transparent shows grey on light default bg */
+      :global(.nav) {
+        background: #000000 !important;
+      }
+
+      .essay-page {
+        --text-col: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Canvas: sticky at bottom, 33vh tall, gradient fade at top */
+      .essay-canvas-layer {
+        position: sticky;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        height: 33vh;
+        z-index: 0;
+        order: 2;
+      }
+
+      /* Gradient overlay: black at top → transparent at bottom */
+      .essay-canvas-layer::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        background: linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.6) 40%, transparent 100%);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Content flows naturally, no overlay */
+      .essay-content-layer {
+        position: relative;
+        z-index: 1;
+        order: 1;
+        padding-bottom: 33vh; /* space for sticky canvas */
+      }
+
+      .essay-meta-bar {
+        margin: 0 auto;
+        padding: 5rem 1.25rem 1rem;
+      }
+
+      .essay-meta-row {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .essay-header {
+        margin: 0 auto;
+        padding: 0 1.25rem 4rem;
+        min-height: 50vh;
+      }
+
+      .essay-sections {
+        margin: 0 auto;
+        padding: 0 1rem 0;
+      }
+
+      /* Remove translucent card on mobile — text is not overlaying canvas */
+      .essay-sections :global(.text-block) {
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+        border-left: 1px solid rgba(242, 240, 233, 0.08);
+        padding: 1.5rem;
+      }
+
+      .essay-sections :global(.thought-unit) {
+        min-height: auto;
+        padding: 2rem 0;
+      }
+    }
+
+    /* ── Small phones ────────────────────────────────── */
+    @media (max-width: 480px) {
+      .essay-header {
+        padding: 0 1rem 3rem;
+      }
+
+      .essay-sections {
+        padding: 0 0.75rem 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <Nav />
+
+  <div class="essay-progress" id="essay-progress" aria-hidden="true"></div>
+
+  <main id="main-content">
+    <div class="essay-page">
+      <!-- Fixed full-screen canvas -->
+      <div class="essay-canvas-layer">
+        <canvas
+          id="essay-canvas"
+          aria-label="Interactive particle simulation visualizing the creative process described in each section"
+          role="img"
+        ></canvas>
+      </div>
+
+      <!-- Scrolling content on top -->
+      <div class="essay-content-layer">
+        <!-- Meta bar -->
+        <div class="essay-meta-bar">
+          <div class="essay-meta-row">
+            <span class="essay-meta-id">LIB-001</span>
+            <span class="essay-meta-center">Illustrative Review</span>
+            <div class="essay-meta-status-group">
+              <span class="essay-meta-status-text">Published</span>
+              <span class="status-dot"></span>
+            </div>
+          </div>
+          <div class="essay-meta-row">
+            <span class="essay-meta-sources">{essaySections.reduce((acc, s) => acc + s.citations.length, 0)} sources</span>
+            <span class="essay-meta-date">{new Date(essayMeta.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </div>
+        </div>
+
+        <!-- Article header -->
+        <header class="essay-header">
+          <h1 class="essay-title">{essayMeta.title}</h1>
+          <p class="essay-subtitle">{essayMeta.subtitle}</p>
+        </header>
+
+        <!-- Sections -->
+        <div class="essay-sections">
+          {essaySections.map((section) => (
+            <ThoughtSection
+              number={section.number}
+              numeral={section.numeral}
+              title={section.title}
+              subtitle={section.subtitle}
+              coreThought={section.coreThought}
+              deepDive={section.deepDive}
+              citations={section.citations}
+              sectionId={`section-${section.number}`}
+              legend={section.legend}
+            />
+          ))}
+
+          <a href="/library/" class="essay-back">
+            &larr; Back to Library
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Subscribe / Updates section — scroll target for nav "Updates" button -->
+  <section class="essay-updates" id="updates">
+    <div class="essay-updates-inner">
+      <div class="essay-updates-content">
+        <h3 class="essay-updates-title">Receive Updates</h3>
+        <p class="essay-updates-desc">
+          Email notifications about our work. No spam. Just signal.
+        </p>
+        <p class="essay-updates-note">
+          <small>Also on <a href="https://phronos.substack.com" target="_blank" rel="noopener">Substack</a></small>
+        </p>
+      </div>
+      <div class="essay-updates-form-wrap">
+        <form id="subscribe-form" class="essay-updates-form">
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            required
+            autocomplete="email"
+            class="essay-updates-input"
+          />
+          <button type="submit" class="essay-updates-btn" aria-label="Subscribe">
+            <span class="essay-updates-btn-text">&rarr;</span>
+            <span class="essay-updates-btn-loading" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p id="subscribe-message" class="essay-updates-message" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="essay-footer-wrap">
+    <Footer showSubscribe={false} />
+  </div>
+
+  <!-- Hide nav on scroll down, reveal on scroll up -->
+  <script>
+    function initNavHide() {
+      const nav = document.querySelector('.nav') as HTMLElement;
+      if (!nav) return;
+
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      nav.style.transition = 'transform 0.3s ease';
+
+      function onScroll() {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
+            const delta = currentScrollY - lastScrollY;
+
+            if (delta > 5 && currentScrollY > 120) {
+              nav.style.transform = 'translateY(-100%)';
+            } else if (delta < -3) {
+              nav.style.transform = 'translateY(0)';
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    initNavHide();
+    document.addEventListener('astro:after-swap', initNavHide);
+  </script>
+
+  <!-- Reading progress bar -->
+  <script>
+    function initProgress() {
+      const bar = document.getElementById('essay-progress');
+      if (!bar) return;
+
+      function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.height = `${Math.min(progress, 100)}%`;
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    }
+
+    initProgress();
+    document.addEventListener('astro:after-swap', initProgress);
+  </script>
+
+  <!-- Subscribe form handler -->
+  <script>
+    function initSubscribeForm() {
+      const form = document.getElementById('subscribe-form') as HTMLFormElement | null;
+      const messageEl = document.getElementById('subscribe-message');
+      const button = form?.querySelector('.essay-updates-btn') as HTMLButtonElement | null;
+
+      if (!form || !messageEl || !button) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const email = formData.get('email') as string;
+
+        button.disabled = true;
+        form.classList.add('is-loading');
+        messageEl.textContent = '';
+        messageEl.className = 'essay-updates-message';
+
+        try {
+          const response = await fetch('https://api.instruments.phronos.org/api/v1/mailing/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, source: 'essay' }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            messageEl.textContent = data.message;
+            messageEl.classList.add('is-success');
+            form.reset();
+          } else {
+            const errorMsg = data.detail?.error || data.error || 'Something went wrong. Please try again.';
+            messageEl.textContent = errorMsg;
+            messageEl.classList.add('is-error');
+          }
+        } catch {
+          messageEl.textContent = 'Network error. Please try again.';
+          messageEl.classList.add('is-error');
+        } finally {
+          button.disabled = false;
+          form.classList.remove('is-loading');
+        }
+      });
+    }
+
+    initSubscribeForm();
+    document.addEventListener('astro:after-swap', initSubscribeForm);
+  </script>
+
+  <!-- Canvas: Particle simulation driven by continuous scroll progress -->
+  <script>
+    import { ParticleSimulation } from '../lib/particle-simulation';
+
+    let sim: ParticleSimulation | null = null;
+
+    function initCanvas() {
+      const canvas = document.getElementById('essay-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+
+      // Clean up previous instance
+      if (sim) sim.destroy();
+
+      sim = new ParticleSimulation(canvas);
+      sim.start();
+
+      // Continuous scroll progress tracker (0.0–8.0)
+      const sections = document.querySelectorAll('.thought-unit');
+      let sectionOffsets: number[] = [];
+      let ticking = false;
+      let lastProgress = 0;
+
+      // ── Pin mechanism ──────────────────────────────────────────
+      // When a Deep Dive or Sources section is toggled, the animation
+      // freezes at its current value. It only resumes when the user
+      // actively scrolls far enough that the new layout catches up.
+      let pinnedProgress: number | null = null;
+      let pinnedScrollY = 0;
+      let progressFloor: number | null = null;
+      let prevScrollY = window.scrollY;
+      const PIN_RELEASE_PX = 30;
+
+      window.addEventListener('section-toggle', () => {
+        pinnedProgress = lastProgress;
+        pinnedScrollY = window.scrollY;
+        progressFloor = null;
+      });
+
+      function updateOffsets() {
+        sectionOffsets = [];
+        sections.forEach(s => {
+          sectionOffsets.push((s as HTMLElement).offsetTop);
+        });
+      }
+
+      function computeProgress(): number {
+        const scrollAnchor = window.scrollY + window.innerHeight * 0.2;
+        let progress = 0;
+
+        for (let i = 0; i < sectionOffsets.length; i++) {
+          const top = sectionOffsets[i];
+          const bottom = i < sectionOffsets.length - 1
+            ? sectionOffsets[i + 1]
+            : document.documentElement.scrollHeight;
+
+          if (scrollAnchor >= top && scrollAnchor < bottom) {
+            const sectionProgress = (scrollAnchor - top) / (bottom - top);
+            progress = i + sectionProgress;
+            break;
+          } else if (scrollAnchor >= bottom) {
+            progress = i + 1;
+          }
+        }
+
+        return Math.min(progress, 9);
+      }
+
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const rawProgress = computeProgress();
+          const isScrollingUp = currentScrollY < prevScrollY - 5;
+
+          // Phase 1: pinned — animation is completely frozen until the
+          // user scrolls beyond the dead-zone threshold.
+          if (pinnedProgress !== null) {
+            const scrollDelta = currentScrollY - pinnedScrollY;
+
+            if (Math.abs(scrollDelta) > PIN_RELEASE_PX) {
+              // User actively scrolled — release pin
+              if (scrollDelta > 0) {
+                // Scrolling down: set a floor so animation can't jump backward
+                // through the newly-expanded content.
+                progressFloor = pinnedProgress;
+              }
+              // Scrolling up: no floor — allow backward animation
+              pinnedProgress = null;
+              // Fall through to floor / normal logic below
+            } else {
+              // Within dead zone — keep animation frozen
+              sim?.setScrollProgress(pinnedProgress);
+              prevScrollY = currentScrollY;
+              ticking = false;
+              return;
+            }
+          }
+
+          // Phase 2: floor active — hold the animation steady while the
+          // user scrolls through expanded content, then resume when the
+          // scroll-based progress catches up to the pre-expansion value.
+          if (progressFloor !== null) {
+            if (isScrollingUp) {
+              // User reversed direction — clear floor, allow backward
+              progressFloor = null;
+              lastProgress = rawProgress;
+            } else if (rawProgress >= progressFloor) {
+              // Caught up — clear floor, resume normal
+              progressFloor = null;
+              lastProgress = rawProgress;
+            } else {
+              // Still below floor — hold steady
+              lastProgress = progressFloor;
+            }
+          } else {
+            lastProgress = rawProgress;
+          }
+
+          sim?.setScrollProgress(lastProgress);
+          prevScrollY = currentScrollY;
+          ticking = false;
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', updateOffsets);
+
+      // Recalculate offsets whenever section heights change (Deep Dive
+      // expand/collapse). Throttled to one rAF for performance.
+      const sectionsContainer = document.querySelector('.essay-sections');
+      let roRAF: number | null = null;
+      if (sectionsContainer) {
+        const ro = new ResizeObserver(() => {
+          if (roRAF) return;
+          roRAF = requestAnimationFrame(() => {
+            roRAF = null;
+            updateOffsets();
+          });
+        });
+        ro.observe(sectionsContainer);
+      }
+
+      updateOffsets();
+      onScroll();
+    }
+
+    initCanvas();
+    document.addEventListener('astro:after-swap', initCanvas);
+  </script>
+</body>
+</html>
